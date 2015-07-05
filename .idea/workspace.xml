@@ -5,6 +5,9 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="64a9a598-8e4e-4685-a390-2224844305c7" name="Default" comment="" />
     <ignored path="donethat-android.iws" />
@@ -21,22 +24,44 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="donethat-android" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <file leaf-file-name="item_trip.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_trip.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.22647059">
+              <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+              <folding>
+                <element signature="e#299#322#0" expanded="true" />
+                <element signature="e#733#754#0" expanded="true" />
+              </folding>
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+        <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
+      </list>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -272,6 +297,23 @@
                 <option name="name" value="compileReleaseUnitTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Converts all java 8 class files to java 6 or 7" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileRetrolambda" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileRetrolambdaDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileRetrolambdaDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileRetrolambdaRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Installs and runs instrumentation tests for all flavors on connected devices." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="connectedAndroidTest" />
@@ -490,6 +532,51 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="preReleaseUnitTestBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:appcompat-v7:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportAppcompatV72220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:design:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportDesign2220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:palette-v7:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportPaletteV72220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:recyclerview-v7:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportRecyclerviewV72220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v13:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportSupportV132220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v4:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportSupportV42220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-base:7.5.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesBase750Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-location:7.5.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesLocation750Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-maps:7.5.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesMaps750Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -763,6 +850,23 @@
                 <option name="name" value="compileReleaseUnitTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Converts all java 8 class files to java 6 or 7" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="compileRetrolambda" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="compileRetrolambdaDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="compileRetrolambdaDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="compileRetrolambdaRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Displays the components produced by project ':app'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="components" />
@@ -1008,6 +1112,51 @@
                 <option name="name" value="preReleaseUnitTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:appcompat-v7:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportAppcompatV72220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:design:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportDesign2220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:palette-v7:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportPaletteV72220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:recyclerview-v7:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportRecyclerviewV72220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v13:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportSupportV132220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v4:22.2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportSupportV42220Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-base:7.5.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesBase750Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-location:7.5.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesLocation750Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-maps:7.5.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesMaps750Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareDebugAndroidTestDependencies" />
               </ExternalTaskPojo>
@@ -1144,7 +1293,7 @@
         <entry key="$PROJECT_DIR$/../Upvotes" value="5705695296000" />
         <entry key="$PROJECT_DIR$/../auth_lib" value="5697978192000" />
         <entry key="$PROJECT_DIR$/../blue" value="4280820901000" />
-        <entry key="$PROJECT_DIR$" value="4308324807000" />
+        <entry key="$PROJECT_DIR$" value="4308337571000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1310,6 +1459,46 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/support-v13/22.2.0/support-v13-22.2.0.aar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.2.0/appcompat-v7-22.2.0.aar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/design/22.2.0/design-22.2.0.aar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/palette-v7/22.2.0/palette-v7-22.2.0.aar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/recyclerview-v7/22.2.0/recyclerview-v7-22.2.0.aar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/google/m2repository/com/google/android/gms/play-services-location/7.5.0/play-services-location-7.5.0.aar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/google/m2repository/com/google/android/gms/play-services-maps/7.5.0/play-services-maps-7.5.0.aar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/ad53343e57ae0969aaf451a19eef381abe2ad3a1/butterknife-7.0.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/f3908d76273ad2498add8bb89d7fb787f3061b1d/retrofit-1.9.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/3f998a26355e4138e3e7a880a5dac57fc4370339/picasso-2.5.2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.3.0/4c9b237b15d6a42e88bb556d9c5e0f167043c0ad/okhttp-2.3.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.3.0/2e7bc7033dc2c8423e661224171b3133fb155b28/okhttp-2.3.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.0/de54e525d9cc98c7ec01cc3e7970d0c27600a384/dagger-2.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.0/da7ba0ee1d30edd955da276cdf01d3d7cb24aedc/dagger-2.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-compiler/2.0/652fa02537fb25bb53927afff0b9e0f6cfcc4396/dagger-compiler-2.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-compiler/2.0/2c5c7cfd604076f09eac6fd0783b3eebbc125732/dagger-compiler-2.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.12/21eaf213f2c653611bf74607abf73bb99e9407e0/rxjava-1.0.12-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.12/277d8a8184f92951355d8ddbcac855bf8f12bc5e/rxjava-1.0.12.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net._01001111/jlorem/1.1/f1c5ac14ea4789ffb3ad2fb0c74ec62746d2af25/jlorem-1.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net._01001111/jlorem/1.1/a7e7f29dce59f839de4b6d22ec4045f3da53683c/jlorem-1.1.jar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/support-v4/22.2.0/support-v4-22.2.0.aar" />
+                            <option value="$PROJECT_DIR$/../../sdk/extras/google/m2repository/com/google/android/gms/play-services-base/7.5.0/play-services-base-7.5.0.aar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/563dcb685903c96ce8abbd03adf7fa49e19aa8b4/gson-2.3.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/d702a870528c46a04e5c38d39372a885bd6f4118/okio-1.3.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/1b355f73402020c5a0dcca58affc3ec3dfeabac1/okio-1.3.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/a00123f261762a7c5e0ec916a2c7c8298d29c400/javax.inject-1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-producers/2.0-beta/84c5b379d59b13a87d8e99c5fb5133e096e633e6/dagger-producers-2.0-beta-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-producers/2.0-beta/80276338d1c2542ebebac542b535d1ecd48a3fd7/dagger-producers-2.0-beta.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/ad97fe8faaf01a3d3faacecd58e8fa6e78a973ca/guava-18.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.tatarka/gradle-retrolambda/3.2.0/32568befddc62ea18d4f59530268a6ed4ffa20d2/gradle-retrolambda-3.2.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.tatarka/gradle-retrolambda/3.2.0/ff2fd7fe6e510caed8ab1289d6cd8ed56b827235/gradle-retrolambda-3.2.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.neenbedankt.gradle.plugins/android-apt/1.4/8cc08fdd043c3f61e4631f4abc982c3d17dd264c/android-apt-1.4-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.neenbedankt.gradle.plugins/android-apt/1.4/2ee9dad8e86284f7518ae3818c4d269556567e92/android-apt-1.4.jar" />
                           </list>
                         </option>
                         <option name="path" value="$PROJECT_DIR$/app" />
@@ -1442,6 +1631,41 @@
       </map>
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/TripsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/api/DonethatApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/data/Note.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/ApiModule.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/ServiceModule.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/modules/ServiceModule.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/Application.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/LogUtil.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/activity/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/Component.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/api/DonethatApiService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/data/Trip.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/adapter/TripsAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/activity/TripsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_trips.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_trip.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="NamedScopeManager">
     <order />
   </component>
@@ -1554,6 +1778,338 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="di" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="di" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donethat-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -1628,6 +2184,10 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="emulator-5554" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21_x86_1" />
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1636,6 +2196,36 @@
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
@@ -1696,6 +2286,11 @@
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -1794,50 +2389,1134 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="100" y="123" width="1720" height="973" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32960597" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39924315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32923368" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/activity/TripsActivity.java</url>
+          <line>65</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/modules/ServiceModule.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/activity/TripsActivity.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="8" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.18560606">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <marker date="1436108979000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/data/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27683616">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <marker date="1436111226000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/api/interfaces/DonethatApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19774011">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding>
+            <marker date="1436112958000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436112958000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/modules/ApiModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25189394">
+          <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
+          <folding>
+            <marker date="1436117294000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436117294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436117294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/LogUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23728813">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding>
+            <marker date="1436118305000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436118305000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.2.0/appcompat-v7-22.2.0-sources.jar!/android/support/v7/app/AppCompatActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder="/.../" />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1432243294000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1432243294000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-22/com/android/internal/os/ZygoteInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2660985">
+          <caret line="570" column="5" selection-start-line="570" selection-start-column="5" selection-end-line="570" selection-end-column="5" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/mtramin/donethat/api/DonethatApiService_MembersInjector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32289952">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding>
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.0/de54e525d9cc98c7ec01cc3e7970d0c27600a384/dagger-2.0-sources.jar!/dagger/MembersInjector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59621453">
+          <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+          <folding>
+            <marker date="1414659720000" expanded="false" signature="-1:-1" placeholder="/.../" />
+            <marker date="1414659720000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1414659720000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.0/de54e525d9cc98c7ec01cc3e7970d0c27600a384/dagger-2.0-sources.jar!/dagger/internal/MembersInjectors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47003156">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <marker date="1423141748000" expanded="false" signature="-1:-1" placeholder="/.../" />
+            <marker date="1423141748000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1423141748000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1423141748000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1423141748000" expanded="false" signature="-1:-1" placeholder="/unchecked/" />
+            <marker date="1423141748000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1423141748000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1423141748000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1423141748000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1423141748000" expanded="false" signature="-1:-1" placeholder="/unchecked/" />
+            <marker date="1423141748000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/activity/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26498422">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1436120473000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436120473000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436120473000" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1436120473000" expanded="true" signature="-1:-1" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28706625">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <folding>
+            <marker date="1436120479000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436120479000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436120479000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-22/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33280757">
+          <caret line="819" column="0" selection-start-line="819" selection-start-column="0" selection-end-line="819" selection-end-column="0" />
+          <folding>
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder="/.../" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder="&lt;~&gt;" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder="/unused/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1426060210000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426060210000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4858044">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1436117706000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436117706000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436117706000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436117706000" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1436117706000" expanded="true" signature="-1:-1" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/di/modules/ServiceModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26498422">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1436117695000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436117695000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436117695000" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1436117695000" expanded="true" signature="-1:-1" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/mtramin/donethat/di/modules/ServiceModule_ProvideDonethatApiServiceFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34596375">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/mtramin/donethat/activity/TripsActivity_MembersInjector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5074135">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/mtramin/donethat/di/DaggerComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436124870000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436124870000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.90112996">
+          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
+          <folding>
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121033000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/api/DonethatApiService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29661018">
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+          <folding>
+            <marker date="1436121167000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436121167000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436121167000" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1436121167000" expanded="true" signature="-1:-1" placeholder=" }" />
+            <marker date="1436121167000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/data/Trip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43502825">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding>
+            <marker date="1436121207000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436121207000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436121207000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121207000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121207000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121207000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/adapter/TripsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.81073445">
+          <caret line="61" column="46" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
+          <folding>
+            <marker date="1436121397000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436121397000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436121397000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436121397000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436121397000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121397000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121397000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436121397000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436121397000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121397000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121397000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1779661">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding>
+            <marker date="1436121562000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436121562000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436121562000" expanded="false" signature="-1:-1" placeholder="&quot;donethat&quot;" />
+            <marker date="1436121562000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436121562000" expanded="false" signature="-1:-1" placeholder="&quot;donethat&quot;" />
+            <marker date="1436121562000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar!/android/support/design/widget/CoordinatorLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12334802">
+          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_trips.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2882353">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding>
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="&quot;android.support.design.widget.AppBarLayout$ScrollingVie...&quot;" />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="&quot;16dp&quot;" />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="&quot;16dp&quot;" />
+            <marker date="1436123879000" expanded="true" signature="-1:-1" placeholder="&quot;16dp&quot;" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.059322033">
+          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+          <folding>
+            <marker date="1436124275000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436124275000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/activity/TripsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4562147">
+          <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+          <folding>
+            <marker date="1436121507000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436121507000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121507000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121507000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436121507000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07909604">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <folding>
+            <marker date="1436124819000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_trip.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22647059">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="e#299#322#0" expanded="true" />
+            <element signature="e#733#754#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#5C4428</color>
+    <color name="primary_light">#725E45</color> // even lighter #A68A6B
+    <color name="primary_dark">#483115</color> // even lighter #2F1C06
+
+    <color name="secondary">#20243F</color>
+    <color name="secondary_light">#34374F</color> // even lighter #4F5372
+    <color name="secondary_dark">#131732</color> // even lighter #080B21
+
+    <color name="tertiary">#1D422D</color>
+    <color name="tertiary_light">#31523F</color> // even lighter #4C765E
+    <color name="tertiary_dark">#0F341F</color> // even lighter #042211
+
+</resources>
