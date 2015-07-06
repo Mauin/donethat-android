@@ -14,7 +14,7 @@ import retrofit.RestAdapter;
 @Module
 public class ApiModule {
 
-    private static final String ENDPOINT_DONETHAT = "https://donethat.herokuapp.com";
+    private static final String ENDPOINT_DONETHAT = "https://donethat-test.herokuapp.com";
 
     @Provides
     DonethatApi provideDonethatApi() {

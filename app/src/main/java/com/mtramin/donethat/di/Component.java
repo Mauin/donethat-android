@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 
 import com.mtramin.donethat.activity.BaseActivity;
+import com.mtramin.donethat.activity.TripDetailActivity;
 import com.mtramin.donethat.activity.TripsActivity;
 import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.api.interfaces.DonethatApi;
@@ -21,6 +22,7 @@ import com.mtramin.donethat.di.modules.ServiceModule;
 )
 public interface Component {
     public void inject(TripsActivity activity);
+    public void inject(TripDetailActivity activity);
 
     DonethatApi donethatApi();
 

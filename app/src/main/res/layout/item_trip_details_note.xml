@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/trip_item"
+    android:id="@+id/note_item"
     android:layout_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/default_margin"
-    android:layout_marginRight="@dimen/default_margin"
+    android:layout_marginLeft="@dimen/small_margin"
+    android:layout_marginRight="@dimen/small_margin"
     android:layout_marginTop="@dimen/small_margin"
     android:layout_marginBottom="@dimen/small_margin"
     card_view:cardCornerRadius="4dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -21,19 +21,32 @@
         <!-- TODO add image to layout?! -->
 
         <TextView
-            android:id="@+id/trip_title"
-            android:layout_width="match_parent"
+            android:id="@+id/note_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textsize_large"
             tools:text="My super awesome trip"/>
 
         <TextView
-            android:id="@+id/trip_created_at"
-            android:layout_width="match_parent"
+            android:id="@+id/note_date"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/small_margin"
-            tools:text="Lorem ipsum, something something."/>
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/textsize_small"
+            tools:text="100 days ago"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/note_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/note_title"
+            android:ellipsize="marquee"
+            android:maxLines="2"
+            tools:text="Lorem ipsum dolor sit amet. Dolorem bla bla legit stuff."/>
+
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
 

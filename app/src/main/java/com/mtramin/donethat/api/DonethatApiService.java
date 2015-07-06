@@ -1,14 +1,11 @@
 package com.mtramin.donethat.api;
 
-import android.content.Context;
-
-import com.mtramin.donethat.Application;
 import com.mtramin.donethat.api.interfaces.DonethatApi;
-import com.mtramin.donethat.data.Note;
 import com.mtramin.donethat.data.Trip;
+import com.mtramin.donethat.data.TripDetails;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -31,9 +28,7 @@ public class DonethatApiService implements DonethatApi {
     }
 
     @Override
-    public Observable<List<Note>> getNotesForTrip(@Path("tripId") int tripId) {
-        List<Note> notes = new ArrayList<>();
-
-        return Observable.just(notes);
+    public Observable<TripDetails> getTrip(@Path("tripId") UUID tripId) {
+        return Observable.just(TripDetails.Demo.tripDetails());
     }
 }
