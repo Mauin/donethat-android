@@ -2,8 +2,10 @@ package com.mtramin.donethat.api.interfaces;
 
 import com.mtramin.donethat.data.Note;
 import com.mtramin.donethat.data.Trip;
+import com.mtramin.donethat.data.TripDetails;
 
 import java.util.List;
+import java.util.UUID;
 
 import retrofit.http.GET;
 import retrofit.http.Path;
@@ -14,9 +16,9 @@ import rx.Observable;
  */
 public interface DonethatApi {
 
-    @GET("/trips")
+    @GET("/api/trips")
     Observable<List<Trip>> getTrips();
 
-    @GET("/trip/{tripId}/notes")
-    Observable<List<Note>> getNotesForTrip(@Path("tripId") int tripId);
+    @GET("/api/trips/{tripId}")
+    Observable<TripDetails> getTrip(@Path("tripId") UUID tripId);
 }

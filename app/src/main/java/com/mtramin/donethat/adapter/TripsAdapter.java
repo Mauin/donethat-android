@@ -14,6 +14,8 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Observable;
+import rx.subjects.PublishSubject;
 
 /**
  * Created by m.ramin on 7/5/15.
@@ -22,6 +24,8 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
 
     List<Trip> data;
 
+    PublishSubject<Trip> observableTripSelection = PublishSubject.create();
+
     public TripsAdapter() {
         this.data = new ArrayList<>();
     }
@@ -29,6 +33,10 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
     public void addData(List<Trip> data) {
         this.data.addAll(data);
         notifyDataSetChanged();
+    }
+
+    public Observable<Trip> onTripClick() {
+        return observableTripSelection;
     }
 
     @Override
@@ -50,14 +58,18 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
         Trip trip = data.get(position);
 
         holder.title.setText(trip.title);
-        holder.description.setText(trip.description);
+        holder.created.setText(trip.created_at.toString());
+
+        holder.item.setOnClickListener(v -> observableTripSelection.onNext(trip));
     }
 
     public class TripViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.trip_item)
+        View item;
         @Bind(R.id.trip_title)
         TextView title;
-        @Bind(R.id.trip_description)
-        TextView description;
+        @Bind(R.id.trip_created_at)
+        TextView created;
 
         public TripViewHolder(View itemView) {
             super(itemView);

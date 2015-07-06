@@ -2,8 +2,11 @@ package com.mtramin.donethat.data;
 
 import net._01001111.text.LoremIpsum;
 
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by m.ramin on 7/5/15.
@@ -11,26 +14,26 @@ import java.util.List;
 public class Trip {
 
     public String title;
-    public String description;
-    public int id;
+    public UUID uid;
+    public DateTime created_at;
 
-    public Trip(String title, String description, int id) {
+    public Trip(String title, UUID uid, DateTime created_at) {
         this.title = title;
-        this.description = description;
-        this.id = id;
+        this.uid = uid;
+        this.created_at = created_at;
     }
 
     public static class Demo {
 
-        public static Trip trip(int id) {
+        public static Trip trip() {
             LoremIpsum jlorem = new LoremIpsum();
-            return new Trip(jlorem.words(3), jlorem.words(10), id);
+            return new Trip(jlorem.words(3), UUID.randomUUID(), DateTime.now());
         }
 
         public static List<Trip> trips(int count) {
             List<Trip> trips = new ArrayList<>(count);
             for (int i = 0; i < count; i++) {
-                trips.add(trip(i));
+                trips.add(trip());
             }
             return trips;
         }
