@@ -21,8 +21,6 @@ public class TripsActivity extends BaseActivity {
 
     @Bind(R.id.list)
     RecyclerView list;
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
 
     @Inject
     DonethatApiService apiService;
@@ -37,8 +35,6 @@ public class TripsActivity extends BaseActivity {
         ((Application) getApplication()).getComponent().inject(this);
 
         setContentView(R.layout.activity_trips);
-
-        setSupportActionBar(toolbar);
 
         adapter = new TripsAdapter();
         list.setAdapter(adapter);

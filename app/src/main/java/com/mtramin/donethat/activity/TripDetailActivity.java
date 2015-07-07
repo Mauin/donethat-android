@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripDetailAdapter;
-import com.mtramin.donethat.adapter.TripsAdapter;
 import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.data.Trip;
 import com.mtramin.donethat.util.LogUtil;
@@ -28,13 +26,12 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class TripDetailActivity extends BaseActivity {
 
-    Trip trip = Trip.Demo.trip();
+    private static final String EXTRA_TRIP = "EXTRA_TRIP";
+
+    Trip trip;
 
     @Bind(R.id.list)
     RecyclerView list;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
 
     @Bind(R.id.toolbar_collapsing)
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -52,7 +49,8 @@ public class TripDetailActivity extends BaseActivity {
 
         setContentView(R.layout.activity_trip_detail);
 
-        setSupportActionBar(toolbar);
+        handleIntent(getIntent());
+
         collapsingToolbarLayout.setTitle(trip.title);
 
         adapter = new TripDetailAdapter(this);
@@ -60,8 +58,16 @@ public class TripDetailActivity extends BaseActivity {
         list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 
+    private void handleIntent(Intent intent) {
+        if (intent == null) {
+            return;
+        }
+        trip = intent.getParcelableExtra(EXTRA_TRIP);
+    }
+
     public static Intent getIntent(Context context, Trip trip) {
         Intent intent = new Intent(context, TripDetailActivity.class);
+        intent.putExtra(EXTRA_TRIP, trip);
         return intent;
     }
 
@@ -72,6 +78,7 @@ public class TripDetailActivity extends BaseActivity {
         subscription = new CompositeSubscription();
 
         subscribeToTripDetails();
+        subscribeToNoteClick();
     }
 
     @Override
@@ -79,6 +86,15 @@ public class TripDetailActivity extends BaseActivity {
         super.onStop();
 
         subscription.unsubscribe();
+    }
+
+    private void subscribeToNoteClick() {
+        subscription.add(adapter.onNoteClicked()
+                        .subscribe(
+                                note -> startActivity(NoteActivity.createIntent(this, note)),
+                                throwable -> LogUtil.logException(this, throwable)
+                        )
+        );
     }
 
     private void subscribeToTripDetails() {

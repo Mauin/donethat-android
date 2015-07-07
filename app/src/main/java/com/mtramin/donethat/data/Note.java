@@ -1,6 +1,8 @@
 package com.mtramin.donethat.data;
 
 import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -15,7 +17,7 @@ import java.util.UUID;
 /**
  * Created by m.ramin on 7/5/15.
  */
-public class Note {
+public class Note implements Parcelable {
 
     public String title;
     public String content;
@@ -23,6 +25,15 @@ public class Note {
     public DateTime note_date;
     public UUID uid;
     public Uri image;
+
+    public Note(Parcel in) {
+        title = in.readString();
+        content = in.readString();
+        location = in.readParcelable(LatLng.class.getClassLoader());
+        note_date = new DateTime().withMillis(in.readLong());
+        uid = UUID.fromString(in.readString());
+        image = Uri.parse(in.readString());
+    }
 
     public Note(String title, String content, LatLng location, DateTime note_date, UUID uid, Uri image) {
         this.title = title;
@@ -32,6 +43,33 @@ public class Note {
         this.uid = uid;
         this.image = image;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(content);
+        dest.writeParcelable(location, flags);
+        dest.writeLong(note_date.getMillis());
+        dest.writeString(uid.toString());
+        dest.writeString(image.toString());
+    }
+
+    public static final Parcelable.Creator<Note> CREATOR = new Parcelable.Creator<Note>() {
+        @Override
+        public Note createFromParcel(Parcel source) {
+            return new Note(source);
+        }
+
+        @Override
+        public Note[] newArray(int size) {
+            return new Note[size];
+        }
+    };
 
     public static class Demo {
         public static List<Note> notes(int count) {
