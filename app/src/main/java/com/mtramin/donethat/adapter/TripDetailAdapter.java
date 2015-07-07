@@ -1,6 +1,8 @@
 package com.mtramin.donethat.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,12 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     TripDetails data;
 
     PublishSubject<Note> observableNoteSelection = PublishSubject.create();
+
+    Context context;
+
+    public TripDetailAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setData(TripDetails data) {
         this.data = data;
@@ -81,9 +89,11 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             case ITEM_NOTE:
                 Note note = getItem(position);
 
-                ((NoteViewHolder) holder).title.setText(note.title);
+                String created = DateUtils.formatDateTime(context, note.note_date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
+
+                    ((NoteViewHolder) holder).title.setText(note.title);
                 ((NoteViewHolder) holder).content.setText(note.content);
-                ((NoteViewHolder) holder).created.setText(note.note_date.toString());
+                ((NoteViewHolder) holder).created.setText(created);
                 break;
         }
     }

@@ -55,7 +55,7 @@ public class TripDetailActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         collapsingToolbarLayout.setTitle(trip.title);
 
-        adapter = new TripDetailAdapter();
+        adapter = new TripDetailAdapter(this);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }

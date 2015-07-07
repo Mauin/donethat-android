@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/note_title"
-            android:ellipsize="marquee"
+            android:ellipsize="end"
             android:maxLines="2"
             tools:text="Lorem ipsum dolor sit amet. Dolorem bla bla legit stuff."/>
 
