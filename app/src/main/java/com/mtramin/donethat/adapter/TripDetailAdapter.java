@@ -91,9 +91,11 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
                 String created = DateUtils.formatDateTime(context, note.note_date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
 
-                    ((NoteViewHolder) holder).title.setText(note.title);
+                ((NoteViewHolder) holder).title.setText(note.title);
                 ((NoteViewHolder) holder).content.setText(note.content);
                 ((NoteViewHolder) holder).created.setText(created);
+
+                ((NoteViewHolder) holder).item.setOnClickListener(v -> observableNoteSelection.onNext(note));
                 break;
         }
     }
