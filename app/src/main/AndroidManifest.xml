@@ -26,6 +26,31 @@
             android:name=".activity.NoteActivity"
             android:label="@string/app_name">
         </activity>
+
+        <activity
+            android:name=".activity.EditNoteActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
+                <!-- THIS MUST BE THE SAME STRING AS DEFINED IN STEP 1 (sadly the resource string cannot be used for that) -->
+                <action android:name="com.mtramin.donethat.action.AUTH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".auth.TwitterAuthenticationService"
+            android:process=":auth"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator"/>
+        </service>
     </application>
 
 </manifest>

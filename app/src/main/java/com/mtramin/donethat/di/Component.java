@@ -10,12 +10,17 @@ import com.mtramin.donethat.activity.TripsActivity;
 import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.api.interfaces.DonethatApi;
 import com.mtramin.donethat.di.modules.ApiModule;
+import com.mtramin.donethat.di.modules.ApplicationModule;
 import com.mtramin.donethat.di.modules.ServiceModule;
+
+import javax.inject.Singleton;
 
 /**
  * Created by m.ramin on 7/5/15.
  */
+@Singleton
 @dagger.Component(modules = {
+        ApplicationModule.class,
         ApiModule.class,
         ServiceModule.class
     }
@@ -27,4 +32,6 @@ public interface Component {
     DonethatApi donethatApi();
 
     DonethatApiService donethatApiService();
+
+    Context context();
 }
