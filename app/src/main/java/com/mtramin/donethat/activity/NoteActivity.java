@@ -3,7 +3,9 @@ package com.mtramin.donethat.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.text.format.DateUtils;
+import android.view.View;
 import android.widget.TextView;
 
 import com.mtramin.donethat.R;
@@ -15,6 +17,7 @@ import org.w3c.dom.Text;
 import java.text.DateFormat;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by m.ramin on 7/7/15.
@@ -34,6 +37,9 @@ public class NoteActivity extends BaseActivity {
     @Bind(R.id.note_date)
     TextView date;
 
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +47,11 @@ public class NoteActivity extends BaseActivity {
 
         handleIntent(getIntent());
         displayNote();
+    }
+
+    @OnClick(R.id.fab)
+    public void onFabClicked(View v) {
+        startActivity(EditNoteActivity.createIntent(this));
     }
 
     private void displayNote() {

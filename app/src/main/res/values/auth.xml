@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- String for the account type you want to use in your app -->
+    <string name="auth_account_type">com.mtramin.donethat.account</string>
+    <!-- String for the type of token you're using. -->
+    <string name="auth_token_type">com.mtramin.donethat.token</string>
+    <!-- String for the Action to open the activity to login if necessary -->
+    <string name="authentication_action">com.mtramin.donethat.action.AUTH</string>
+
+</resources>
