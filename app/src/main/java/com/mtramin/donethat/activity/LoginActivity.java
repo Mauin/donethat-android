@@ -1,5 +1,6 @@
 package com.mtramin.donethat.activity;
 
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -123,7 +124,9 @@ public class LoginActivity extends AuthenticationActivity {
     }
 
     public static Intent createIntent(Context context) {
-        return new Intent(context, LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, context.getString(R.string.auth_account_type));
+        return intent;
     }
 
     private class TwitterWebViewClient extends WebViewClient {
