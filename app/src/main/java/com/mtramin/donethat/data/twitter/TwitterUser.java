@@ -10,6 +10,7 @@ public class TwitterUser {
     public String description;
     public String profile_background_image_url_https;
     public String profile_image_url_https;
+    public String id_str;
 
 }
 

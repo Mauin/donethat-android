@@ -1,12 +1,12 @@
 package com.mtramin.donethat.di.modules;
 
+import android.accounts.Account;
 import android.content.Context;
 
 import com.mtramin.donethat.api.interfaces.DonethatApi;
-import com.mtramin.donethat.auth.TwitterAuthenticationService;
+import com.mtramin.donethat.util.AccountUtil;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,22 +22,30 @@ import retrofit.RestAdapter;
 public class ApiModule {
 
     private static final String ENDPOINT_DONETHAT = "https://donethat-test.herokuapp.com";
+    private final Context context;
 
-    @Provides @Inject
+    public ApiModule(Context context) {
+        this.context = context;
+    }
+
+    @Provides
+    @Inject
     DonethatApi provideDonethatApi(Context context) {
         AuthRestAdapter restAdapter = new AuthRestAdapter.Builder()
                 .setEndpoint(ENDPOINT_DONETHAT)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
 
-        return restAdapter.create(context, new SomeTokenInterceptor(), DonethatApi.class);
+        return restAdapter.create(context, new DonethatTokenInterceptor(), DonethatApi.class);
     }
 
-    public class SomeTokenInterceptor extends TokenInterceptor {
+    private class DonethatTokenInterceptor extends TokenInterceptor {
         @Override
-        public void injectToken(RequestInterceptor.RequestFacade facade, String token) {
-            facade.addHeader("Authorization", "Bearer " + token);
+        public void injectToken(RequestFacade requestFacade, String token) {
+            String userId = AccountUtil.getUserData(context, "USER_ID");
+            String xAuthToken = String.format("%s:%s", userId, token);
+
+            requestFacade.addHeader("X-Authorization", xAuthToken);
         }
     }
-
 }
