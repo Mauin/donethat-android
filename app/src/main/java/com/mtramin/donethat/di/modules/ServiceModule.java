@@ -1,7 +1,11 @@
 package com.mtramin.donethat.di.modules;
 
-import com.mtramin.donethat.api.DonethatApiService;
+import android.content.Context;
 
+import com.mtramin.donethat.api.DonethatApiService;
+import com.mtramin.donethat.api.TwitterAuthService;
+
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -16,5 +20,10 @@ public class ServiceModule {
     @Provides
     public DonethatApiService provideDonethatApiService() {
         return new DonethatApiService();
+    }
+
+    @Provides @Inject
+    public TwitterAuthService provideTwitterAuthService(Context context) {
+        return new TwitterAuthService(context);
     }
 }

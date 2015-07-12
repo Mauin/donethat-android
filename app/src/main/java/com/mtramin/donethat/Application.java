@@ -1,8 +1,8 @@
 package com.mtramin.donethat;
 
+import com.mtramin.donethat.di.Component;
 import com.mtramin.donethat.di.DaggerComponent;
 import com.mtramin.donethat.di.modules.ApiModule;
-import com.mtramin.donethat.di.Component;
 import com.mtramin.donethat.di.modules.ApplicationModule;
 import com.mtramin.donethat.di.modules.ServiceModule;
 

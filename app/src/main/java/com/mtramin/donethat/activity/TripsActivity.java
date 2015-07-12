@@ -1,15 +1,18 @@
 package com.mtramin.donethat.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripsAdapter;
 import com.mtramin.donethat.api.DonethatApiService;
+import com.mtramin.donethat.util.AccountUtil;
 import com.mtramin.donethat.util.LogUtil;
 
 import javax.inject.Inject;
@@ -39,6 +42,10 @@ public class TripsActivity extends BaseActivity {
         adapter = new TripsAdapter();
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        if (!AccountUtil.hasAccount(this)) {
+            startActivity(LoginActivity.createIntent(this));
+        }
     }
 
     @Override
@@ -74,5 +81,9 @@ public class TripsActivity extends BaseActivity {
                                 throwable -> LogUtil.logException(this, throwable)
                         )
         );
+    }
+
+    public static Intent createIntent(Context context) {
+        return new Intent(context, TripsActivity.class);
     }
 }
