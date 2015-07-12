@@ -17,9 +17,9 @@ import dagger.Provides;
 @Module
 public class ServiceModule {
 
-    @Provides
-    public DonethatApiService provideDonethatApiService() {
-        return new DonethatApiService();
+    @Provides @Inject
+    public DonethatApiService provideDonethatApiService(Context context) {
+        return new DonethatApiService(context);
     }
 
     @Provides @Inject

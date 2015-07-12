@@ -36,6 +36,7 @@ public interface Component {
     public void inject(LoginActivity activity);
 
     public void inject(TwitterAuthService service);
+    public void inject(DonethatApiService service);
 
     DonethatApi donethatApi();
 

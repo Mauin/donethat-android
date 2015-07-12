@@ -104,9 +104,7 @@ public class LoginActivity extends AuthenticationActivity {
         subscription.add(twitterAuthService.getUserData(token)
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(twitterUser -> {
-                            saveUserData(token, twitterUser);
-                        }, throwable -> LogUtil.logException(this, throwable))
+                        .subscribe(twitterUser -> saveUserData(token, twitterUser), throwable -> LogUtil.logException(this, throwable))
         );
     }
 
@@ -117,6 +115,7 @@ public class LoginActivity extends AuthenticationActivity {
         userData.putString("DESCRIPTION", twitterUser.description);
         userData.putString("BACKGOROUND_IMAGE_URL", twitterUser.profile_background_image_url_https);
         userData.putString("PROFILE_IMAGE_URL", twitterUser.profile_image_url_https);
+        userData.putString("USER_ID", twitterUser.id_str);
 
         finalizeAuthentication(twitterUser.screen_name, getString(R.string.auth_token_type), token.getToken(), userData);
 

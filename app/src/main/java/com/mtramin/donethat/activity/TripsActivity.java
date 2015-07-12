@@ -18,6 +18,8 @@ import com.mtramin.donethat.util.LogUtil;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 public class TripsActivity extends BaseActivity {
@@ -77,7 +79,10 @@ public class TripsActivity extends BaseActivity {
 
     private void subscribeToTrips() {
         subscription.add(apiService.getTrips()
-                        .subscribe(adapter::addData,
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                                adapter::addData,
                                 throwable -> LogUtil.logException(this, throwable)
                         )
         );
