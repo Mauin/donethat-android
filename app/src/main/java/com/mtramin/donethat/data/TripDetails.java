@@ -1,5 +1,8 @@
 package com.mtramin.donethat.data;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
 import net._01001111.text.LoremIpsum;
 
 import org.joda.time.DateTime;
@@ -10,20 +13,29 @@ import java.util.UUID;
 /**
  * Created by m.ramin on 7/6/15.
  */
+@JsonObject
 public class TripDetails {
-
-    public UUID uid;
+    @JsonField(name = "id")
+    public UUID id;
+    @JsonField(name = "created_at")
+    public DateTime date;
+    @JsonField(name = "updated_at")
+    public DateTime updated;
+    @JsonField
     public String title;
-    public DateTime created_at;
-    public DateTime updated_at;
+    @JsonField
     public String content;
+    @JsonField
     public List<Note> notes;
 
-    public TripDetails(UUID uid, String title, DateTime created_at, DateTime updated_at, String content, List<Note> notes) {
-        this.uid = uid;
+    public TripDetails() {
+    }
+
+    public TripDetails(UUID id, String title, DateTime date, DateTime updated, String content, List<Note> notes) {
+        this.id = id;
         this.title = title;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.date = date;
+        this.updated = updated;
         this.content = content;
         this.notes = notes;
     }

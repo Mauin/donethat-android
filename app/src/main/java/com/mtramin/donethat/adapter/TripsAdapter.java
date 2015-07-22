@@ -31,6 +31,12 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
     }
 
     public void addData(List<Trip> data) {
+        for (Trip trip : this.data) {
+            if (data.contains(trip)) {
+                this.data.remove(trip);
+            }
+        }
+
         this.data.addAll(data);
         notifyDataSetChanged();
     }
@@ -58,7 +64,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
         Trip trip = data.get(position);
 
         holder.title.setText(trip.title);
-        holder.created.setText(trip.created_at.toString());
+//        holder.created.setText(trip.date.toString());
 
         holder.item.setOnClickListener(v -> observableTripSelection.onNext(trip));
     }

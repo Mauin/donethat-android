@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -111,13 +110,13 @@ public class LoginActivity extends AuthenticationActivity {
     private void saveUserData(Token token, TwitterUser twitterUser) {
         Bundle userData = new Bundle();
         userData.putString("NAME", twitterUser.name);
-        userData.putString("SCREEN_NAME", twitterUser.screen_name);
+        userData.putString("SCREEN_NAME", twitterUser.screenName);
         userData.putString("DESCRIPTION", twitterUser.description);
-        userData.putString("BACKGOROUND_IMAGE_URL", twitterUser.profile_background_image_url_https);
-        userData.putString("PROFILE_IMAGE_URL", twitterUser.profile_image_url_https);
-        userData.putString("USER_ID", twitterUser.id_str);
+        userData.putString("BACKGOROUND_IMAGE_URL", twitterUser.urlProfileBackgroundImage);
+        userData.putString("PROFILE_IMAGE_URL", twitterUser.urlProfileImage);
+        userData.putString("USER_ID", twitterUser.userId);
 
-        finalizeAuthentication(twitterUser.screen_name, getString(R.string.auth_token_type), token.getToken(), userData);
+        finalizeAuthentication(twitterUser.screenName, getString(R.string.auth_token_type), token.getToken(), userData);
 
         startActivity(TripsActivity.createIntent(this));
     }

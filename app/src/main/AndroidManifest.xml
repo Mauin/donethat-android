@@ -35,6 +35,11 @@
             android:label="@string/app_name">
         </activity>
 
+        <activity
+            android:name=".activity.CreateTripActivity"
+            android:label="@string/app_name">
+        </activity>
+
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <!-- THIS MUST BE THE SAME STRING AS DEFINED IN STEP 1 (sadly the resource string cannot be used for that) -->

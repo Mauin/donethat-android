@@ -14,6 +14,7 @@ import eu.unicate.retroauth.AuthRestAdapter;
 import eu.unicate.retroauth.interceptors.TokenInterceptor;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.converter.LoganSquareConverter;
 
 /**
  * Created by m.ramin on 7/5/15.
@@ -32,6 +33,7 @@ public class ApiModule {
     @Inject
     DonethatApi provideDonethatApi(Context context) {
         AuthRestAdapter restAdapter = new AuthRestAdapter.Builder()
+                .setConverter(new LoganSquareConverter())
                 .setEndpoint(ENDPOINT_DONETHAT)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
@@ -45,7 +47,7 @@ public class ApiModule {
             String userId = AccountUtil.getUserData(context, "USER_ID");
             String xAuthToken = String.format("%s:%s", userId, token);
 
-            requestFacade.addHeader("X-Authorization", xAuthToken);
+            requestFacade.addHeader("X-Auth-Token", xAuthToken);
         }
     }
 }

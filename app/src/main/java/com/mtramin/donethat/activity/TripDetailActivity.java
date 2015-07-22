@@ -19,6 +19,8 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -98,8 +100,9 @@ public class TripDetailActivity extends BaseActivity {
     }
 
     private void subscribeToTripDetails() {
-        // TODO call correct endpoint
-        subscription.add(api.getTrip(UUID.randomUUID())
+        subscription.add(api.getTrip(trip.id)
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 adapter::setData,
                                 throwable -> LogUtil.logException(this, throwable)

@@ -18,6 +18,7 @@ import com.mtramin.donethat.util.LogUtil;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -47,6 +48,7 @@ public class TripsActivity extends BaseActivity {
 
         if (!AccountUtil.hasAccount(this)) {
             startActivity(LoginActivity.createIntent(this));
+            finish();
         }
     }
 
@@ -58,6 +60,11 @@ public class TripsActivity extends BaseActivity {
 
         subscribeToTrips();
         subscribeToTripList();
+    }
+
+    @OnClick(R.id.fab)
+    public void onFabClicked() {
+        startActivity(CreateTripActivity.createIntent(this));
     }
 
     private void subscribeToTripList() {
