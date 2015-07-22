@@ -7,6 +7,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.mtramin.donethat.activity.BaseActivity;
 import com.mtramin.donethat.activity.CreateTripActivity;
+import com.mtramin.donethat.activity.EditNoteActivity;
 import com.mtramin.donethat.activity.LoginActivity;
 import com.mtramin.donethat.activity.TripDetailActivity;
 import com.mtramin.donethat.activity.TripsActivity;
@@ -36,6 +37,7 @@ public interface Component {
     public void inject(TripDetailActivity activity);
     public void inject(LoginActivity activity);
     public void inject(CreateTripActivity activity);
+    public void inject(EditNoteActivity activity);
 
     public void inject(TwitterAuthService service);
     public void inject(DonethatApiService service);

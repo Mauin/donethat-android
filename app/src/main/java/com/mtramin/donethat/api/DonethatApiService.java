@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.api.interfaces.DonethatApi;
+import com.mtramin.donethat.data.Note;
 import com.mtramin.donethat.data.Trip;
 import com.mtramin.donethat.data.TripDetails;
 
@@ -44,8 +45,8 @@ public class DonethatApiService implements DonethatApi {
     }
 
     @Override
-    public Observable<TripDetails> getNotes(UUID tripId) {
-        return api.getNotes(tripId);
+    public Observable<TripDetails> createNote(UUID tripId, Note note) {
+        return api.createNote(tripId, note);
     }
 
     @Override

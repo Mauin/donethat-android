@@ -19,6 +19,7 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -88,6 +89,11 @@ public class TripDetailActivity extends BaseActivity {
         super.onStop();
 
         subscription.unsubscribe();
+    }
+
+    @OnClick(R.id.fab)
+    public void onCreateNoteClicked() {
+        startActivity(EditNoteActivity.createIntent(this, trip));
     }
 
     private void subscribeToNoteClick() {

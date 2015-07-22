@@ -76,7 +76,7 @@ dependencies {
 
     // HTTP & Networking
     compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'eu.unicate.android:retroauth:0.1.4-beta'
+    compile 'eu.unicate.android:retroauth:1.0.0'
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.3.0'
 
