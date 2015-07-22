@@ -76,6 +76,10 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemCount() {
+        if (data == null) {
+            return 0;
+        }
+
         return data.notes.size();
     }
 
@@ -89,7 +93,7 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             case ITEM_NOTE:
                 Note note = getItem(position);
 
-                String created = DateUtils.formatDateTime(context, note.note_date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
+                String created = DateUtils.formatDateTime(context, note.date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
 
                 ((NoteViewHolder) holder).title.setText(note.title);
                 ((NoteViewHolder) holder).content.setText(note.content);

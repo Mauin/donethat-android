@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="retroauth-0.1.4-beta">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/eu.unicate.android/retroauth/0.1.4-beta/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/eu.unicate.android/retroauth/0.1.4-beta/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

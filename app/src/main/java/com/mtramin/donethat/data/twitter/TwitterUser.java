@@ -1,16 +1,26 @@
 package com.mtramin.donethat.data.twitter;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
 /**
  * Created by m.ramin on 7/12/15.
  */
+@JsonObject
 public class TwitterUser {
 
+    @JsonField
     public String name;
-    public String screen_name;
+    @JsonField (name = "screen_name")
+    public String screenName;
+    @JsonField
     public String description;
-    public String profile_background_image_url_https;
-    public String profile_image_url_https;
-    public String id_str;
+    @JsonField (name = "profile_background_image_url_https")
+    public String urlProfileBackgroundImage;
+    @JsonField (name = "profile_image_url_https")
+    public String urlProfileImage;
+    @JsonField (name = "id_str")
+    public String userId;
 
 }
 
@@ -18,7 +28,7 @@ public class TwitterUser {
 /*
 {
     "contributors_enabled": true,
-    "created_at": "Sat May 09 17:58:22 +0000 2009",
+    "date": "Sat May 09 17:58:22 +0000 2009",
     "default_profile": false,
     "default_profile_image": false,
     "description": "I taught your phone that thing you like.  The Mobile Partner Engineer @Twitter. ",
@@ -59,7 +69,7 @@ public class TwitterUser {
             ],
             "type": "Point"
         },
-        "created_at": "Tue Aug 28 05:44:24 +0000 2012",
+        "date": "Tue Aug 28 05:44:24 +0000 2012",
         "favorited": false,
         "geo": {
             "coordinates": [

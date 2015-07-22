@@ -12,7 +12,6 @@ import com.mtramin.donethat.R;
 import com.mtramin.donethat.data.Note;
 
 import org.joda.time.DateTime;
-import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 
@@ -57,7 +56,7 @@ public class NoteActivity extends BaseActivity {
     private void displayNote() {
         title.setText(note.title);
         content.setText(note.content);
-        date.setText(DateUtils.formatSameDayTime(note.note_date.getMillis(), DateTime.now().getMillis(), DateFormat.DEFAULT, DateFormat.DEFAULT));
+        date.setText(DateUtils.formatSameDayTime(note.date.getMillis(), DateTime.now().getMillis(), DateFormat.DEFAULT, DateFormat.DEFAULT));
     }
 
     private void handleIntent(Intent intent) {

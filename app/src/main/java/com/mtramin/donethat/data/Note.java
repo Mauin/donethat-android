@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 import com.google.android.gms.maps.model.LatLng;
 
 import net._01001111.text.LoremIpsum;
@@ -17,30 +19,40 @@ import java.util.UUID;
 /**
  * Created by m.ramin on 7/5/15.
  */
+@JsonObject
 public class Note implements Parcelable {
 
+    @JsonField
     public String title;
+    @JsonField
     public String content;
+    @JsonField
     public LatLng location;
-    public DateTime note_date;
-    public UUID uid;
+    @JsonField (name = "note_date")
+    public DateTime date;
+    @JsonField (name = "uid")
+    public UUID id;
+    @JsonField
     public Uri image;
+
+    public Note() {
+    }
 
     public Note(Parcel in) {
         title = in.readString();
         content = in.readString();
         location = in.readParcelable(LatLng.class.getClassLoader());
-        note_date = new DateTime().withMillis(in.readLong());
-        uid = UUID.fromString(in.readString());
+        date = new DateTime().withMillis(in.readLong());
+        id = UUID.fromString(in.readString());
         image = Uri.parse(in.readString());
     }
 
-    public Note(String title, String content, LatLng location, DateTime note_date, UUID uid, Uri image) {
+    public Note(String title, String content, LatLng location, DateTime date, UUID id, Uri image) {
         this.title = title;
         this.content = content;
         this.location = location;
-        this.note_date = note_date;
-        this.uid = uid;
+        this.date = date;
+        this.id = id;
         this.image = image;
     }
 
@@ -54,8 +66,8 @@ public class Note implements Parcelable {
         dest.writeString(title);
         dest.writeString(content);
         dest.writeParcelable(location, flags);
-        dest.writeLong(note_date.getMillis());
-        dest.writeString(uid.toString());
+        dest.writeLong(date.getMillis());
+        dest.writeString(id.toString());
         dest.writeString(image.toString());
     }
 

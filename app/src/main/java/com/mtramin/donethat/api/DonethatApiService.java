@@ -13,7 +13,6 @@ import java.util.UUID;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import retrofit.http.Path;
 import rx.Observable;
 
 /**
@@ -32,11 +31,25 @@ public class DonethatApiService implements DonethatApi {
     @Override
     public Observable<List<Trip>> getTrips() {
         return api.getTrips();
-//        return Observable.just(Trip.Demo.trips(15));
     }
 
     @Override
-    public Observable<TripDetails> getTrip(@Path("tripId") UUID tripId) {
-        return Observable.just(TripDetails.Demo.tripDetails());
+    public Observable<TripDetails> getTrip(UUID tripId) {
+        return api.getTrip(tripId);
+    }
+
+    @Override
+    public Observable<Void> createTrip(Trip trip) {
+        return api.createTrip(trip);
+    }
+
+    @Override
+    public Observable<TripDetails> getNotes(UUID tripId) {
+        return api.getNotes(tripId);
+    }
+
+    @Override
+    public Observable<Void> putNote(UUID tripId, UUID noteId) {
+        return api.putNote(tripId, noteId);
     }
 }

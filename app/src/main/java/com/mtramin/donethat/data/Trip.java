@@ -3,6 +3,9 @@ package com.mtramin.donethat.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
 import net._01001111.text.LoremIpsum;
 
 import org.joda.time.DateTime;
@@ -14,22 +17,33 @@ import java.util.UUID;
 /**
  * Created by m.ramin on 7/5/15.
  */
+@JsonObject
 public class Trip implements Parcelable {
 
+    @JsonField
     public String title;
-    public UUID uid;
-    public DateTime created_at;
+    @JsonField(name = "uid")
+    public UUID id;
+    @JsonField(name = "updated_at")
+    public DateTime updated;
 
     public Trip(Parcel in) {
         title = in.readString();
-        uid = UUID.fromString(in.readString());
-        created_at = new DateTime().withMillis(in.readLong());
+        id = UUID.fromString(in.readString());
+        updated = new DateTime().withMillis(in.readLong());
     }
 
-    public Trip(String title, UUID uid, DateTime created_at) {
+    public Trip() {
+    }
+
+    public Trip(String title) {
+        this(title, UUID.randomUUID(), DateTime.now());
+    }
+
+    public Trip(String title, UUID uid, DateTime updated) {
         this.title = title;
-        this.uid = uid;
-        this.created_at = created_at;
+        this.id = uid;
+        this.updated = updated;
     }
 
     @Override
@@ -40,8 +54,8 @@ public class Trip implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(uid.toString());
-        dest.writeLong(created_at.getMillis());
+        dest.writeString(id.toString());
+        dest.writeLong(updated.getMillis());
     }
 
     public static final Parcelable.Creator<Trip> CREATOR = new Parcelable.Creator<Trip>() {

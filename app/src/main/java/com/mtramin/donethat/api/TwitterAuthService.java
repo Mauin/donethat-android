@@ -3,11 +3,13 @@ package com.mtramin.donethat.api;
 import android.content.Context;
 import android.util.Log;
 
+import com.bluelinelabs.logansquare.LoganSquare;
 import com.google.gson.Gson;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.BuildConfig;
 import com.mtramin.donethat.auth.TwitterAuthenticationService;
 import com.mtramin.donethat.data.twitter.TwitterUser;
+import com.mtramin.donethat.util.LogUtil;
 
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.builder.api.TwitterApi;
@@ -19,6 +21,7 @@ import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 import org.scribe.utils.StreamUtils;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.inject.Inject;
@@ -34,9 +37,6 @@ public class TwitterAuthService {
 
     private OAuthService service;
     private Token requestToken;
-
-    @Inject
-    Gson gson;
 
     public TwitterAuthService(Context context) {
         ((Application) context.getApplicationContext()).getComponent().inject(this);
@@ -78,7 +78,13 @@ public class TwitterAuthService {
             Response response = request.send();
 
             String jsonData = StreamUtils.getStreamContents(response.getStream());
-            TwitterUser twitterUser = gson.fromJson(jsonData, TwitterUser.class);
+            TwitterUser twitterUser = null;
+            try {
+                twitterUser = LoganSquare.parse(jsonData, TwitterUser.class);
+            } catch (IOException e) {
+                LogUtil.logException(this, e);
+                subscriber.onError(e);
+            }
 
             subscriber.onNext(twitterUser);
             subscriber.onCompleted();
