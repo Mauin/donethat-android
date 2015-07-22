@@ -1,6 +1,7 @@
 package com.mtramin.donethat.api.interfaces;
 
 import com.mtramin.donethat.R;
+import com.mtramin.donethat.data.Note;
 import com.mtramin.donethat.data.Trip;
 import com.mtramin.donethat.data.TripDetails;
 
@@ -48,7 +49,7 @@ public interface DonethatApi {
 
     @Authenticated
     @POST("/api/trips/{tripId}/notes.json")
-    Observable<TripDetails> getNotes(@Path("tripId") UUID tripId);
+    Observable<TripDetails> createNote(@Path("tripId") UUID tripId, @Body Note note);
 
     @Authenticated
     @PUT("/api/trips/{tripId}/notes/{noteId}.json")

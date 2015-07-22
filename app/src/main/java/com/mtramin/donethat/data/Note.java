@@ -47,6 +47,10 @@ public class Note implements Parcelable {
         image = Uri.parse(in.readString());
     }
 
+    public Note(String title, String content, LatLng location) {
+        this(title, content, location, DateTime.now(), UUID.randomUUID(), Uri.EMPTY);
+    }
+
     public Note(String title, String content, LatLng location, DateTime date, UUID id, Uri image) {
         this.title = title;
         this.content = content;

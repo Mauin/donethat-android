@@ -12,6 +12,8 @@ import com.mtramin.donethat.R;
 import com.mtramin.donethat.data.Note;
 import com.mtramin.donethat.data.TripDetails;
 
+import java.util.Collections;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.Observable;
@@ -34,6 +36,7 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public void setData(TripDetails data) {
         this.data = data;
+        this.data.notes.removeAll(Collections.singleton(null));
         notifyDataSetChanged();
     }
 
@@ -76,11 +79,11 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemCount() {
-        if (data == null) {
+        if (data == null || data.notes == null) {
             return 0;
         }
 
-        return data.notes.size();
+        return data.notes.size() + 1;
     }
 
     @Override
@@ -93,11 +96,14 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             case ITEM_NOTE:
                 Note note = getItem(position);
 
-                String created = DateUtils.formatDateTime(context, note.date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
+                // TODO check should not be necessary
+                if (note.date != null) {
+                    String created = DateUtils.formatDateTime(context, note.date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
+                    ((NoteViewHolder) holder).created.setText(created);
+                }
 
                 ((NoteViewHolder) holder).title.setText(note.title);
                 ((NoteViewHolder) holder).content.setText(note.content);
-                ((NoteViewHolder) holder).created.setText(created);
 
                 ((NoteViewHolder) holder).item.setOnClickListener(v -> observableNoteSelection.onNext(note));
                 break;

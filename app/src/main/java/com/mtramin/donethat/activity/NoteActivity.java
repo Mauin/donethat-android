@@ -50,7 +50,7 @@ public class NoteActivity extends BaseActivity {
 
     @OnClick(R.id.fab)
     public void onFabClicked(View v) {
-        startActivity(EditNoteActivity.createIntent(this));
+//        startActivity(EditNoteActivity.createIntent(this));
     }
 
     private void displayNote() {

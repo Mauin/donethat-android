@@ -1,12 +1,17 @@
 package com.mtramin.donethat;
 
+import android.net.Uri;
+
 import com.bluelinelabs.logansquare.LoganSquare;
+import com.google.android.gms.maps.model.LatLng;
 import com.mtramin.donethat.di.Component;
 import com.mtramin.donethat.di.DaggerComponent;
 import com.mtramin.donethat.di.modules.ApiModule;
 import com.mtramin.donethat.di.modules.ApplicationModule;
 import com.mtramin.donethat.di.modules.ServiceModule;
 import com.mtramin.donethat.util.converters.DateTimeConverter;
+import com.mtramin.donethat.util.converters.LatLngConverter;
+import com.mtramin.donethat.util.converters.UriConverter;
 import com.mtramin.donethat.util.converters.UuidConverter;
 import com.mtramin.donethat.util.converters.VoidConverter;
 
@@ -42,6 +47,8 @@ public class Application extends android.app.Application {
         LoganSquare.registerTypeConverter(DateTime.class, new DateTimeConverter());
         LoganSquare.registerTypeConverter(UUID.class, new UuidConverter());
         LoganSquare.registerTypeConverter(Void.class, new VoidConverter());
+        LoganSquare.registerTypeConverter(Uri.class, new UriConverter());
+        LoganSquare.registerTypeConverter(LatLng.class, new LatLngConverter());
     }
 
     public Component getComponent() {
