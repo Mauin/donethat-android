@@ -1,16 +1,12 @@
 package com.mtramin.donethat.di;
 
-import android.app.Activity;
-import android.app.Service;
 import android.content.Context;
 
-import com.google.gson.Gson;
-import com.mtramin.donethat.activity.BaseActivity;
-import com.mtramin.donethat.activity.CreateTripActivity;
-import com.mtramin.donethat.activity.EditNoteActivity;
-import com.mtramin.donethat.activity.LoginActivity;
-import com.mtramin.donethat.activity.TripDetailActivity;
-import com.mtramin.donethat.activity.TripsActivity;
+import com.mtramin.donethat.ui.CreateTripActivity;
+import com.mtramin.donethat.ui.EditNoteActivity;
+import com.mtramin.donethat.ui.LoginActivity;
+import com.mtramin.donethat.ui.tripdetails.TripDetailActivity;
+import com.mtramin.donethat.ui.trips.TripsActivity;
 import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.api.TwitterAuthService;
 import com.mtramin.donethat.api.interfaces.DonethatApi;

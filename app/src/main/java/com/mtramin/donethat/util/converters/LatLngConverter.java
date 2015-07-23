@@ -22,6 +22,10 @@ public class LatLngConverter implements TypeConverter<LatLng> {
         jsonParser.nextToken();
         float lng = Float.valueOf(jsonParser.getValueAsString());
 
+        while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+            jsonParser.nextToken();
+        }
+
         return new LatLng(lat, lng);
     }
 

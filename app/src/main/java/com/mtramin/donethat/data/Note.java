@@ -3,6 +3,7 @@ package com.mtramin.donethat.data;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
@@ -24,15 +25,17 @@ public class Note implements Parcelable {
 
     @JsonField
     public String title;
-    @JsonField
+    @JsonField (name = "content")
     public String content;
     @JsonField
     public LatLng location;
     @JsonField (name = "note_date")
     public DateTime date;
+    @JsonField (name = "updated_at")
+    public DateTime updated;
     @JsonField (name = "uid")
     public UUID id;
-    @JsonField
+    @JsonField (name = "image")
     public Uri image;
 
     public Note() {
@@ -72,6 +75,10 @@ public class Note implements Parcelable {
         dest.writeParcelable(location, flags);
         dest.writeLong(date.getMillis());
         dest.writeString(id.toString());
+
+        if (image == null) {
+            image = Uri.EMPTY;
+        }
         dest.writeString(image.toString());
     }
 

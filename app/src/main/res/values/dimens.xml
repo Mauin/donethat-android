@@ -4,6 +4,8 @@
     <dimen name="left_padding">16dp</dimen>
     <dimen name="small_margin">4dp</dimen>
 
+    <dimen name="header_size">142dp</dimen>
+
     <dimen name="textsize_large">16sp</dimen>
     <dimen name="textsize_header">24sp</dimen>
     <dimen name="textsize_small">12sp</dimen>

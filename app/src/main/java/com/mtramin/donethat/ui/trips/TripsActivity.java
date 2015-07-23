@@ -1,17 +1,19 @@
-package com.mtramin.donethat.activity;
+package com.mtramin.donethat.ui.trips;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripsAdapter;
 import com.mtramin.donethat.api.DonethatApiService;
+import com.mtramin.donethat.ui.BaseActivity;
+import com.mtramin.donethat.ui.CreateTripActivity;
+import com.mtramin.donethat.ui.LoginActivity;
+import com.mtramin.donethat.ui.tripdetails.TripDetailActivity;
 import com.mtramin.donethat.util.AccountUtil;
 import com.mtramin.donethat.util.LogUtil;
 

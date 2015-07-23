@@ -1,10 +1,9 @@
-package com.mtramin.donethat.activity;
+package com.mtramin.donethat.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 
 import butterknife.Bind;
@@ -13,10 +12,10 @@ import butterknife.ButterKnife;
 /**
  * Created by m.ramin on 7/5/15.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
-    Toolbar toolbar;
+    protected Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,4 +30,5 @@ public class BaseActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
     }
+
 }
