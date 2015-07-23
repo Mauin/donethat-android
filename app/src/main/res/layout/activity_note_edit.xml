@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:orientation="vertical"
@@ -36,15 +37,34 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/small_margin"
+            android:paddingBottom="@dimen/small_margin"
+            android:text="Determining your location..."
+            android:drawablePadding="@dimen/default_margin"
+            android:drawableLeft="@drawable/ic_my_location" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/small_margin"
+            android:paddingBottom="@dimen/small_margin"
+            android:drawablePadding="@dimen/default_margin"
+            android:drawableLeft="@drawable/ic_access_time"
+            tools:text="Today, 20:05"/>
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingBottom="@dimen/default_margin">
 
             <EditText
                 android:id="@+id/edit_note_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:lines="8"
                 android:gravity="top"
                 android:hint="Content goes here" />
 

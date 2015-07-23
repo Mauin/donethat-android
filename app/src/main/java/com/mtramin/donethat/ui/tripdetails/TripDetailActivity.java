@@ -1,4 +1,4 @@
-package com.mtramin.donethat.activity;
+package com.mtramin.donethat.ui.tripdetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,10 @@ import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripDetailAdapter;
 import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.data.Trip;
+import com.mtramin.donethat.ui.BaseActivity;
+import com.mtramin.donethat.ui.EditNoteActivity;
+import com.mtramin.donethat.ui.note.NoteActivity;
 import com.mtramin.donethat.util.LogUtil;
-
-import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -98,8 +99,10 @@ public class TripDetailActivity extends BaseActivity {
 
     private void subscribeToNoteClick() {
         subscription.add(adapter.onNoteClicked()
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                note -> startActivity(NoteActivity.createIntent(this, note)),
+                                note -> startActivity(NoteActivity.createIntent(this, note, trip)),
                                 throwable -> LogUtil.logException(this, throwable)
                         )
         );

@@ -56,7 +56,7 @@ retrolambda {
 }
 
 ext.playServicesVersion = '7.5.0'
-ext.supportLibraryVersion = '22.2.0'
+ext.supportLibraryVersion = '22.2.1'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

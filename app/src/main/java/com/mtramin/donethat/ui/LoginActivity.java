@@ -1,4 +1,4 @@
-package com.mtramin.donethat.activity;
+package com.mtramin.donethat.ui;
 
 import android.accounts.AccountManager;
 import android.content.Context;
@@ -14,6 +14,7 @@ import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.api.TwitterAuthService;
 import com.mtramin.donethat.data.twitter.TwitterUser;
+import com.mtramin.donethat.ui.trips.TripsActivity;
 import com.mtramin.donethat.util.LogUtil;
 
 import org.scribe.model.Token;
