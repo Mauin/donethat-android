@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
@@ -16,24 +17,24 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
     </android.support.design.widget.AppBarLayout>
 
     <!-- TODO needs scroll behavior -->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
+        fabSize="default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white"
-        android:layout_marginRight="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin"
-        fabSize="default"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:src="@drawable/ic_add_white"
         app:layout_anchor="@id/list"
         app:layout_anchorGravity="bottom|right|end" />
 

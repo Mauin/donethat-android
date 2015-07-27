@@ -6,17 +6,17 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapper;
-import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.mtramin.donethat.R;
@@ -55,21 +55,40 @@ public class NoteActivity extends BaseActivity {
     @Bind(R.id.note_image)
     ImageView image;
 
-    @Bind(R.id.fab)
-    FloatingActionButton fab;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         handleIntent(getIntent());
         displayNote();
     }
 
-    @OnClick(R.id.fab)
-    public void onFabClicked(View v) {
-        startActivity(EditNoteActivity.createIntent(this, trip));
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean create = super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.menu_note, menu);
+
+        return create;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_note_edit:
+                startActivity(EditNoteActivity.createIntent(this, trip));
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void displayNote() {
@@ -88,13 +107,17 @@ public class NoteActivity extends BaseActivity {
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                             super.onResourceReady(resource, glideAnimation);
 
-                            Palette.from(resource).generate(palette -> {
-                                toolbar.setBackgroundColor(palette.getVibrantColor(R.color.primary));
-                            });
+                            Palette.from(resource).generate(NoteActivity.this::setActivityStyle);
                         }
                     });
         }
 
+    }
+
+    private void setActivityStyle(Palette palette) {
+        toolbar.setBackgroundColor(palette.getMutedColor(R.color.primary));
+        toolbar.setTitleTextColor(palette.getVibrantColor(android.R.color.white));
+        getWindow().setStatusBarColor(palette.getDarkMutedColor(R.color.primary_dark));
     }
 
     private void handleIntent(Intent intent) {

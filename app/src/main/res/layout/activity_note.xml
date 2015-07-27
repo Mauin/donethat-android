@@ -31,68 +31,56 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/note_image"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/header_size"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/header" />
+            <ImageView
+                android:id="@+id/note_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_size"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/header" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/default_margin"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/note_title"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textSize="@dimen/textsize_header"
-                android:textStyle="bold"
-                tools:text="I'm in space!" />
+                android:orientation="vertical"
+                android:padding="@dimen/default_margin">
 
-            <TextView
-                android:id="@+id/note_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:paddingTop="@dimen/small_margin"
-                android:textSize="@dimen/textsize_large"
-                android:textStyle="italic"
-                tools:text="Sunday, 51s of December" />
+                <TextView
+                    android:id="@+id/note_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/textsize_header"
+                    android:textStyle="bold"
+                    tools:text="I'm in space!" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:layout_marginTop="@dimen/default_margin"
-                android:background="@android:color/darker_gray" />
+                <TextView
+                    android:id="@+id/note_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:paddingTop="@dimen/small_margin"
+                    android:textSize="@dimen/textsize_large"
+                    android:textStyle="italic"
+                    tools:text="Sunday, 51s of December" />
 
-            <TextView
-                android:id="@+id/note_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/textsize_large"
-                tools:text="You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man." />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:id="@+id/note_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize_large"
+                    tools:text="You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man." />
+            </LinearLayout>
+
+
         </LinearLayout>
 
+    </android.support.v4.widget.NestedScrollView>
 
-    </LinearLayout>
-
-</android.support.v4.widget.NestedScrollView>
-
-    <!-- TODO needs scroll behavior --><android.support.design.widget.FloatingActionButton
-android:id="@+id/fab"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:src="@drawable/ic_mode_edit_white"
-android:layout_marginRight="@dimen/default_margin"
-android:layout_marginEnd="@dimen/default_margin"
-android:layout_marginBottom="@dimen/default_margin"
-fabSize="default"
-app:layout_anchor="@id/list"
-app:layout_anchorGravity="bottom|right|end" />
-
-    </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>

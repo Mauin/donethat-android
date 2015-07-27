@@ -14,9 +14,6 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    @Bind(R.id.toolbar)
-    protected Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +24,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.setContentView(layoutResID);
 
         ButterKnife.bind(this);
-
-        setSupportActionBar(toolbar);
     }
 
 }
