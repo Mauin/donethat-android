@@ -1,31 +1,38 @@
-package com.mtramin.donethat.ui.trips;
+package com.mtramin.donethat.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripsAdapter;
 import com.mtramin.donethat.api.DonethatApiService;
-import com.mtramin.donethat.ui.BaseActivity;
-import com.mtramin.donethat.ui.CreateTripActivity;
-import com.mtramin.donethat.ui.LoginActivity;
-import com.mtramin.donethat.ui.tripdetails.TripDetailActivity;
-import com.mtramin.donethat.util.AccountUtil;
+import com.mtramin.donethat.ui.tripdetails.TripDetailsFragment;
 import com.mtramin.donethat.util.LogUtil;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
-public class TripsActivity extends BaseActivity {
+/**
+ * Created by m.ramin on 7/27/15.
+ */
+public class TripsFragment extends BaseFragment {
+
+    @Bind(R.id.toolbar)
+    protected Toolbar toolbar;
 
     @Bind(R.id.list)
     RecyclerView list;
@@ -37,25 +44,32 @@ public class TripsActivity extends BaseActivity {
 
     private TripsAdapter adapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ((Application) getApplication()).getComponent().inject(this);
-
-        setContentView(R.layout.activity_trips);
-
-        adapter = new TripsAdapter();
-        list.setAdapter(adapter);
-        list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-        if (!AccountUtil.hasAccount(this)) {
-            startActivity(LoginActivity.createIntent(this));
-            finish();
-        }
+    public TripsFragment() {
     }
 
     @Override
-    protected void onStart() {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((Application) getActivity().getApplication()).getComponent().inject(this);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_trips, container, false);
+        ButterKnife.bind(this, root);
+
+        ((MainActivity) getActivity()).setToolbar(toolbar);
+
+        adapter = new TripsAdapter();
+        list.setAdapter(adapter);
+        list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        return root;
+    }
+
+    @Override
+    public void onStart() {
         super.onStart();
 
         subscription = new CompositeSubscription();
@@ -66,25 +80,17 @@ public class TripsActivity extends BaseActivity {
 
     @OnClick(R.id.fab)
     public void onFabClicked() {
-        startActivity(CreateTripActivity.createIntent(this));
+        startActivity(CreateTripActivity.createIntent(getActivity()));
     }
 
     private void subscribeToTripList() {
         subscription.add(adapter.onTripClick()
                 .subscribe(
-                        trip -> {
-                            Intent intent = TripDetailActivity.getIntent(this, trip);
-                            startActivity(intent);
-                        }, throwable -> LogUtil.logException(this, throwable)
+                        ((FragmentCallbacks) getActivity())::onShowTripDetails,
+                        throwable -> LogUtil.logException(this, throwable)
                 ));
     }
 
-    @Override
-    protected void onStop() {
-        subscription.unsubscribe();
-
-        super.onStop();
-    }
 
     private void subscribeToTrips() {
         subscription.add(apiService.getTrips()
@@ -97,7 +103,14 @@ public class TripsActivity extends BaseActivity {
         );
     }
 
-    public static Intent createIntent(Context context) {
-        return new Intent(context, TripsActivity.class);
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        subscription.unsubscribe();
+    }
+
+    public static TripsFragment newInstance() {
+        return new TripsFragment();
     }
 }
