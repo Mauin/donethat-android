@@ -108,11 +108,8 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             case ITEM_NOTE:
                 Note note = getItem(position);
 
-                // TODO check should not be necessary
-                if (note.date != null) {
-                    String created = DateUtils.formatDateTime(context, note.date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
-                    ((NoteViewHolder) holder).created.setText(created);
-                }
+                String created = DateUtils.formatDateTime(context, note.date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
+                ((NoteViewHolder) holder).created.setText(created);
 
                 ((NoteViewHolder) holder).title.setText(note.title);
                 ((NoteViewHolder) holder).content.setText(note.content);

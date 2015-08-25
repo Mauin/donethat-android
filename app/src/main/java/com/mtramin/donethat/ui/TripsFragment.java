@@ -13,6 +13,7 @@ import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripsAdapter;
 import com.mtramin.donethat.api.SyncService;
+import com.mtramin.donethat.data.persist.DonethatCache;
 import com.mtramin.donethat.util.LogUtil;
 
 import javax.inject.Inject;
@@ -37,6 +38,9 @@ public class TripsFragment extends BaseFragment {
 
     @Inject
     SyncService syncService;
+
+    @Inject
+    DonethatCache database;
 
     private CompositeSubscription subscription;
 
@@ -95,6 +99,7 @@ public class TripsFragment extends BaseFragment {
         subscription.add(syncService.syncAll()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
+                        .startWith(database.getTrips())
                         .subscribe(
                                 adapter::setData,
                                 throwable -> LogUtil.logException(this, throwable)

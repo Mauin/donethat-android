@@ -1,17 +1,22 @@
 package com.mtramin.donethat.ui.note;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -144,6 +149,10 @@ public class NoteActivity extends BaseActivity {
                         @Override
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                             super.onResourceReady(resource, glideAnimation);
+                            Animator reveal = ViewAnimationUtils.createCircularReveal(image, image.getWidth()/2, image.getHeight()/2, 0, image.getWidth()/2);
+                            reveal.setDuration(300);
+                            reveal.setInterpolator(new DecelerateInterpolator());
+                            reveal.start();
                             Palette.from(resource).generate(NoteActivity.this::setActivityStyle);
                         }
                     });
