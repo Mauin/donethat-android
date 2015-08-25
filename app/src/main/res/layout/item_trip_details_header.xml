@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:paddingTop="@dimen/default_margin"
     android:paddingBottom="@dimen/default_margin"
+    android:paddingLeft="@dimen/default_margin"
+    android:paddingRight="@dimen/default_margin"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/trip_deatil_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/textsize_header"
+        android:gravity="center_horizontal"
+        tools:text="DONE THAT!"/>
 
     <TextView
         android:id="@+id/trip_deatil_description"
@@ -14,6 +25,7 @@
         android:layout_gravity="center"
         android:textSize="@dimen/textsize_large"
         android:gravity="center_horizontal"
-        tools:text="Awesome trip to awesomeville - DONE THAT!"/>
+        android:paddingTop="@dimen/small_margin"
+        tools:text="Awesome trip to awesomeville"/>
 
 </LinearLayout>

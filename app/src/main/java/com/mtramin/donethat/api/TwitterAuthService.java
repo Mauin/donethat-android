@@ -1,14 +1,11 @@
 package com.mtramin.donethat.api;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.bluelinelabs.logansquare.LoganSquare;
-import com.google.gson.Gson;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.BuildConfig;
-import com.mtramin.donethat.auth.TwitterAuthenticationService;
-import com.mtramin.donethat.data.twitter.TwitterUser;
+import com.mtramin.donethat.data.model.twitter.TwitterUser;
 import com.mtramin.donethat.util.LogUtil;
 
 import org.scribe.builder.ServiceBuilder;
@@ -22,9 +19,6 @@ import org.scribe.oauth.OAuthService;
 import org.scribe.utils.StreamUtils;
 
 import java.io.IOException;
-import java.util.Scanner;
-
-import javax.inject.Inject;
 
 import rx.Observable;
 

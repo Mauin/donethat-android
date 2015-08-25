@@ -1,6 +1,5 @@
 package com.mtramin.donethat.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,8 +12,7 @@ import android.view.ViewGroup;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripsAdapter;
-import com.mtramin.donethat.api.DonethatApiService;
-import com.mtramin.donethat.ui.tripdetails.TripDetailsFragment;
+import com.mtramin.donethat.api.SyncService;
 import com.mtramin.donethat.util.LogUtil;
 
 import javax.inject.Inject;
@@ -38,7 +36,7 @@ public class TripsFragment extends BaseFragment {
     RecyclerView list;
 
     @Inject
-    DonethatApiService apiService;
+    SyncService syncService;
 
     private CompositeSubscription subscription;
 
@@ -60,8 +58,9 @@ public class TripsFragment extends BaseFragment {
         ButterKnife.bind(this, root);
 
         ((MainActivity) getActivity()).setToolbar(toolbar);
+        getActivity().setTitle("You have done this");
 
-        adapter = new TripsAdapter();
+        adapter = new TripsAdapter(getContext());
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
@@ -93,11 +92,11 @@ public class TripsFragment extends BaseFragment {
 
 
     private void subscribeToTrips() {
-        subscription.add(apiService.getTrips()
-                        .subscribeOn(Schedulers.computation())
+        subscription.add(syncService.syncAll()
+                        .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                adapter::addData,
+                                adapter::setData,
                                 throwable -> LogUtil.logException(this, throwable)
                         )
         );

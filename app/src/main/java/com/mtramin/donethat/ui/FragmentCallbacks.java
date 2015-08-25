@@ -1,6 +1,6 @@
 package com.mtramin.donethat.ui;
 
-import com.mtramin.donethat.data.Trip;
+import com.mtramin.donethat.data.model.Trip;
 
 /**
  * Created by m.ramin on 7/27/15.

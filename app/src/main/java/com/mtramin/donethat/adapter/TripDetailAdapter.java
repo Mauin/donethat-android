@@ -6,13 +6,17 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mtramin.donethat.R;
-import com.mtramin.donethat.data.Note;
-import com.mtramin.donethat.data.TripDetails;
+import com.mtramin.donethat.data.model.Note;
+import com.mtramin.donethat.data.model.Trip;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,7 +28,8 @@ import rx.subjects.PublishSubject;
  */
 public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    TripDetails data;
+    Trip data;
+    List<Note> notes = new ArrayList<>();
 
     PublishSubject<Note> observableNoteSelection = PublishSubject.create();
 
@@ -34,9 +39,11 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.context = context;
     }
 
-    public void setData(TripDetails data) {
+    public void setData(Trip data, List<Note> notes) {
         this.data = data;
-        this.data.notes.removeAll(Collections.singleton(null));
+
+        this.notes.clear();
+        this.notes.addAll(notes);
         notifyDataSetChanged();
     }
 
@@ -45,7 +52,7 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private Note getItem(int position) {
-        return data.notes.get(position - 1);
+        return notes.get(position - 1);
     }
 
     @Override
@@ -79,11 +86,15 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemCount() {
-        if (data == null || data.notes == null) {
+        if (data == null) {
             return 0;
         }
 
-        return data.notes.size() + 1;
+        if (notes == null) {
+            return 1;
+        }
+
+        return notes.size() + 1;
     }
 
     @Override
@@ -91,6 +102,7 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         ITEM_TYPE itemType = ITEM_TYPE.values()[getItemViewType(position)];
         switch (itemType) {
             case ITEM_HEADER:
+                ((HeaderViewHolder) holder).title.setText(data.title);
                 ((HeaderViewHolder) holder).description.setText(data.content);
                 break;
             case ITEM_NOTE:
@@ -105,14 +117,30 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 ((NoteViewHolder) holder).title.setText(note.title);
                 ((NoteViewHolder) holder).content.setText(note.content);
 
+                if (note.image == null) {
+                    ((NoteViewHolder) holder).image.setVisibility(View.GONE);
+                    ((NoteViewHolder) holder).divider.setVisibility(View.GONE);
+                } else {
+                    ((NoteViewHolder) holder).divider.setVisibility(View.VISIBLE);
+                    ((NoteViewHolder) holder).image.setVisibility(View.VISIBLE);
+                    Glide.with(((NoteViewHolder) holder).image.getContext())
+                            .load(note.image)
+                            .asBitmap()
+                            .into(((NoteViewHolder) holder).image);
+                }
+
                 ((NoteViewHolder) holder).item.setOnClickListener(v -> observableNoteSelection.onNext(note));
                 break;
         }
     }
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.trip_deatil_title)
+        TextView title;
+
         @Bind(R.id.trip_deatil_description)
         TextView description;
+
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
@@ -129,6 +157,10 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         TextView content;
         @Bind(R.id.note_date)
         TextView created;
+        @Bind(R.id.note_image)
+        ImageView image;
+        @Bind(R.id.note_divider)
+        View divider;
 
         public NoteViewHolder(View itemView) {
             super(itemView);

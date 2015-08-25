@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.api.DonethatApiService;
-import com.mtramin.donethat.data.Trip;
+import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.util.LogUtil;
 
 import javax.inject.Inject;
@@ -38,6 +38,7 @@ public class CreateTripActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         ((Application) getApplication()).getComponent().inject(this);
 
+        // TODO Different layout and behavior
         setContentView(R.layout.activity_note_edit);
 
     }
@@ -65,8 +66,7 @@ public class CreateTripActivity extends BaseActivity {
         if (TextUtils.isEmpty(title)) {
             return;
         }
-
-        Trip trip = new Trip(title);
+        Trip trip = new Trip.Builder().title(title).build();
 
         createTrip(trip);
     }

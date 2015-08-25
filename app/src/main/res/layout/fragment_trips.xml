@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+            style="@style/ToolbarTheme" />
 
     </android.support.design.widget.AppBarLayout>
 

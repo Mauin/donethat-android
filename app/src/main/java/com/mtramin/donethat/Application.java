@@ -3,6 +3,7 @@ package com.mtramin.donethat;
 import android.net.Uri;
 
 import com.bluelinelabs.logansquare.LoganSquare;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
 import com.mtramin.donethat.di.Component;
 import com.mtramin.donethat.di.DaggerComponent;
@@ -21,6 +22,9 @@ import org.joda.time.DateTime;
 
 import java.util.UUID;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * Created by m.ramin on 7/5/15.
  */
@@ -38,9 +42,19 @@ public class Application extends android.app.Application {
                 .applicationModule(new ApplicationModule(this))
                 .build();
 
+        MapsInitializer.initialize(this);
+
         JodaTimeAndroid.init(this);
 
         setUpJsonConverters();
+        setUpRealm();
+    }
+
+    private void setUpRealm() {
+        // Configure Realm for the application
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).build();
+        Realm.deleteRealm(realmConfiguration); // Start clean
+        Realm.setDefaultConfiguration(realmConfiguration);
     }
 
     private void setUpJsonConverters() {
