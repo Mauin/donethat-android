@@ -3,9 +3,10 @@ package com.mtramin.donethat.di.modules;
 import android.content.Context;
 
 import com.mtramin.donethat.api.DonethatApiService;
+import com.mtramin.donethat.api.SyncService;
 import com.mtramin.donethat.api.TwitterAuthService;
+import com.mtramin.donethat.data.persist.DonethatCache;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -17,12 +18,26 @@ import dagger.Provides;
 @Module
 public class ServiceModule {
 
-    @Provides @Inject
+    @Provides
+    @Singleton
     public DonethatApiService provideDonethatApiService(Context context) {
         return new DonethatApiService(context);
     }
 
-    @Provides @Inject
+    @Provides
+    @Singleton
+    public SyncService provideSyncService(Context context) {
+        return new SyncService(context);
+    }
+
+    @Provides
+    @Singleton
+    public DonethatCache provideDonethatCache() {
+        return new DonethatCache();
+    }
+
+    @Provides
+    @Singleton
     public TwitterAuthService provideTwitterAuthService(Context context) {
         return new TwitterAuthService(context);
     }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
+        android:id="@+id/content"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,56 +20,72 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:background="?attr/colorPrimary"
-                app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                style="@style/ToolbarTheme"
                 app:layout_scrollFlags="scroll|enterAlways" />
 
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <android.support.v4.widget.NestedScrollView
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/default_margin">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <EditText
-                android:id="@+id/edit_note_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Title goes here" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/small_margin"
-            android:paddingBottom="@dimen/small_margin"
-            android:text="Determining your location..."
-            android:drawablePadding="@dimen/default_margin"
-            android:drawableLeft="@drawable/ic_my_location" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/small_margin"
-            android:paddingBottom="@dimen/small_margin"
-            android:drawablePadding="@dimen/default_margin"
-            android:drawableLeft="@drawable/ic_access_time"
-            tools:text="Today, 20:05"/>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/default_margin">
-
-            <EditText
-                android:id="@+id/edit_note_content"
-                android:layout_width="match_parent"
+            <LinearLayout
                 android:layout_height="match_parent"
-                android:lines="8"
-                android:gravity="top"
-                android:hint="Content goes here" />
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin">
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/edit_note_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Title goes here" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/edit_note_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/not_so_small_margin"
+                    android:paddingBottom="@dimen/not_so_small_margin"
+                    android:text="Determining your location..."
+                    android:drawablePadding="@dimen/default_margin"
+                    android:drawableLeft="@drawable/ic_my_location" />
+
+                <TextView
+                    android:id="@+id/edit_note_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/not_so_small_margin"
+                    android:paddingBottom="@dimen/not_so_small_margin"
+                    android:drawablePadding="@dimen/default_margin"
+                    android:drawableLeft="@drawable/ic_access_time"
+                    tools:text="Today, 20:05" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:paddingBottom="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/edit_note_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        android:hint="Content goes here" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
 
     </LinearLayout>
 
@@ -83,7 +100,7 @@
         android:layout_marginEnd="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin"
         fabSize="default"
-        app:layout_anchor="@id/list"
+        app:layout_anchor="@id/content"
         app:layout_anchorGravity="bottom|right|end" />
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,9 +1,8 @@
 package com.mtramin.donethat.api.interfaces;
 
 import com.mtramin.donethat.R;
-import com.mtramin.donethat.data.Note;
-import com.mtramin.donethat.data.Trip;
-import com.mtramin.donethat.data.TripDetails;
+import com.mtramin.donethat.data.model.Note;
+import com.mtramin.donethat.data.model.Trip;
 
 import java.util.List;
 import java.util.UUID;
@@ -45,14 +44,14 @@ public interface DonethatApi {
 
     @Authenticated
     @GET("/api/trips/{tripId}.json")
-    Observable<TripDetails> getTrip(@Path("tripId") UUID tripId);
+    Observable<Trip> getTrip(@Path("tripId") UUID tripId);
 
     @Authenticated
     @POST("/api/trips/{tripId}/notes.json")
-    Observable<TripDetails> createNote(@Path("tripId") UUID tripId, @Body Note note);
+    Observable<Trip> createNote(@Path("tripId") UUID tripId, @Body Note note);
 
     @Authenticated
     @PUT("/api/trips/{tripId}/notes/{noteId}.json")
-    Observable<Void> putNote(@Path("tripId") UUID tripId, @Path("noteId") UUID noteId);
+    Observable<Void> putNote(@Path("tripId") UUID tripId, @Path("noteId") UUID noteId, @Body Note note);
 
 }

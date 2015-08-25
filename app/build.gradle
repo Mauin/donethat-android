@@ -1,3 +1,34 @@
+/*
+ * In release mode: read password from environment variable if available or console else
+ */
+def readPassword = { ->
+    def runTasks = gradle.startParameter.taskNames
+    def env = System.getenv();
+    if ('assembleLiveProductionRelease' in runTasks) {
+        if (env['RELEASE_KEYSTORE_PW']) {
+            return env['RELEASE_KEYSTORE_PW']
+        } else {
+            return System.console().readLine("\n\$ Enter keystore password: ")
+        }
+    } else {
+        return ""
+    }
+}
+
+def readKeyaliasPassword = { ->
+    def runTasks = gradle.startParameter.taskNames
+    def env = System.properties;
+    if ('assembleLiveProductionRelease' in runTasks) {
+        if (env['RELEASE_KEYALIAS_PW']) {
+            return env['RELEASE_KEYALIAS_PW']
+        } else {
+            return System.console().readLine("\n\$ Enter keyalias password: ")
+        }
+    } else {
+        return ""
+    }
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -10,6 +41,8 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
+// This does not break the build when Android Studio is missing the JRebel for Android plugin.
+apply plugin: 'com.zeroturnaround.jrebel.android'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
@@ -18,13 +51,22 @@ repositories {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.0"
+
+    signingConfigs {
+        release {
+            storeFile file("donethat.keystore")
+            keyAlias "donethat"
+            storePassword readPassword()
+            keyPassword readKeyaliasPassword()
+        }
+    }
 
     defaultConfig {
         applicationId "com.mtramin.donethat"
         minSdkVersion 21
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
 
@@ -34,6 +76,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -55,8 +98,8 @@ retrolambda {
     jvmArgs '-noverify'
 }
 
-ext.playServicesVersion = '7.5.0'
-ext.supportLibraryVersion = '22.2.1'
+ext.playServicesVersion = '7.8.0'
+ext.supportLibraryVersion = '23.0.0'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -93,6 +136,7 @@ dependencies {
     apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
     compile 'com.bluelinelabs:logansquare:1.1.0'
     compile 'com.github.yongjhih:converter-logansquare-retrofit:1.0.0'
+    compile 'io.realm:realm-android:0.82.0'
 
     // DEMO
     compile 'net._01001111:jlorem:1.1'

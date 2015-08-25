@@ -1,4 +1,4 @@
-package com.mtramin.donethat.data.twitter;
+package com.mtramin.donethat.data.model.twitter;
 
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
@@ -15,7 +15,7 @@ public class TwitterUser {
     public String screenName;
     @JsonField
     public String description;
-    @JsonField (name = "profile_background_image_url_https")
+    @JsonField (name = "profile_banner_url")
     public String urlProfileBackgroundImage;
     @JsonField (name = "profile_image_url_https")
     public String urlProfileImage;

@@ -13,7 +13,8 @@ import android.widget.Button;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.api.TwitterAuthService;
-import com.mtramin.donethat.data.twitter.TwitterUser;
+import com.mtramin.donethat.auth.TwitterAuthenticationService;
+import com.mtramin.donethat.data.model.twitter.TwitterUser;
 import com.mtramin.donethat.util.LogUtil;
 
 import org.scribe.model.Token;
@@ -108,13 +109,16 @@ public class LoginActivity extends AuthenticationActivity {
     }
 
     private void saveUserData(Token token, TwitterUser twitterUser) {
+        String avatarUrl = twitterUser.urlProfileImage.replace("_normal", "_bigger");
+        String bannerUrl = twitterUser.urlProfileBackgroundImage + "/mobile_retina";
+
         Bundle userData = new Bundle();
-        userData.putString("NAME", twitterUser.name);
-        userData.putString("SCREEN_NAME", twitterUser.screenName);
-        userData.putString("DESCRIPTION", twitterUser.description);
-        userData.putString("BACKGOROUND_IMAGE_URL", twitterUser.urlProfileBackgroundImage);
-        userData.putString("PROFILE_IMAGE_URL", twitterUser.urlProfileImage);
-        userData.putString("USER_ID", twitterUser.userId);
+        userData.putString(TwitterAuthenticationService.ACCOUNT_USERNAME, twitterUser.name);
+        userData.putString(TwitterAuthenticationService.ACCOUNT_SCREEN_NAME, twitterUser.screenName);
+        userData.putString(TwitterAuthenticationService.ACCOUNT_DESCRIPTION, twitterUser.description);
+        userData.putString(TwitterAuthenticationService.ACCOUNT_BACKGOROUND_IMAGE_URL, bannerUrl);
+        userData.putString(TwitterAuthenticationService.ACCOUNT_PROFILE_IMAGE_URL, avatarUrl);
+        userData.putString(TwitterAuthenticationService.ACCOUNT_USER_ID, twitterUser.userId);
 
         finalizeAuthentication(twitterUser.screenName, getString(R.string.auth_token_type), token.getToken(), userData);
 

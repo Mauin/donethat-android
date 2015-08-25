@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.content.Context;
 
 import com.mtramin.donethat.api.interfaces.DonethatApi;
+import com.mtramin.donethat.auth.TwitterAuthenticationService;
 import com.mtramin.donethat.util.AccountUtil;
 
 import javax.inject.Inject;
@@ -44,7 +45,7 @@ public class ApiModule {
     private class DonethatTokenInterceptor extends TokenInterceptor {
         @Override
         public void injectToken(RequestFacade requestFacade, String token) {
-            String userId = AccountUtil.getUserData(context, "USER_ID");
+            String userId = AccountUtil.getUserData(context, TwitterAuthenticationService.ACCOUNT_USER_ID);
             String xAuthToken = String.format("%s:%s", userId, token);
 
             requestFacade.addHeader("X-Auth-Token", xAuthToken);
