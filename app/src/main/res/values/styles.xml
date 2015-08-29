@@ -9,10 +9,10 @@
         <item name="colorAccent">@color/secondary_light</item>
         <item name="colorControlNormal">@color/white</item>
         <item name="android:colorButtonNormal">@color/white</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
-    <style name="NavDrawerTheme" parent="AppTheme">
+    <style name="TransparentStatusBarTheme" parent="AppTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
