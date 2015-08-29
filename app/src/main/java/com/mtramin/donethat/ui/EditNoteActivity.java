@@ -93,7 +93,6 @@ public class EditNoteActivity extends BaseActivity {
             enterNoteContent(note);
         } else {
             setToday();
-            // TODO fix for non-Marshmallow
             if (PermissionUtil.shouldRequestPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     this.permissionSnackbar = Snackbar.make(toolbar, "For the best experience, you can store the location of your notes! We need this permission to determine where we should place this note!", Snackbar.LENGTH_INDEFINITE);
