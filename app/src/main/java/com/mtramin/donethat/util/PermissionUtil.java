@@ -1,7 +1,11 @@
 package com.mtramin.donethat.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.support.v13.app.FragmentCompat;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 
 /**
@@ -13,7 +17,7 @@ public class PermissionUtil {
     public static final int REQUEST_CODE_ACCESS_FINE_LOCATION = 2;
 
     public static boolean shouldRequestPermission(Context context, String permission) {
-        return context.checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED;
+        return ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED;
     }
 
     public static boolean permissionGranted(int[] grantResults) {

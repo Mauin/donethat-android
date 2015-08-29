@@ -1,16 +1,14 @@
 package com.mtramin.donethat.ui.tripdetails;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +33,6 @@ import com.mtramin.donethat.ui.EditNoteActivity;
 import com.mtramin.donethat.ui.MainActivity;
 import com.mtramin.donethat.ui.animator.AppearAnimator;
 import com.mtramin.donethat.ui.note.NoteActivity;
-import com.mtramin.donethat.util.AndroidUtil;
 import com.mtramin.donethat.util.LogUtil;
 import com.mtramin.donethat.util.PermissionUtil;
 
@@ -47,7 +44,6 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -141,20 +137,18 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
 
         subscription = new CompositeSubscription();
 
-        if (AndroidUtil.isMarshmallow()) {
-            if (PermissionUtil.shouldRequestPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                // We don't have the permission
+        if (PermissionUtil.shouldRequestPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            // We don't have the permission
 
-                if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    // Show description
-                    this.permissionSnackbar = Snackbar.make(root, "We want to show you a map of your trip. We need this permission for that.", Snackbar.LENGTH_INDEFINITE);
-                    this.permissionSnackbar.show();
-                }
-
-                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionUtil.REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
-                showMap(null, false);
-                return root;
+            if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                // Show description
+                this.permissionSnackbar = Snackbar.make(root, "We want to show you a map of your trip. We need this permission for that.", Snackbar.LENGTH_INDEFINITE);
+                this.permissionSnackbar.show();
             }
+
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionUtil.REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
+            showMap(null, false);
+            return root;
         }
 
         showMap(savedInstanceState, true);
