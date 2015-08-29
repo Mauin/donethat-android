@@ -23,8 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64a9a598-8e4e-4685-a390-2224844305c7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/EditNoteActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/EditNoteActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/PermissionUtil.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/PermissionUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -57,11 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EditNoteActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/EditNoteActivity.java">
+      <file leaf-file-name="TripDetailFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3648834">
-              <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.4101509">
+              <caret line="193" column="57" selection-start-line="193" selection-start-column="57" selection-end-line="193" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -1730,9 +1728,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/ViewUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/note/NoteActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/adapter/TripDetailAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/PermissionUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/EditNoteActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java" />
       </list>
     </option>
   </component>
@@ -2747,12 +2745,6 @@
           <option name="timeStamp" value="107" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java</url>
-          <line>283</line>
-          <properties />
-          <option name="timeStamp" value="114" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/service/BackgroundSyncService.java</url>
           <line>73</line>
           <properties />
@@ -2771,13 +2763,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.12/21eaf213f2c653611bf74607abf73bb99e9407e0/rxjava-1.0.12-sources.jar!/rx/Observable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="3565" column="35" selection-start-line="3565" selection-start-column="35" selection-end-line="3565" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-23/java/util/Set.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -3337,41 +3322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2345679">
-          <caret line="139" column="45" selection-start-line="139" selection-start-column="45" selection-end-line="139" selection-end-column="45" />
-          <folding>
-            <marker date="1440855124000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="@{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1440855124000" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440855124000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/PermissionUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24965706">
@@ -3387,8 +3337,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/EditNoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3648834">
+        <state vertical-scroll-proportion="0.7105624">
           <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+          <folding>
+            <marker date="1440855179000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1440855179000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855179000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/mtramin/donethat/ui/tripdetails/TripDetailFragment$$ViewBinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2991453">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding>
+            <marker date="1440855726000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1440855726000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855726000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855726000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440855726000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/tripdetails/TripDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4101509">
+          <caret line="193" column="57" selection-start-line="193" selection-start-column="57" selection-end-line="193" selection-end-column="57" />
           <folding />
         </state>
       </provider>

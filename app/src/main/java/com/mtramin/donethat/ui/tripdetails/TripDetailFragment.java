@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,7 +48,10 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subjects.BehaviorSubject;
+import rx.subjects.PublishSubject;
 import rx.subscriptions.CompositeSubscription;
+
+import static rx.Observable.combineLatest;
 
 /**
  * Created by m.ramin on 7/6/15.
@@ -79,6 +82,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     public DonethatCache storage;
 
     private BehaviorSubject<GoogleMap> observableMap = BehaviorSubject.create();
+    private PublishSubject<Boolean> observableMapLayoutStep = PublishSubject.create();
     private BehaviorSubject<Trip> observableTripDetails = BehaviorSubject.create();
     private CompositeSubscription subscription;
     private TripDetailAdapter adapter;
@@ -184,6 +188,14 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
             mapView.setVisibility(View.VISIBLE);
             mapView.onCreate(savedInstanceState);
             mapView.getMapAsync(this);
+            mapView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    observableMapLayoutStep.onNext(true);
+                    mapView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
+            });
+
             if (this.isResumed()) {
                 mapView.onResume();
             }
@@ -277,32 +289,29 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     }
 
     private void initMap() {
-        Subscription subscription = observableMap
-                // TODO check if map is laid out
-//                .doOnNext(map -> {
-//                    if (!ViewCompat.isLaidOut(mapView)) {
-//                        throw new MapNotReadyException();
-//                    }
-//                })
-//                .retry((integer, throwable) -> throwable instanceof MapNotReadyException)
-                .subscribe(map -> {
+        Subscription subscription = combineLatest(
+                        observableMap,
+                        observableMapLayoutStep,
+                        (googleMap, o) -> googleMap
+                )
+                        .subscribe(map -> {
 
-                    LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
-                    for (Note note : this.notes) {
-                        LatLng location = note.location;
-                        if (location != null) {
-                            boundsBuilder.include(location);
-                            MarkerOptions marker = new MarkerOptions();
-                            marker.position(location);
-                            marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_my_location));
-                            marker.anchor(0.5f, 0.5f);
-                            map.addMarker(marker);
-                        }
-                    }
+                            LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
+                            for (Note note : this.notes) {
+                                LatLng location = note.location;
+                                if (location != null) {
+                                    boundsBuilder.include(location);
+                                    MarkerOptions marker = new MarkerOptions();
+                                    marker.position(location);
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_my_location));
+                                    marker.anchor(0.5f, 0.5f);
+                                    map.addMarker(marker);
+                                }
+                            }
 
-                    map.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 25));
+                            map.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 25));
 
-                }, throwable -> LogUtil.logException(this, throwable));
+                        }, throwable -> LogUtil.logException(this, throwable));
 
         this.subscription.add(subscription);
     }
