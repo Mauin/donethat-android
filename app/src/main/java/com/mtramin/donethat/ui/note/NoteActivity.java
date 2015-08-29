@@ -12,6 +12,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
+import android.support.v7.internal.widget.ViewUtils;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
 import android.view.Display;
@@ -19,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
@@ -36,6 +38,7 @@ import com.mtramin.donethat.ui.BaseActivity;
 import com.mtramin.donethat.ui.EditNoteActivity;
 import com.mtramin.donethat.ui.MainActivity;
 import com.mtramin.donethat.ui.tripdetails.TripDetailFragment;
+import com.mtramin.donethat.util.ViewUtil;
 
 import org.joda.time.DateTime;
 
@@ -78,6 +81,12 @@ public class NoteActivity extends BaseActivity {
 
     @Bind(R.id.toolbar_collapsing)
     CollapsingToolbarLayout collapsingToolbar;
+
+    @Bind(R.id.root)
+    ViewGroup root;
+
+    @Bind(R.id.appbar)
+    ViewGroup appbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +152,8 @@ public class NoteActivity extends BaseActivity {
 
         if (note.image == null) {
             image.setVisibility(View.GONE);
+            // Have to set padding for toolbar, otherwise it will be cut off
+            collapsingToolbar.setPadding(0, ViewUtil.getStatusBarHeight(this), 0, 0);
         } else {
             Glide.with(this)
                     .load(note.image)
