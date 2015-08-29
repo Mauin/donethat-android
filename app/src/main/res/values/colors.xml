@@ -13,6 +13,5 @@
     <color name="tertiary_dark">#0F341F</color> // even lighter #042211
 
     <color name="white">#ffffff</color>
-    <color name="primary_text_default_material_light">#deffffff</color>
 
 </resources>

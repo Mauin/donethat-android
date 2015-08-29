@@ -1,6 +1,8 @@
 package com.mtramin.donethat.ui.note;
 
 import android.animation.Animator;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +10,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
@@ -16,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -124,7 +128,6 @@ public class NoteActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_note_edit:
-                // TODO startactivitforresult
                 startActivity(EditNoteActivity.createIntent(this, trip.id, note.id));
                 return true;
 
@@ -161,10 +164,10 @@ public class NoteActivity extends BaseActivity {
     }
 
     private void setActivityStyle(Palette palette) {
-        collapsingToolbar.setBackgroundColor(palette.getMutedColor(R.color.primary));
-        collapsingToolbar.setCollapsedTitleTextColor(palette.getVibrantColor(android.R.color.white));
-        collapsingToolbar.setContentScrimColor(palette.getMutedColor(R.color.primary));
-        getWindow().setStatusBarColor(palette.getDarkMutedColor(R.color.primary_dark));
+        collapsingToolbar.setBackgroundColor(palette.getMutedColor(ContextCompat.getColor(this, R.color.primary)));
+        collapsingToolbar.setCollapsedTitleTextColor(palette.getVibrantColor(ContextCompat.getColor(this, android.R.color.white)));
+        collapsingToolbar.setContentScrimColor(palette.getMutedColor(ContextCompat.getColor(this, R.color.primary)));
+        collapsingToolbar.setStatusBarScrimColor(palette.getDarkMutedColor(ContextCompat.getColor(this, R.color.primary_dark)));
     }
 
     @Override
