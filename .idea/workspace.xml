@@ -23,12 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64a9a598-8e4e-4685-a390-2224844305c7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/ViewUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/note/NoteActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/note/NoteActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_note.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_note.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_trip_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_trip_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="donethat-android.iws" />
@@ -63,8 +60,8 @@
       <file leaf-file-name="NoteActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/note/NoteActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74897116">
-              <caret line="166" column="115" selection-start-line="166" selection-start-column="115" selection-end-line="166" selection-end-column="115" />
+            <state vertical-scroll-proportion="0.63374484">
+              <caret line="154" column="76" selection-start-line="154" selection-start-column="76" selection-end-line="154" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -79,8 +76,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="resourceFile" />
-        <option value="Class" />
         <option value="valueResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -1685,7 +1682,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/observable/network/ObservableConnectionStatus.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/api/interfaces/DonethatApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/observable/permissions.java" />
@@ -1735,6 +1731,7 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_trip_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_note.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/ViewUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/note/NoteActivity.java" />
       </list>
     </option>
@@ -2654,34 +2651,34 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="98" y="884" width="601" height="267" />
       <window_info id="JRebel for Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30936614" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39924315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20820022" sideWeight="0.5345317" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4588458" sideWeight="0.5021299" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.53596616" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug with JRebel for Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.49574015" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4588458" sideWeight="0.5021299" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20820022" sideWeight="0.46546832" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="98" y="884" width="601" height="267" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39924315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20820022" sideWeight="0.5345317" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug with JRebel for Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.49574015" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.320719" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2739,7 +2736,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/note/NoteActivity.java</url>
-          <line>112</line>
+          <line>121</line>
           <properties />
           <option name="timeStamp" value="103" />
         </line-breakpoint>
@@ -2779,21 +2776,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/observable/network/ObservableConnectionStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10606061">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.12/21eaf213f2c653611bf74607abf73bb99e9407e0/rxjava-1.0.12-sources.jar!/rx/Observable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -2812,13 +2794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34654918">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/AndroidUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3304721">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -3048,14 +3023,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/adapter/TripDetailAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26611796">
-          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../../sdk/extras/android/m2repository/com/android/support/palette-v7/23.0.0/palette-v7-23.0.0-sources.jar!/android/support/v7/graphics/Palette.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -3184,10 +3151,37 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/adapter/TripDetailAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7627119">
+          <caret line="156" column="19" selection-start-line="156" selection-start-column="19" selection-end-line="156" selection-end-column="19" />
+          <folding>
+            <marker date="1440525683000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1440525683000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1440525683000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1440525683000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1440525683000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1440525683000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440525683000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/jars/classes.jar!/android/support/design/widget/CollapsingToolbarLayout.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35897437">
-          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.12334802">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
           <folding>
             <marker date="1439502544000" expanded="false" signature="-1:-1" placeholder="/.../" />
             <marker date="1439502544000" expanded="false" signature="-1:-1" placeholder="..." />
@@ -3272,31 +3266,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_note.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43937233">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.19971469">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding>
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="&quot;16dp&quot;" />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;212dp&quot;" />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;4dp&quot;" />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;android.support.design.widget.AppBarLayout$ScrollingVie...&quot;" />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;16dp&quot;" />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;24sp&quot;" />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;4dp&quot;" />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;16sp&quot;" />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;16dp&quot;" />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;16dp&quot;" />
-            <marker date="1440852027000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440852027000" expanded="false" signature="-1:-1" placeholder="&quot;16sp&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;16dp&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;212dp&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;4dp&quot;" />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;android.support.design.widget.AppBarLayout$ScrollingVie...&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;16dp&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;24sp&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;4dp&quot;" />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;16sp&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;16dp&quot;" />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;16dp&quot;" />
+            <marker date="1440854433000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854433000" expanded="false" signature="-1:-1" placeholder="&quot;16sp&quot;" />
           </folding>
         </state>
       </provider>
@@ -3304,10 +3298,51 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/AndroidUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21124828">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <folding>
+            <marker date="1440189331000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1440189331000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/AccountUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13443072">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <marker date="1436723032000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1436723032000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1436723032000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436723032000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436723032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436723032000" expanded="false" signature="-1:-1" placeholder="&quot;com.mtramin.donethat.account&quot;" />
+            <marker date="1436723032000" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1436723032000" expanded="false" signature="-1:-1" placeholder=" }" />
+            <marker date="1436723032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/util/ViewUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3840878">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1440854738000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1440854738000" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1440854738000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mtramin/donethat/ui/note/NoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74897116">
-          <caret line="166" column="115" selection-start-line="166" selection-start-column="115" selection-end-line="166" selection-end-column="115" />
+        <state vertical-scroll-proportion="0.63374484">
+          <caret line="154" column="76" selection-start-line="154" selection-start-column="76" selection-end-line="154" selection-end-column="76" />
           <folding />
         </state>
       </provider>
