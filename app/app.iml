@@ -130,8 +130,8 @@
     <orderEntry type="library" exported="" name="palette-v7-23.0.0" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="android.joda-2.8.1" level="project" />
-    <orderEntry type="library" exported="" name="jackson-core-2.5.1" level="project" />
     <orderEntry type="library" exported="" name="converter-logansquare-retrofit-1.0.0" level="project" />
+    <orderEntry type="library" exported="" name="jackson-core-2.5.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.0.0" level="project" />
     <orderEntry type="library" exported="" name="joda-time-2.8.1-no-tzdb" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-7.8.0" level="project" />

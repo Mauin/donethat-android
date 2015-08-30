@@ -55,6 +55,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
     }
 
     public void setData(List<Trip> data) {
+        tripImages.clear();
         this.data.clear();
         this.data.addAll(data);
 
@@ -68,7 +69,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
             }
         }
 
-        notifyItemRangeInserted(0, data.size() - 1);
+        notifyItemRangeInserted(0, getItemCount() - 1);
     }
 
     public void addData(List<Trip> data) {

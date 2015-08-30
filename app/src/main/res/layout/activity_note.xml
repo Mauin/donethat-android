@@ -43,6 +43,7 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="vertical"
         android:elevation="@dimen/default_elevation"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -50,7 +51,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/default_margin">
+            android:paddingTop="@dimen/default_margin"
+            android:paddingLeft="@dimen/default_margin"
+            android:paddingRight="@dimen/default_margin">
 
             <TextView
                 android:id="@+id/note_title"
@@ -70,6 +73,16 @@
                 android:textSize="@dimen/textsize_large"
                 android:textStyle="italic"
                 tools:text="Sunday, 51s of December" />
+
+            <TextView
+                android:id="@+id/note_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingTop="@dimen/small_margin"
+                android:textSize="@dimen/textsize_large"
+                android:textStyle="italic"
+                tools:text="Somewhere in Space, possibly near t he sun" />
 
             <View
                 android:layout_width="match_parent"
