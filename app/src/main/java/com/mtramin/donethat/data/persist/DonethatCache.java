@@ -6,6 +6,8 @@ import com.mtramin.donethat.data.model.Note;
 import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.data.persist.realm.NoteDto;
 import com.mtramin.donethat.data.persist.realm.TripDto;
+import com.mtramin.donethat.util.comparator.NoteComparator;
+import com.mtramin.donethat.util.comparator.TripComparator;
 
 import org.joda.time.DateTime;
 
@@ -32,7 +34,10 @@ public class DonethatCache {
         RealmResults<TripDto> result = realm.where(TripDto.class)
                 .findAll();
 
-        return Observable.just(Collections.unmodifiableList(TripMapper.toTripList(result)));
+
+        List<Trip> trips = TripMapper.toTripList(result);
+        Collections.sort(trips, new TripComparator());
+        return Observable.just(Collections.unmodifiableList(trips));
     }
 
     public void storeTrip(Trip trip) {
@@ -64,7 +69,9 @@ public class DonethatCache {
             result.add(NoteMapper.toNote(dto));
         }
 
-        return result;
+        Collections.sort(result, new NoteComparator());
+
+        return Collections.unmodifiableList(result);
     }
 
     public Note getNote(UUID id) {
