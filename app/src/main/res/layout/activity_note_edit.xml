@@ -1,93 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/content"
-        android:orientation="vertical"
+    <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/appbar"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:minHeight="?attr/actionBarSize"
+        android:layout_height="wrap_content">
 
-        <android.support.design.widget.AppBarLayout
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_collapsing"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:expandedTitleMarginStart="@dimen/left_padding"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/edit_note_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/map_header_size"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_mode_edit_white"
+                app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:background="?attr/colorPrimary"
-                style="@style/ToolbarTheme"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
 
-        </android.support.design.widget.AppBarLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_height="wrap_content"
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/default_elevation"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin">
 
-            <LinearLayout
-                android:layout_height="match_parent"
+            <EditText
+                android:id="@+id/edit_note_title"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginRight="@dimen/default_margin">
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/textsize_header"
+                android:textStyle="bold"
+                tools:text="I'm in space!" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/default_margin">
+            <TextView
+                android:id="@+id/edit_note_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingTop="@dimen/small_margin"
+                android:textSize="@dimen/textsize_large"
+                android:textStyle="italic"
+                android:drawableRight="@drawable/ic_today_black"
+                android:drawablePadding="@dimen/default_margin"
+                tools:text="Sunday, 51s of December" />
 
-                    <EditText
-                        android:id="@+id/edit_note_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Title goes here" />
+            <TextView
+                android:id="@+id/edit_note_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingTop="@dimen/small_margin"
+                android:textSize="@dimen/textsize_large"
+                android:textStyle="italic"
+                android:drawableRight="@drawable/ic_my_location"
+                android:drawablePadding="@dimen/default_margin"
+                tools:text="Somewhere in Space, possibly near the sun" />
 
-                </android.support.design.widget.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:background="@android:color/darker_gray" />
 
-                <TextView
-                    android:id="@+id/edit_note_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/not_so_small_margin"
-                    android:paddingBottom="@dimen/not_so_small_margin"
-                    android:text="Determining your location..."
-                    android:drawablePadding="@dimen/default_margin"
-                    android:drawableLeft="@drawable/ic_my_location" />
+            <EditText
+                android:id="@+id/edit_note_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textsize_large"
+                tools:text="You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man." />
 
-                <TextView
-                    android:id="@+id/edit_note_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/not_so_small_margin"
-                    android:paddingBottom="@dimen/not_so_small_margin"
-                    android:drawablePadding="@dimen/default_margin"
-                    android:drawableLeft="@drawable/ic_access_time"
-                    tools:text="Today, 20:05" />
+        </LinearLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="vertical"
-                    android:paddingBottom="@dimen/default_margin">
-
-                    <EditText
-                        android:id="@+id/edit_note_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="top"
-                        android:hint="Content goes here" />
-
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
-
-    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -100,7 +121,7 @@
         android:layout_marginEnd="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin"
         fabSize="default"
-        app:layout_anchor="@id/content"
+        app:layout_anchor="@id/root"
         app:layout_anchorGravity="bottom|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>

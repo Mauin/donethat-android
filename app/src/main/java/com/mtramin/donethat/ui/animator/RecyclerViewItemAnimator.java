@@ -25,11 +25,9 @@ import java.util.List;
 public class RecyclerViewItemAnimator extends RecyclerView.ItemAnimator {
 
     private List<RecyclerView.ViewHolder> pendingViewHolders = new ArrayList<>();
-
     private float animationDuration;
 
     public RecyclerViewItemAnimator(Context context) {
-
         this.animationDuration = context.getResources().getInteger(android.R.integer.config_mediumAnimTime);
     }
 
@@ -50,8 +48,7 @@ public class RecyclerViewItemAnimator extends RecyclerView.ItemAnimator {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
-                            RecyclerView.ViewHolder holder = viewHolder;
-                            pendingViewHolders.remove(holder);
+                            pendingViewHolders.remove(viewHolder);
                         }
                     });
 

@@ -1,18 +1,29 @@
 package com.mtramin.donethat.ui;
 
 import android.Manifest;
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.MenuItem;
+import android.view.ViewAnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.google.android.gms.maps.model.LatLng;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
@@ -22,6 +33,7 @@ import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.data.persist.DonethatCache;
 import com.mtramin.donethat.observable.googleApiClient.ObservableLastLocation;
 import com.mtramin.donethat.service.BackgroundSyncService;
+import com.mtramin.donethat.util.IntentUtils;
 import com.mtramin.donethat.util.LogUtil;
 import com.mtramin.donethat.util.PermissionUtil;
 
@@ -44,6 +56,9 @@ public class EditNoteActivity extends BaseActivity {
     public static final String EXTRA_TRIP = "extra_trip";
     public static final String EXTRA_NOTE = "extra_note";
 
+    @Bind(R.id.edit_note_image)
+    ImageView editImage;
+
     @Bind(R.id.edit_note_title)
     EditText editTitle;
 
@@ -55,6 +70,9 @@ public class EditNoteActivity extends BaseActivity {
 
     @Bind(R.id.edit_note_date)
     TextView editDate;
+
+    @Bind(R.id.toolbar_collapsing)
+    CollapsingToolbarLayout collapsingToolbar;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -80,6 +98,7 @@ public class EditNoteActivity extends BaseActivity {
         setContentView(R.layout.activity_note_edit);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("");
 
         parseIntent();
     }
@@ -234,6 +253,50 @@ public class EditNoteActivity extends BaseActivity {
         editContent.setText(note.content);
         editDate.setText(DateUtils.formatSameDayTime(note.date.getMillis(), DateTime.now().getMillis(), DateFormat.DEFAULT, DateFormat.DEFAULT));
 
+        if (note.image != null) {
+            loadImage(note.image);
+        }
+
+        editImage.setOnClickListener(v -> {
+            IntentUtils.launchImagePicker(this);
+        });
+
         setCurrentLocation(note.location);
+    }
+
+    private void loadImage(Uri imageUri) {
+        Glide.with(this)
+                .load(imageUri)
+                .asBitmap()
+                .placeholder(R.color.primary)
+                .into(new BitmapImageViewTarget(editImage) {
+                    @Override
+                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                        super.onResourceReady(resource, glideAnimation);
+                        Animator reveal = ViewAnimationUtils.createCircularReveal(editImage, editImage.getWidth() / 2, editImage.getHeight() / 2, 0, editImage.getWidth() / 2);
+                        reveal.setDuration(300);
+                        reveal.setInterpolator(new DecelerateInterpolator());
+                        reveal.start();
+                        Palette.from(resource).generate(palette -> setActivityStyle(palette, collapsingToolbar));
+                    }
+                });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+
+        switch (requestCode) {
+            case IntentUtils.REQUEST_CODE_PICK_IMAGE:
+                note.image = data.getData();
+                loadImage(note.image);
+                break;
+            default:
+                throw new IllegalStateException("Unknown activity request code");
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

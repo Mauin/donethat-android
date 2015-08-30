@@ -73,6 +73,9 @@ public class NoteActivity extends BaseActivity {
     @Bind(R.id.note_date)
     TextView date;
 
+    @Bind(R.id.note_location)
+    TextView location;
+
     @Bind(R.id.note_image)
     ImageView image;
 
@@ -131,6 +134,10 @@ public class NoteActivity extends BaseActivity {
         content.setText(note.content);
         date.setText(DateUtils.formatSameDayTime(note.date.getMillis(), DateTime.now().getMillis(), DateFormat.DEFAULT, DateFormat.DEFAULT));
 
+        if (note.location != null) {
+            location.setText(note.location.toString());
+        }
+
         if (note.image == null) {
             image.setVisibility(View.GONE);
             // Have to set padding for toolbar, otherwise it will be cut off
@@ -148,18 +155,11 @@ public class NoteActivity extends BaseActivity {
                             reveal.setDuration(300);
                             reveal.setInterpolator(new DecelerateInterpolator());
                             reveal.start();
-                            Palette.from(resource).generate(NoteActivity.this::setActivityStyle);
+                            Palette.from(resource).generate(palette -> setActivityStyle(palette, collapsingToolbar));
                         }
                     });
         }
 
-    }
-
-    private void setActivityStyle(Palette palette) {
-        collapsingToolbar.setBackgroundColor(palette.getMutedColor(ContextCompat.getColor(this, R.color.primary)));
-        collapsingToolbar.setCollapsedTitleTextColor(palette.getVibrantColor(ContextCompat.getColor(this, android.R.color.white)));
-        collapsingToolbar.setContentScrimColor(palette.getMutedColor(ContextCompat.getColor(this, R.color.primary)));
-        collapsingToolbar.setStatusBarScrimColor(palette.getDarkMutedColor(ContextCompat.getColor(this, R.color.primary_dark)));
     }
 
     @Override

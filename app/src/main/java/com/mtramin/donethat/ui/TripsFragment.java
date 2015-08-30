@@ -103,7 +103,7 @@ public class TripsFragment extends BaseFragment {
                         .observeOn(AndroidSchedulers.mainThread())
                         .startWith(database.getTrips())
                         .subscribe(
-                                adapter::setData,
+                                adapter::setData, // TODO here be a crash (inconsistency detected)
                                 throwable -> LogUtil.logException(this, throwable)
                         )
         );
