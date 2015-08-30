@@ -8,7 +8,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -139,8 +141,6 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
         list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         list.setItemAnimator(new AppearAnimator());
 
-        subscription = new CompositeSubscription();
-
         if (PermissionUtil.shouldRequestPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             // We don't have the permission
 
@@ -210,6 +210,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
 
         setTripDetails(trip);
         adapter.setData(trip, notes);
+        subscribeToNoteClick();
 
         if (showMap) {
             mapView.onResume();
@@ -230,6 +231,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
         if (showMap) {
             mapView.onPause();
         }
+        subscription.unsubscribe();
     }
 
     @Override
@@ -244,7 +246,8 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     public void onStart() {
         super.onStart();
 
-        subscribeToNoteClick();
+        subscription = new CompositeSubscription();
+
         if (showMap) {
             initMap();
         }
@@ -253,8 +256,6 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     @Override
     public void onStop() {
         super.onStop();
-
-        subscription.unsubscribe();
     }
 
     @OnClick(R.id.fab)
@@ -268,11 +269,13 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
 
     private void subscribeToNoteClick() {
         subscription.add(adapter.onNoteClicked()
-                        .subscribeOn(Schedulers.computation())
-                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                note -> startActivity(NoteActivity.createIntent(getActivity(), note.id, trip.id)),
-                                throwable -> LogUtil.logException(this, throwable)
+                                note -> {
+                                    startActivity(NoteActivity.createIntent(getActivity(), note.id, trip.id));
+                                },
+                                throwable -> {
+                                    LogUtil.logException(this, throwable);
+                                }
                         )
         );
     }
@@ -295,7 +298,6 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
                         (googleMap, o) -> googleMap
                 )
                         .subscribe(map -> {
-
                             LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
                             for (Note note : this.notes) {
                                 LatLng location = note.location;
@@ -314,10 +316,5 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
                         }, throwable -> LogUtil.logException(this, throwable));
 
         this.subscription.add(subscription);
-    }
-
-    public class MapNotReadyException extends RuntimeException {
-        public MapNotReadyException() {
-        }
     }
 }

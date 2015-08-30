@@ -103,28 +103,6 @@ public class NoteActivity extends BaseActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        handleUpNavigation();
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            handleUpNavigation();
-            return true;
-        }
-        return false;
-    }
-
-    private void handleUpNavigation() {
-        Intent upIntent = NavUtils.getParentActivityIntent(this);
-        upIntent.putExtra(MainActivity.EXTRA_FRAGMENT_TAG, MainActivity.TAG_FRAGMENT_TRIP_DETAILS);
-        upIntent.putExtra(TripDetailFragment.EXTRA_TRIP_ID, this.trip.id);
-        startActivity(upIntent);
-        finish();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean create = super.onCreateOptionsMenu(menu);
 
@@ -140,6 +118,9 @@ public class NoteActivity extends BaseActivity {
                 startActivity(EditNoteActivity.createIntent(this, trip.id, note.id));
                 return true;
 
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

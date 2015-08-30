@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -70,9 +71,10 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
             return;
         }
 
-        String fragmentTag = intent.getStringExtra(EXTRA_FRAGMENT_TAG);
-        if (TextUtils.isEmpty(fragmentTag)) {
-            fragmentTag = TAG_FRAGMENT_TRIPS;
+        String fragmentTag = TAG_FRAGMENT_TRIPS;
+        String intentFragmentTag = intent.getStringExtra(EXTRA_FRAGMENT_TAG);
+        if (!TextUtils.isEmpty(intentFragmentTag)) {
+            fragmentTag = intentFragmentTag;
         }
 
         switch (fragmentTag) {
@@ -84,6 +86,23 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
                 showFragment(TripDetailFragment.newInstance(tripId), false);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            Fragment currentFragment = fragmentManager.findFragmentById(R.id.content);
+
+            if (currentFragment instanceof TripDetailFragment) {
+                showFragment(TripsFragment.newInstance(), false);
+                return;
+            }
+
+        }
+
+        super.onBackPressed();
     }
 
     @Override
