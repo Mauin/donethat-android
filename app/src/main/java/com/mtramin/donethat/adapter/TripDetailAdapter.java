@@ -59,7 +59,7 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View holder = null;
+        View holder;
         switch (ITEM_TYPE.values()[viewType]) {
             case ITEM_HEADER:
                 holder = inflater.inflate(R.layout.item_trip_details_header, parent, false);
@@ -68,7 +68,7 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 holder = inflater.inflate(R.layout.item_trip_details_note, parent, false);
                 return new NoteViewHolder(holder);
             default:
-                throw new IllegalStateException("undefined type");
+                throw new IllegalStateException("undefined item type");
         }
     }
 
@@ -126,7 +126,9 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                             .into(((NoteViewHolder) holder).image);
                 }
 
-                ((NoteViewHolder) holder).item.setOnClickListener(v -> observableNoteSelection.onNext(note));
+                ((NoteViewHolder) holder).item.setOnClickListener(v -> {
+                    observableNoteSelection.onNext(note);
+                });
                 break;
         }
     }
