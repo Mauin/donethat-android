@@ -163,8 +163,6 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
     @Override
     public void onShowTripDetails(Trip trip) {
         Fragment fragment = TripDetailFragment.newInstance(trip.id);
-
-        // TODO fragment transition on the trip name
         showFragment(fragment, true);
     }
 

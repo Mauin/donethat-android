@@ -68,7 +68,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
             }
         }
 
-        notifyDataSetChanged();
+        notifyItemRangeInserted(0, data.size() - 1);
     }
 
     public void addData(List<Trip> data) {

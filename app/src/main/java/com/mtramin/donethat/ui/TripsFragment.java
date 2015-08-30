@@ -15,6 +15,7 @@ import com.mtramin.donethat.adapter.TripsAdapter;
 import com.mtramin.donethat.api.SyncService;
 import com.mtramin.donethat.data.persist.DonethatCache;
 import com.mtramin.donethat.util.LogUtil;
+import com.mtramin.donethat.ui.animator.RecyclerViewItemAnimator;
 
 import javax.inject.Inject;
 
@@ -67,6 +68,7 @@ public class TripsFragment extends BaseFragment {
         adapter = new TripsAdapter(getContext());
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        list.setItemAnimator(new RecyclerViewItemAnimator(getContext()));
 
         return root;
     }

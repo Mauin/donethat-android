@@ -8,9 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -33,10 +31,10 @@ import com.mtramin.donethat.data.persist.DonethatCache;
 import com.mtramin.donethat.ui.BaseFragment;
 import com.mtramin.donethat.ui.EditNoteActivity;
 import com.mtramin.donethat.ui.MainActivity;
-import com.mtramin.donethat.ui.animator.AppearAnimator;
 import com.mtramin.donethat.ui.note.NoteActivity;
 import com.mtramin.donethat.util.LogUtil;
 import com.mtramin.donethat.util.PermissionUtil;
+import com.mtramin.donethat.ui.animator.RecyclerViewItemAnimator;
 
 import java.util.List;
 import java.util.UUID;
@@ -47,8 +45,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subjects.BehaviorSubject;
 import rx.subjects.PublishSubject;
 import rx.subscriptions.CompositeSubscription;
@@ -139,7 +135,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
         adapter = new TripDetailAdapter(getActivity());
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        list.setItemAnimator(new AppearAnimator());
+        list.setItemAnimator(new RecyclerViewItemAnimator(getContext()));
 
         if (PermissionUtil.shouldRequestPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             // We don't have the permission
