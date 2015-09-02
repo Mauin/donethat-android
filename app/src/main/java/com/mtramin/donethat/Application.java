@@ -53,7 +53,7 @@ public class Application extends android.app.Application {
     private void setUpRealm() {
         // Configure Realm for the application
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).build();
-        Realm.deleteRealm(realmConfiguration); // Start clean
+//        Realm.deleteRealm(realmConfiguration); // Start clean
         Realm.setDefaultConfiguration(realmConfiguration);
     }
 

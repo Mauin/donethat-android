@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ import rx.subjects.PublishSubject;
  */
 public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHolder> {
 
+    private static final String TAG = TripsAdapter.class.getName();
     @Inject
     DonethatCache database;
 
@@ -55,6 +57,17 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
     }
 
     public void setData(List<Trip> data) {
+        insertData(data);
+
+        if (this.data != null && this.data.size() > 0) {
+            notifyDataSetChanged();
+            return;
+        }
+
+        notifyItemRangeInserted(0, getItemCount() - 1);
+    }
+
+    private void insertData(List<Trip> data) {
         tripImages.clear();
         this.data.clear();
         this.data.addAll(data);
@@ -68,8 +81,6 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
                 }
             }
         }
-
-        notifyItemRangeInserted(0, getItemCount() - 1);
     }
 
     public void addData(List<Trip> data) {
