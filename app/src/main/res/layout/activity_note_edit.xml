@@ -59,14 +59,22 @@
             android:orientation="vertical"
             android:padding="@dimen/default_margin">
 
-            <EditText
-                android:id="@+id/edit_note_title"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textSize="@dimen/textsize_header"
-                android:textStyle="bold"
-                tools:text="I'm in space!" />
+                android:paddingBottom="@dimen/default_margin">
+
+                <EditText
+                    android:id="@+id/edit_note_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/textsize_header"
+                    android:textStyle="bold"
+                    android:hint="Title goes here"
+                    tools:text="I'm in space!" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:id="@+id/edit_note_date"
@@ -99,12 +107,21 @@
                 android:layout_marginTop="@dimen/default_margin"
                 android:background="@android:color/darker_gray" />
 
-            <EditText
-                android:id="@+id/edit_note_content"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/textsize_large"
-                tools:text="You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man." />
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/default_margin">
+
+                <EditText
+                    android:id="@+id/edit_note_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:textSize="@dimen/textsize_large"
+                    android:hint="What have you done?"
+                    android:inputType="text" />
+
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 

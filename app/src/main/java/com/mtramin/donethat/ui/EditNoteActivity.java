@@ -2,6 +2,9 @@ package com.mtramin.donethat.ui;
 
 import android.Manifest;
 import android.animation.Animator;
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,9 +20,11 @@ import android.text.format.DateUtils;
 import android.view.MenuItem;
 import android.view.ViewAnimationUtils;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -38,6 +43,7 @@ import com.mtramin.donethat.util.LogUtil;
 import com.mtramin.donethat.util.PermissionUtil;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeComparator;
 
 import java.text.DateFormat;
 import java.util.UUID;
@@ -51,7 +57,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * Created by m.ramin on 7/8/15.
  */
-public class EditNoteActivity extends BaseActivity {
+public class EditNoteActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     public static final String EXTRA_TRIP = "extra_trip";
     public static final String EXTRA_NOTE = "extra_note";
@@ -84,6 +90,9 @@ public class EditNoteActivity extends BaseActivity {
 
     private Trip trip;
     private Note note;
+
+    private LatLng location;
+    private DateTime date;
 
     @Inject
     DonethatApiService api;
@@ -208,19 +217,19 @@ public class EditNoteActivity extends BaseActivity {
         if (this.note != null) {
             note.title = title;
             note.content = editContent.getText().toString();
-            note.location = new LatLng(1, 1); // TODO read correct location
-            note.date = DateTime.now(); // TODO read correct date
+            note.location = location; // TODO read correct location
+            note.date = date; // TODO read correct date
             storeNote(note);
             return;
         }
 
-        Note note = new Note(title, editContent.getText().toString(), new LatLng(0, 0), trip.id);
+        Note note = new Note(title, editContent.getText().toString(), trip.id);
         storeNote(note);
     }
 
     @OnClick(R.id.edit_note_date)
     public void onDateClicked() {
-        // TODO open DateTimePicker
+        showDatePicker();
     }
 
     @OnClick(R.id.edit_note_location)
@@ -298,5 +307,32 @@ public class EditNoteActivity extends BaseActivity {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void showDatePicker() {
+        if (this.date == null) {
+            this.date = DateTime.now();
+        }
+        DatePickerDialog datePicker = new DatePickerDialog(this, this, date.year().get(), date.monthOfYear().get(), date.dayOfMonth().get());
+        datePicker.show();
+    }
+
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        this.date = this.date.year().setCopy(year);
+        this.date = this.date.monthOfYear().setCopy(monthOfYear);
+        this.date = this.date.dayOfMonth().setCopy(dayOfMonth);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, this, this.date.hourOfDay().get(), this.date.minuteOfHour().get(), true);
+        timePickerDialog.show();
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        this.date = this.date.hourOfDay().setCopy(hourOfDay);
+        this.date = this.date.minuteOfHour().setCopy(minute);
+
+        editDate.setText(this.date.toString());
     }
 }

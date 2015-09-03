@@ -52,6 +52,10 @@ public class Note implements Parcelable {
         tripId = UUID.fromString(in.readString());
     }
 
+    public Note(String title, String content, UUID tripId) {
+        this(title, content, null, tripId);
+    }
+
     public Note(String title, String content, LatLng location, UUID tripId) {
         this(title, content, location, DateTime.now(), DateTime.now(), UUID.randomUUID(), Uri.EMPTY, tripId);
     }
