@@ -29,6 +29,7 @@ import android.widget.TimePicker;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
@@ -52,6 +53,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import dagger.internal.MapFactory;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -61,6 +63,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
 
     public static final String EXTRA_TRIP = "extra_trip";
     public static final String EXTRA_NOTE = "extra_note";
+    private static final int REQUEST_CODE_LOCATION = 100;
 
     @Bind(R.id.edit_note_image)
     ImageView editImage;
@@ -217,8 +220,8 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
         if (this.note != null) {
             note.title = title;
             note.content = editContent.getText().toString();
-            note.location = location; // TODO read correct location
-            note.date = date; // TODO read correct date
+            note.location = location;
+            note.date = date;
             storeNote(note);
             return;
         }
@@ -234,7 +237,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
 
     @OnClick(R.id.edit_note_location)
     public void onLocationClicked() {
-        // TODO open map activity
+        startActivityForResult(MapActivity.createIntent(this), REQUEST_CODE_LOCATION);
     }
 
     private void setCurrentLocation(Location location) {
@@ -302,6 +305,11 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
                 note.image = data.getData();
                 loadImage(note.image);
                 break;
+
+            case REQUEST_CODE_LOCATION:
+                note.location = new LatLng(data.getDoubleExtra(MapActivity.EXTRA_LATITUDE, 0.0), data.getDoubleExtra(MapActivity.EXTRA_LONGITUDE, 0.0));
+                editLocation.setText(note.location.toString());
+                break;
             default:
                 throw new IllegalStateException("Unknown activity request code");
         }
@@ -333,6 +341,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
         this.date = this.date.hourOfDay().setCopy(hourOfDay);
         this.date = this.date.minuteOfHour().setCopy(minute);
 
+        note.date = this.date;
         editDate.setText(this.date.toString());
     }
 }

@@ -19,4 +19,7 @@
 
     <item name="alpha_text" type="dimen" format="float">1.0</item>
     <item name="alpha_none" type="dimen" format="float">0.0</item>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>
