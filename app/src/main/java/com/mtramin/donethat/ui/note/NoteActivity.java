@@ -43,6 +43,7 @@ import com.mtramin.donethat.util.ViewUtil;
 import org.joda.time.DateTime;
 
 import java.text.DateFormat;
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -56,6 +57,7 @@ public class NoteActivity extends BaseActivity {
 
     private static final String EXTRA_NOTE_ID = "EXTRA_NOTE_ID";
     private static final String EXTRA_TRIP_ID = "EXTRA_TRIP_ID";
+    private static final String EXTRA_PALETTE = "EXTRA_PALETTE";
 
     private UUID noteId;
     private Note note;
@@ -176,11 +178,11 @@ public class NoteActivity extends BaseActivity {
 
         this.noteId = (UUID) intent.getSerializableExtra(EXTRA_NOTE_ID);
         UUID tripId = (UUID) intent.getSerializableExtra(EXTRA_TRIP_ID);
-
         this.trip = storage.getTripDetails(tripId);
     }
 
     public static Intent createIntent(Context context, UUID noteId, UUID tripId) {
+        // TODO pass palette to this for even more color amazingness
         Intent intent = new Intent(context, NoteActivity.class);
         intent.putExtra(EXTRA_NOTE_ID, noteId);
         intent.putExtra(EXTRA_TRIP_ID, tripId);
