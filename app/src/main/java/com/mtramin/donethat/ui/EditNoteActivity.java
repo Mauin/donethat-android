@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.Uri;
@@ -37,6 +38,7 @@ import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.data.model.Note;
 import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.data.persist.DonethatCache;
+import com.mtramin.donethat.databinding.ActivityNoteEditBinding;
 import com.mtramin.donethat.observable.googleApiClient.ObservableLastLocation;
 import com.mtramin.donethat.service.BackgroundSyncService;
 import com.mtramin.donethat.util.IntentUtils;
@@ -65,26 +67,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
     public static final String EXTRA_NOTE = "extra_note";
     private static final int REQUEST_CODE_LOCATION = 100;
 
-    @Bind(R.id.edit_note_image)
-    ImageView editImage;
-
-    @Bind(R.id.edit_note_title)
-    EditText editTitle;
-
-    @Bind(R.id.edit_note_content)
-    EditText editContent;
-
-    @Bind(R.id.edit_note_location)
-    TextView editLocation;
-
-    @Bind(R.id.edit_note_date)
-    TextView editDate;
-
-    @Bind(R.id.toolbar_collapsing)
-    CollapsingToolbarLayout collapsingToolbar;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
+    private ActivityNoteEditBinding binding;
 
     @Inject
     DonethatCache storage;
@@ -107,8 +90,9 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
 
         ((Application) getApplication()).getComponent().inject(this);
 
-        setContentView(R.layout.activity_note_edit);
-        setSupportActionBar(toolbar);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_note_edit);
+
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("");
 
@@ -126,7 +110,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
             setToday();
             if (PermissionUtil.shouldRequestPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                    this.permissionSnackbar = Snackbar.make(toolbar, "For the best experience, you can store the location of your notes! We need this permission to determine where we should place this note!", Snackbar.LENGTH_INDEFINITE);
+                    this.permissionSnackbar = Snackbar.make(binding.getRoot(), "For the best experience, you can store the location of your notes! We need this permission to determine where we should place this note!", Snackbar.LENGTH_INDEFINITE);
                     this.permissionSnackbar.show();
                 }
 
@@ -153,7 +137,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
                 if (PermissionUtil.permissionGranted(grantResults)) {
                     subscribeToCurrentLocation();
                 } else {
-                    editLocation.setText("Access to location provider denied. Select manually...");
+                    binding.editNoteLocation.setText("Access to location provider denied. Select manually...");
                 }
             }
         }
@@ -162,7 +146,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
     }
 
     private void setToday() {
-        editDate.setText(DateTime.now().toString());
+        binding.editNoteDate.setText(DateTime.now().toString());
     }
 
     private void subscribeToCurrentLocation() {
@@ -211,22 +195,22 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
 
     @OnClick(R.id.fab)
     public void onFabClicked() {
-        String title = editTitle.getText().toString();
+        String title = binding.editNoteTitle.getText().toString();
         if (TextUtils.isEmpty(title)) {
-            editTitle.setError("Please enter at least a title for your note.");
+            binding.editNoteTitle.setError("Please enter at least a title for your note.");
             return;
         }
 
         if (this.note != null) {
             note.title = title;
-            note.content = editContent.getText().toString();
+            note.content = binding.editNoteContent.getText().toString();
             note.location = location;
             note.date = date;
             storeNote(note);
             return;
         }
 
-        Note note = new Note(title, editContent.getText().toString(), trip.id);
+        Note note = new Note(title, binding.editNoteContent.getText().toString(), trip.id);
         storeNote(note);
     }
 
@@ -251,7 +235,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
         }
 
         // TODO Geocoder with fallback latlng String
-        editLocation.setText(location.toString());
+        binding.editNoteLocation.setText(location.toString());
     }
 
     private void storeNote(Note note) {
@@ -261,15 +245,9 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
     }
 
     public void enterNoteContent(Note note) {
-        editTitle.setText(note.title);
-        editContent.setText(note.content);
-        editDate.setText(DateUtils.formatSameDayTime(note.date.getMillis(), DateTime.now().getMillis(), DateFormat.DEFAULT, DateFormat.DEFAULT));
+        binding.setNote(note);
 
-        if (note.image != null) {
-            loadImage(note.image);
-        }
-
-        editImage.setOnClickListener(v -> {
+        binding.editNoteImage.setOnClickListener(v -> {
             IntentUtils.launchImagePicker(this);
         });
 
@@ -277,21 +255,23 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
     }
 
     private void loadImage(Uri imageUri) {
-        Glide.with(this)
-                .load(imageUri)
-                .asBitmap()
-                .placeholder(R.color.primary)
-                .into(new BitmapImageViewTarget(editImage) {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        super.onResourceReady(resource, glideAnimation);
-                        Animator reveal = ViewAnimationUtils.createCircularReveal(editImage, editImage.getWidth() / 2, editImage.getHeight() / 2, 0, editImage.getWidth() / 2);
-                        reveal.setDuration(300);
-                        reveal.setInterpolator(new DecelerateInterpolator());
-                        reveal.start();
-                        Palette.from(resource).generate(palette -> setActivityStyle(palette, collapsingToolbar));
-                    }
-                });
+        // TODO palette
+//
+//        Glide.with(this)
+//                .load(imageUri)
+//                .asBitmap()
+//                .placeholder(R.color.primary)
+//                .into(new BitmapImageViewTarget(editImage) {
+//                    @Override
+//                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                        super.onResourceReady(resource, glideAnimation);
+//                        Animator reveal = ViewAnimationUtils.createCircularReveal(editImage, editImage.getWidth() / 2, editImage.getHeight() / 2, 0, editImage.getWidth() / 2);
+//                        reveal.setDuration(300);
+//                        reveal.setInterpolator(new DecelerateInterpolator());
+//                        reveal.start();
+//                        Palette.from(resource).generate(palette -> setActivityStyle(palette, collapsingToolbar));
+//                    }
+//                });
     }
 
     @Override
@@ -308,7 +288,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
 
             case REQUEST_CODE_LOCATION:
                 note.location = new LatLng(data.getDoubleExtra(MapActivity.EXTRA_LATITUDE, 0.0), data.getDoubleExtra(MapActivity.EXTRA_LONGITUDE, 0.0));
-                editLocation.setText(note.location.toString());
+                binding.editNoteLocation.setText(note.location.toString());
                 break;
             default:
                 throw new IllegalStateException("Unknown activity request code");
@@ -342,6 +322,6 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
         this.date = this.date.minuteOfHour().setCopy(minute);
 
         note.date = this.date;
-        editDate.setText(this.date.toString());
+        binding.editNoteDate.setText(this.date.toString());
     }
 }

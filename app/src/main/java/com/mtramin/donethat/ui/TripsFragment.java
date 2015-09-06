@@ -1,10 +1,9 @@
 package com.mtramin.donethat.ui;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +13,12 @@ import com.mtramin.donethat.R;
 import com.mtramin.donethat.adapter.TripsAdapter;
 import com.mtramin.donethat.api.SyncService;
 import com.mtramin.donethat.data.persist.DonethatCache;
-import com.mtramin.donethat.util.LogUtil;
+import com.mtramin.donethat.databinding.FragmentTripsBinding;
 import com.mtramin.donethat.ui.animator.RecyclerViewItemAnimator;
+import com.mtramin.donethat.util.LogUtil;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -31,17 +29,13 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class TripsFragment extends BaseFragment {
 
-    @Bind(R.id.toolbar)
-    protected Toolbar toolbar;
-
-    @Bind(R.id.list)
-    RecyclerView list;
-
     @Inject
     SyncService syncService;
 
     @Inject
     DonethatCache database;
+
+    private FragmentTripsBinding binding;
 
     private CompositeSubscription subscription;
 
@@ -60,15 +54,15 @@ public class TripsFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_trips, container, false);
-        ButterKnife.bind(this, root);
+        binding = DataBindingUtil.bind(root);
 
-        ((MainActivity) getActivity()).setToolbar(toolbar);
+        ((MainActivity) getActivity()).setToolbar(binding.toolbar);
         getActivity().setTitle("You have done this");
 
         adapter = new TripsAdapter(getContext());
-        list.setAdapter(adapter);
-        list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        list.setItemAnimator(new RecyclerViewItemAnimator(getContext()));
+        binding.list.setAdapter(adapter);
+        binding.list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.list.setItemAnimator(new RecyclerViewItemAnimator(getContext()));
 
         return root;
     }

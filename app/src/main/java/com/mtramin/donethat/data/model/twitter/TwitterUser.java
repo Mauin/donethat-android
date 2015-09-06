@@ -22,6 +22,15 @@ public class TwitterUser {
     @JsonField (name = "id_str")
     public String userId;
 
+    public TwitterUser() {
+    }
+
+    public TwitterUser(String accountName, String accountHandle, String backgroundUrl, String avatarUrl) {
+        this.name = accountName;
+        this.screenName = accountHandle;
+        this.urlProfileBackgroundImage = backgroundUrl;
+        this.urlProfileImage = avatarUrl;
+    }
 }
 
 /** Example response from the twitter api */

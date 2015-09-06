@@ -1,59 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/trip_item"
-    android:layout_gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/default_margin"
-    android:layout_marginRight="@dimen/default_margin"
-    android:layout_marginTop="@dimen/not_so_small_margin"
-    android:layout_marginBottom="@dimen/not_so_small_margin"
-    card_view:cardCornerRadius="4dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
+    <data>
+        <import type="android.view.View"/>
+        <variable name="trip" type="com.mtramin.donethat.data.model.Trip"/>
+        <variable name="image" type="android.net.Uri"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/trip_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/trip_image"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/header_size"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/header"/>
-
-        <View
-            android:id="@+id/trip_divider"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/divider_size"
-            android:background="@color/secondary_light"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/not_so_small_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/not_so_small_margin"
+        card_view:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:elevation="@dimen/default_elevation"
-            android:background="@color/white"
-            android:padding="@dimen/default_margin">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/trip_title"
+            <ImageView
+                android:id="@+id/trip_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/textsize_large"
-                tools:text="My super awesome trip" />
+                android:layout_height="@dimen/header_size"
+                android:scaleType="centerCrop"
+                app:imageUri="@{image}"
+                android:visibility="@{image == null ? View.GONE : View.VISIBLE}"
+                tools:src="@drawable/header" />
 
-            <TextView
-                android:id="@+id/trip_created_at"
+
+            <View
+                android:id="@+id/trip_divider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/small_margin"
-                tools:text="Lorem ipsum, something something." />
+                android:layout_height="@dimen/divider_size"
+                android:visibility="@{image == null ? View.GONE : View.VISIBLE}"
+                android:background="@color/secondary_light" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:elevation="@dimen/default_elevation"
+                android:orientation="vertical"
+                android:padding="@dimen/default_margin">
+
+                <TextView
+                    android:id="@+id/trip_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize_large"
+                    android:text="@{trip.title}"
+                    tools:text="My super awesome trip" />
+
+                <TextView
+                    android:id="@+id/trip_created_at"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/small_margin"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="@{trip.content}"
+                    tools:text="Lorem ipsum, something something. Bla bla very interesting. This is a long text. Very long indeed. Now its too long." />
+            </LinearLayout>
+
+
         </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>
 
-
-    </LinearLayout>
-</android.support.v7.widget.CardView>
 

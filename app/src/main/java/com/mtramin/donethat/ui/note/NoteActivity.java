@@ -5,6 +5,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import com.mtramin.donethat.R;
 import com.mtramin.donethat.data.model.Note;
 import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.data.persist.DonethatCache;
+import com.mtramin.donethat.databinding.ActivityNoteBinding;
 import com.mtramin.donethat.ui.BaseActivity;
 import com.mtramin.donethat.ui.EditNoteActivity;
 import com.mtramin.donethat.ui.MainActivity;
@@ -59,6 +61,8 @@ public class NoteActivity extends BaseActivity {
     private static final String EXTRA_TRIP_ID = "EXTRA_TRIP_ID";
     private static final String EXTRA_PALETTE = "EXTRA_PALETTE";
 
+    private ActivityNoteBinding binding;
+
     private UUID noteId;
     private Note note;
     private Trip trip;
@@ -66,41 +70,14 @@ public class NoteActivity extends BaseActivity {
     @Inject
     DonethatCache storage;
 
-    @Bind(R.id.note_title)
-    TextView title;
-
-    @Bind(R.id.note_content)
-    TextView content;
-
-    @Bind(R.id.note_date)
-    TextView date;
-
-    @Bind(R.id.note_location)
-    TextView location;
-
-    @Bind(R.id.note_image)
-    ImageView image;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-
-    @Bind(R.id.toolbar_collapsing)
-    CollapsingToolbarLayout collapsingToolbar;
-
-    @Bind(R.id.root)
-    ViewGroup root;
-
-    @Bind(R.id.appbar)
-    ViewGroup appbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_note);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_note);
 
         ((Application) getApplication()).getComponent().inject(this);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("");
 
@@ -132,35 +109,32 @@ public class NoteActivity extends BaseActivity {
     }
 
     private void displayNote() {
-        title.setText(note.title);
-        content.setText(note.content);
-        date.setText(DateUtils.formatSameDayTime(note.date.getMillis(), DateTime.now().getMillis(), DateFormat.DEFAULT, DateFormat.DEFAULT));
+        binding.setNote(note);
 
-        if (note.location != null) {
-            location.setText(note.location.toString());
-        }
+        // TODO palette in data binding?
 
-        if (note.image == null) {
-            image.setVisibility(View.GONE);
-            // Have to set padding for toolbar, otherwise it will be cut off
-            collapsingToolbar.setPadding(0, ViewUtil.getStatusBarHeight(this), 0, 0);
-        } else {
-            Glide.with(this)
-                    .load(note.image)
-                    .asBitmap()
-                    .placeholder(R.color.primary)
-                    .into(new BitmapImageViewTarget(image) {
-                        @Override
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            super.onResourceReady(resource, glideAnimation);
-                            Animator reveal = ViewAnimationUtils.createCircularReveal(image, image.getWidth()/2, image.getHeight()/2, 0, image.getWidth()/2);
-                            reveal.setDuration(300);
-                            reveal.setInterpolator(new DecelerateInterpolator());
-                            reveal.start();
-                            Palette.from(resource).generate(palette -> setActivityStyle(palette, collapsingToolbar));
-                        }
-                    });
-        }
+//
+//        if (note.image == null) {
+//            image.setVisibility(View.GONE);
+//            // Have to set padding for toolbar, otherwise it will be cut off
+//            collapsingToolbar.setPadding(0, ViewUtil.getStatusBarHeight(this), 0, 0);
+//        } else {
+//            Glide.with(this)
+//                    .load(note.image)
+//                    .asBitmap()
+//                    .placeholder(R.color.primary)
+//                    .into(new BitmapImageViewTarget(image) {
+//                        @Override
+//                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                            super.onResourceReady(resource, glideAnimation);
+//                            Animator reveal = ViewAnimationUtils.createCircularReveal(image, image.getWidth()/2, image.getHeight()/2, 0, image.getWidth()/2);
+//                            reveal.setDuration(300);
+//                            reveal.setInterpolator(new DecelerateInterpolator());
+//                            reveal.start();
+//                            Palette.from(resource).generate(palette -> setActivityStyle(palette, collapsingToolbar));
+//                        }
+//                    });
+//        }
 
     }
 

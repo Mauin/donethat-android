@@ -1,25 +1,18 @@
 package com.mtramin.donethat.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.mtramin.donethat.Application;
-import com.mtramin.donethat.R;
 import com.mtramin.donethat.data.model.Note;
 import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.data.persist.DonethatCache;
+import com.mtramin.donethat.databinding.ItemTripBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,14 +21,9 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.subjects.PublishSubject;
 
-/**
- * Created by m.ramin on 7/5/15.
- */
 public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHolder> {
 
     private static final String TAG = TripsAdapter.class.getName();
@@ -100,11 +88,8 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
 
     @Override
     public TripViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
-        View holder = inflater.inflate(R.layout.item_trip, parent, false);
-        return new TripViewHolder(holder);
-
+        ItemTripBinding binding = ItemTripBinding.inflate(LayoutInflater.from(context), parent, false);
+        return new TripViewHolder(binding.getRoot());
     }
 
     @Override
@@ -116,40 +101,18 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripViewHold
     public void onBindViewHolder(TripViewHolder holder, int position) {
         Trip trip = data.get(position);
 
-        holder.title.setText(trip.title);
-        holder.created.setText(trip.updated.toString());
-        if (tripImages.containsKey(trip)) {
-            holder.image.setVisibility(View.VISIBLE);
-            holder.divider.setVisibility(View.VISIBLE);
+        holder.binding.setTrip(trip);
+        holder.binding.setImage(tripImages.get(trip));
 
-            Glide.with(context)
-                    .load(tripImages.get(trip))
-                    .asBitmap()
-                    .placeholder(R.color.primary)
-                    .into(holder.image);
-        } else {
-            holder.image.setVisibility(View.GONE);
-            holder.divider.setVisibility(View.GONE);
-        }
-
-        holder.item.setOnClickListener(v -> observableTripSelection.onNext(trip));
+        holder.binding.getRoot().setOnClickListener(v -> observableTripSelection.onNext(trip));
     }
 
     public class TripViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.trip_item)
-        View item;
-        @Bind(R.id.trip_title)
-        TextView title;
-        @Bind(R.id.trip_created_at)
-        TextView created;
-        @Bind(R.id.trip_image)
-        ImageView image;
-        @Bind(R.id.trip_divider)
-        View divider;
+        ItemTripBinding binding;
 
         public TripViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            binding = DataBindingUtil.bind(itemView);
         }
     }
 }

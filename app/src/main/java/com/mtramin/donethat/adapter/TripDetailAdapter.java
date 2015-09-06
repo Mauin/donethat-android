@@ -1,25 +1,21 @@
 package com.mtramin.donethat.adapter;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.mtramin.donethat.R;
 import com.mtramin.donethat.data.model.Note;
 import com.mtramin.donethat.data.model.Trip;
+import com.mtramin.donethat.databinding.ItemTripDetailsHeaderBinding;
+import com.mtramin.donethat.databinding.ItemTripDetailsNoteBinding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.subjects.PublishSubject;
 
@@ -59,14 +55,13 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View holder;
         switch (ITEM_TYPE.values()[viewType]) {
             case ITEM_HEADER:
-                holder = inflater.inflate(R.layout.item_trip_details_header, parent, false);
-                return new HeaderViewHolder(holder);
+                ItemTripDetailsHeaderBinding headerBinding = ItemTripDetailsHeaderBinding.inflate(inflater, parent, false);
+                return new HeaderViewHolder(headerBinding.getRoot());
             case ITEM_NOTE:
-                holder = inflater.inflate(R.layout.item_trip_details_note, parent, false);
-                return new NoteViewHolder(holder);
+                ItemTripDetailsNoteBinding noteBinding = ItemTripDetailsNoteBinding.inflate(inflater, parent, false);
+                return new NoteViewHolder(noteBinding.getRoot());
             default:
                 throw new IllegalStateException("undefined item type");
         }
@@ -102,68 +97,31 @@ public class TripDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         ITEM_TYPE itemType = ITEM_TYPE.values()[getItemViewType(position)];
         switch (itemType) {
             case ITEM_HEADER:
-                ((HeaderViewHolder) holder).title.setText(data.title);
-                ((HeaderViewHolder) holder).description.setText(data.content);
+                ((HeaderViewHolder) holder).binding.setTrip(data);
                 break;
             case ITEM_NOTE:
-                Note note = getItem(position);
-
-                String created = DateUtils.formatDateTime(context, note.date.getMillis(), DateUtils.FORMAT_SHOW_DATE);
-                ((NoteViewHolder) holder).created.setText(created);
-
-                ((NoteViewHolder) holder).title.setText(note.title);
-                ((NoteViewHolder) holder).content.setText(note.content);
-
-                if (note.image == null) {
-                    ((NoteViewHolder) holder).image.setVisibility(View.GONE);
-                    ((NoteViewHolder) holder).divider.setVisibility(View.GONE);
-                } else {
-                    ((NoteViewHolder) holder).divider.setVisibility(View.VISIBLE);
-                    ((NoteViewHolder) holder).image.setVisibility(View.VISIBLE);
-                    Glide.with(((NoteViewHolder) holder).image.getContext())
-                            .load(note.image)
-                            .asBitmap()
-                            .into(((NoteViewHolder) holder).image);
-                }
-
-                ((NoteViewHolder) holder).item.setOnClickListener(v -> {
-                    observableNoteSelection.onNext(note);
-                });
+                Note item = getItem(position);
+                ((NoteViewHolder) holder).binding.setNote(item);
+                ((NoteViewHolder) holder).binding.getRoot().setOnClickListener(v -> observableNoteSelection.onNext(item));
                 break;
         }
     }
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.trip_deatil_title)
-        TextView title;
-
-        @Bind(R.id.trip_deatil_description)
-        TextView description;
-
+        ItemTripDetailsHeaderBinding binding;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            binding = DataBindingUtil.bind(itemView);
         }
     }
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.note_item)
-        View item;
-        @Bind(R.id.note_title)
-        TextView title;
-        @Bind(R.id.note_content)
-        TextView content;
-        @Bind(R.id.note_date)
-        TextView created;
-        @Bind(R.id.note_image)
-        ImageView image;
-        @Bind(R.id.note_divider)
-        View divider;
+        ItemTripDetailsNoteBinding binding;
 
         public NoteViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            binding = DataBindingUtil.bind(itemView);
         }
     }
 }
