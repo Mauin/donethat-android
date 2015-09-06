@@ -1,72 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/note_item"
-    android:layout_gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/default_margin"
-    android:layout_marginRight="@dimen/default_margin"
-    android:layout_marginTop="@dimen/not_so_small_margin"
-    android:layout_marginBottom="@dimen/not_so_small_margin"
-    card_view:cardCornerRadius="4dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:layout_height="match_parent"
+    <data>
+        <import type="android.view.View"/>
+        <variable name="note" type="com.mtramin.donethat.data.model.Note"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/note_item"
         android:layout_width="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/not_so_small_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/not_so_small_margin"
+        card_view:cardCornerRadius="4dp">
 
-        <ImageView
-            android:id="@+id/note_image"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/card_image_size"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/header"/>
-
-        <View
-            android:id="@+id/note_divider"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/divider_size"
-            android:background="@color/secondary_light"/>
-
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:orientation="vertical"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:elevation="@dimen/default_elevation"
-            android:padding="@dimen/default_margin">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/note_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/textsize_large"
-                tools:text="My super awesome trip" />
+            <ImageView
+                android:id="@+id/note_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_image_size"
+                android:scaleType="centerCrop"
+                app:imageUri="@{note.image}"
+                android:visibility="@{note.image == null ? View.GONE : View.VISIBLE}"
+                tools:src="@drawable/header" />
 
-            <TextView
-                android:id="@+id/note_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/small_margin"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textSize="@dimen/textsize_small"
-                tools:text="100 days ago" />
+            <View
+                android:id="@+id/note_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_size"
+                android:visibility="@{note.image == null ? View.GONE : View.VISIBLE}"
+                android:background="@color/secondary_light" />
 
-            <TextView
-                android:id="@+id/note_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/note_title"
-                android:ellipsize="end"
-                android:maxLines="2"
-                tools:text="Lorem ipsum dolor sit amet. Dolorem bla bla legit stuff." />
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="@dimen/default_elevation"
+                android:orientation="vertical"
+                android:padding="@dimen/default_margin">
 
-        </RelativeLayout>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/note_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize_large"
+                    android:text="@{note.title}"
+                    tools:text="My super awesome trip" />
 
-</android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/note_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="@dimen/small_margin"
+                    android:textSize="@dimen/textsize_small"
+                    app:date="@{note.date}"
+                    tools:text="100 days ago" />
+
+                <TextView
+                    android:id="@+id/note_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/note_title"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{note.content}"
+                    tools:text="Lorem ipsum dolor sit amet. Dolorem bla bla legit stuff." />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>
+
 

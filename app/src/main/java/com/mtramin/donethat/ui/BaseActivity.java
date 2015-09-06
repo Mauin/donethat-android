@@ -22,13 +22,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-
-        ButterKnife.bind(this);
-    }
-
     protected void setActivityStyle(Palette palette, CollapsingToolbarLayout toolbarLayout) {
         toolbarLayout.setBackgroundColor(palette.getMutedColor(ContextCompat.getColor(this, R.color.primary)));
         toolbarLayout.setCollapsedTitleTextColor(palette.getVibrantColor(ContextCompat.getColor(this, android.R.color.white)));

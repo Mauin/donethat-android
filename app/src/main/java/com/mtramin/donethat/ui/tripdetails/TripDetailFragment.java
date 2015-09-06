@@ -1,13 +1,11 @@
 package com.mtramin.donethat.ui.tripdetails;
 
 import android.Manifest;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import android.view.ViewTreeObserver;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -28,21 +25,20 @@ import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.data.model.Note;
 import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.data.persist.DonethatCache;
+import com.mtramin.donethat.databinding.FragmentTripDetailBinding;
 import com.mtramin.donethat.ui.BaseFragment;
 import com.mtramin.donethat.ui.EditNoteActivity;
 import com.mtramin.donethat.ui.MainActivity;
+import com.mtramin.donethat.ui.animator.RecyclerViewItemAnimator;
 import com.mtramin.donethat.ui.note.NoteActivity;
 import com.mtramin.donethat.util.LogUtil;
 import com.mtramin.donethat.util.PermissionUtil;
-import com.mtramin.donethat.ui.animator.RecyclerViewItemAnimator;
 
 import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscription;
 import rx.subjects.BehaviorSubject;
@@ -61,17 +57,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     Trip trip;
     List<Note> notes;
 
-    @Bind(R.id.list)
-    RecyclerView list;
-
-    @Bind(R.id.toolbar_collapsing)
-    CollapsingToolbarLayout collapsingToolbarLayout;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-
-    @Bind(R.id.trip_detail_header_map)
-    MapView mapView;
+    FragmentTripDetailBinding binding;
 
     @Inject
     public DonethatApiService api;
@@ -126,16 +112,15 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_trip_detail, container, false);
+        binding = DataBindingUtil.bind(root);
 
-        ButterKnife.bind(this, root);
-
-        ((MainActivity) getActivity()).setToolbar(toolbar);
+        ((MainActivity) getActivity()).setToolbar(binding.toolbar);
         getActivity().setTitle("");
 
         adapter = new TripDetailAdapter(getActivity());
-        list.setAdapter(adapter);
-        list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        list.setItemAnimator(new RecyclerViewItemAnimator(getContext()));
+        binding.list.setAdapter(adapter);
+        binding.list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.list.setItemAnimator(new RecyclerViewItemAnimator(getContext()));
 
         if (PermissionUtil.shouldRequestPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             // We don't have the permission
@@ -181,22 +166,22 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
         this.showMap = show;
 
         if (show) {
-            mapView.setVisibility(View.VISIBLE);
-            mapView.onCreate(savedInstanceState);
-            mapView.getMapAsync(this);
-            mapView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            binding.tripDetailHeaderMap.setVisibility(View.VISIBLE);
+            binding.tripDetailHeaderMap.onCreate(savedInstanceState);
+            binding.tripDetailHeaderMap.getMapAsync(this);
+            binding.tripDetailHeaderMap.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
                     observableMapLayoutStep.onNext(true);
-                    mapView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    binding.tripDetailHeaderMap.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
             });
 
             if (this.isResumed()) {
-                mapView.onResume();
+                binding.tripDetailHeaderMap.onResume();
             }
         } else {
-            mapView.setVisibility(View.GONE);
+            binding.tripDetailHeaderMap.setVisibility(View.GONE);
         }
     }
 
@@ -209,7 +194,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
         subscribeToNoteClick();
 
         if (showMap) {
-            mapView.onResume();
+            binding.tripDetailHeaderMap.onResume();
         }
     }
 
@@ -217,7 +202,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     public void onDestroy() {
         super.onDestroy();
         if (showMap) {
-            mapView.onDestroy();
+            binding.tripDetailHeaderMap.onDestroy();
         }
     }
 
@@ -225,7 +210,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     public void onPause() {
         super.onPause();
         if (showMap) {
-            mapView.onPause();
+            binding.tripDetailHeaderMap.onPause();
         }
         subscription.unsubscribe();
     }
@@ -234,7 +219,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     public void onLowMemory() {
         super.onLowMemory();
         if (showMap) {
-            mapView.onLowMemory();
+            binding.tripDetailHeaderMap.onLowMemory();
         }
     }
 
@@ -289,27 +274,27 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
 
     private void initMap() {
         Subscription subscription = combineLatest(
-                        observableMap,
-                        observableMapLayoutStep,
-                        (googleMap, o) -> googleMap
-                )
-                        .subscribe(map -> {
-                            LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
-                            for (Note note : this.notes) {
-                                LatLng location = note.location;
-                                if (location != null) {
-                                    boundsBuilder.include(location);
-                                    MarkerOptions marker = new MarkerOptions();
-                                    marker.position(location);
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_my_location));
-                                    marker.anchor(0.5f, 0.5f);
-                                    map.addMarker(marker);
-                                }
-                            }
+                observableMap,
+                observableMapLayoutStep,
+                (googleMap, o) -> googleMap
+        )
+                .subscribe(map -> {
+                    LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
+                    for (Note note : this.notes) {
+                        LatLng location = note.location;
+                        if (location != null) {
+                            boundsBuilder.include(location);
+                            MarkerOptions marker = new MarkerOptions();
+                            marker.position(location);
+                            marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_my_location));
+                            marker.anchor(0.5f, 0.5f);
+                            map.addMarker(marker);
+                        }
+                    }
 
-                            map.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 25));
+                    map.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 25));
 
-                        }, throwable -> LogUtil.logException(this, throwable));
+                }, throwable -> LogUtil.logException(this, throwable));
 
         this.subscription.add(subscription);
     }

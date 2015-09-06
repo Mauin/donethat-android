@@ -2,6 +2,7 @@ package com.mtramin.donethat.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,9 @@ import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.auth.TwitterAuthenticationService;
 import com.mtramin.donethat.data.model.Trip;
+import com.mtramin.donethat.data.model.twitter.TwitterUser;
+import com.mtramin.donethat.databinding.ActivityMainBinding;
+import com.mtramin.donethat.databinding.DrawerHeaderBinding;
 import com.mtramin.donethat.ui.tripdetails.TripDetailFragment;
 import com.mtramin.donethat.util.AccountUtil;
 
@@ -36,24 +40,19 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
 
     public static final String EXTRA_FRAGMENT_TAG = "FRAGMENT_TAG";
 
-    @Bind(R.id.content)
-    FrameLayout content;
+    private ActivityMainBinding binding;
+    private DrawerHeaderBinding drawerHeaderBinding;
 
-    @Bind(R.id.navigation_view)
-    NavigationView navView;
-
-    @Bind(R.id.drawer_layout)
-    DrawerLayout drawer;
-
-    ActionBarDrawerToggle drawerToggle;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((Application) getApplication()).getComponent().inject(this);
 
-        setContentView(R.layout.activity_main);
-        setupNavigationView(navView);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        setupNavigationView(binding.navigationView);
 
         if (!AccountUtil.hasAccount(this)) {
             startActivity(LoginActivity.createIntent(this));
@@ -99,7 +98,6 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
                 showFragment(TripsFragment.newInstance(), false);
                 return;
             }
-
         }
 
         super.onBackPressed();
@@ -109,7 +107,7 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                drawer.openDrawer(GravityCompat.START);
+                binding.drawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }
 
@@ -119,40 +117,22 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
     public void setToolbar(Toolbar toolbar) {
         setSupportActionBar(toolbar);
 
-        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
-        drawer.setDrawerListener(drawerToggle);
+        drawerToggle = new ActionBarDrawerToggle(this, binding.drawerLayout, toolbar, 0, 0);
+        binding.drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
     }
 
     private void setupNavigationView(NavigationView view) {
         view.setNavigationItemSelectedListener(menuItem -> {
-            drawer.closeDrawers();
+            binding.drawerLayout.closeDrawers();
             return true;
         });
 
+        drawerHeaderBinding = DataBindingUtil.bind(view.inflateHeaderView(R.layout.drawer_header));
+
         if (AccountUtil.hasAccount(this)) {
-            ImageView background = (ImageView) view.findViewById(R.id.header_background);
-            ImageView avatar = (ImageView) view.findViewById(R.id.header_avatar);
-            TextView userName = (TextView) view.findViewById(R.id.header_username);
-            TextView userHandle = (TextView) view.findViewById(R.id.header_userdetail);
-
-            String accountName = AccountUtil.getUserData(this, TwitterAuthenticationService.ACCOUNT_USERNAME);
-            String accountHandle = "@" + AccountUtil.getUserData(this, TwitterAuthenticationService.ACCOUNT_SCREEN_NAME);
-            String backgroundUrl = AccountUtil.getUserData(this, TwitterAuthenticationService.ACCOUNT_BACKGOROUND_IMAGE_URL);
-            String avatarUrl = AccountUtil.getUserData(this, TwitterAuthenticationService.ACCOUNT_PROFILE_IMAGE_URL);
-
-            userName.setText(accountName);
-            userHandle.setText(accountHandle);
-
-            Glide.with(this)
-                    .load(backgroundUrl)
-                    .asBitmap()
-                    .into(background);
-
-            Glide.with(this)
-                    .load(avatarUrl)
-                    .asBitmap()
-                    .into(avatar);
+            TwitterUser user = AccountUtil.getUser(this);
+            drawerHeaderBinding.setUser(user);
         }
     }
 
