@@ -36,7 +36,6 @@
                     android:layout_height="@dimen/map_header_size"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    app:imageUri="@{note.image}"
                     android:visibility="@{note.image == null ? View.GONE : View.VISIBLE}"
                     app:layout_collapseMode="parallax" />
 

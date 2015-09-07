@@ -1,7 +1,10 @@
 package com.mtramin.donethat.view;
 
 import android.databinding.BindingAdapter;
+import android.databinding.DataBindingUtil;
+import android.databinding.adapters.ListenerUtil;
 import android.net.Uri;
+import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,7 +40,6 @@ public class DataBindingDeclarations {
                 .placeholder(R.color.primary)
                 .into(view);
     }
-
 
     @BindingAdapter("bind:date")
     public static void setDate(TextView view, DateTime date) {
