@@ -54,6 +54,7 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dagger.internal.MapFactory;
 import rx.subscriptions.CompositeSubscription;
@@ -91,6 +92,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
         ((Application) getApplication()).getComponent().inject(this);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_note_edit);
+        ButterKnife.bind(this);
 
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -246,6 +248,7 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
 
     public void enterNoteContent(Note note) {
         binding.setNote(note);
+        loadImage(note.image);
 
         binding.editNoteImage.setOnClickListener(v -> {
             IntentUtils.launchImagePicker(this);
@@ -255,23 +258,25 @@ public class EditNoteActivity extends BaseActivity implements DatePickerDialog.O
     }
 
     private void loadImage(Uri imageUri) {
-        // TODO palette
-//
-//        Glide.with(this)
-//                .load(imageUri)
-//                .asBitmap()
-//                .placeholder(R.color.primary)
-//                .into(new BitmapImageViewTarget(editImage) {
-//                    @Override
-//                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-//                        super.onResourceReady(resource, glideAnimation);
-//                        Animator reveal = ViewAnimationUtils.createCircularReveal(editImage, editImage.getWidth() / 2, editImage.getHeight() / 2, 0, editImage.getWidth() / 2);
-//                        reveal.setDuration(300);
-//                        reveal.setInterpolator(new DecelerateInterpolator());
-//                        reveal.start();
-//                        Palette.from(resource).generate(palette -> setActivityStyle(palette, collapsingToolbar));
-//                    }
-//                });
+        if (imageUri == null) {
+            return;
+        }
+
+        Glide.with(this)
+                .load(imageUri)
+                .asBitmap()
+                .placeholder(R.color.primary)
+                .into(new BitmapImageViewTarget(binding.editNoteImage) {
+                    @Override
+                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                        super.onResourceReady(resource, glideAnimation);
+                        Animator reveal = ViewAnimationUtils.createCircularReveal(binding.editNoteImage, binding.editNoteImage.getWidth() / 2, binding.editNoteImage.getHeight() / 2, 0, binding.editNoteImage.getWidth() / 2);
+                        reveal.setDuration(300);
+                        reveal.setInterpolator(new DecelerateInterpolator());
+                        reveal.start();
+                        Palette.from(resource).generate(palette -> setActivityStyle(palette, binding.toolbarCollapsing));
+                    }
+                });
     }
 
     @Override
