@@ -33,6 +33,22 @@ public class Trip {
     public Trip() {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Trip trip = (Trip) o;
+
+        return id.equals(trip.id);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
     public Trip(UUID id, String title, DateTime date, DateTime updated, String content, List<Note> notes) {
         this.id = id;
         this.title = title;
