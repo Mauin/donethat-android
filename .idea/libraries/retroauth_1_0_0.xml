@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/eu.unicate.android/retroauth/1.0.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.unicate.android/retroauth/1.0.0/e3614c68a2a9499a2636881c5d7c0a0a77d1d69/retroauth-1.0.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

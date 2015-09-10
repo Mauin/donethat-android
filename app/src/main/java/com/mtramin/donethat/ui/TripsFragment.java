@@ -19,6 +19,7 @@ import com.mtramin.donethat.util.LogUtil;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -55,6 +56,7 @@ public class TripsFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_trips, container, false);
         binding = DataBindingUtil.bind(root);
+        ButterKnife.bind(this, root);
 
         ((MainActivity) getActivity()).setToolbar(binding.toolbar);
         getActivity().setTitle("You have done this");

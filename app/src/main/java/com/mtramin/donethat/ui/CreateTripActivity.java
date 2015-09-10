@@ -2,22 +2,26 @@ package com.mtramin.donethat.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.EditText;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
 import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.data.model.Trip;
-import com.mtramin.donethat.util.LogUtil;
+import com.mtramin.donethat.data.persist.DonethatCache;
+import com.mtramin.donethat.databinding.ActivityTripCreateBinding;
+import com.mtramin.donethat.service.BackgroundSyncService;
+
+import org.joda.time.DateTime;
+
+import java.util.UUID;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -25,22 +29,32 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class CreateTripActivity extends BaseActivity {
 
-    @Bind(R.id.edit_note_title)
-    EditText editTitle;
-
     @Inject
     DonethatApiService api;
 
+    @Inject
+    DonethatCache storage;
+
+
     private CompositeSubscription subscription;
+    private ActivityTripCreateBinding binding;
+
+    public static Intent createIntent(Context context) {
+        Intent intent = new Intent(context, CreateTripActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((Application) getApplication()).getComponent().inject(this);
 
-        // TODO Different layout and behavior
-        setContentView(R.layout.activity_note_edit);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_trip_create);
+        ButterKnife.bind(this);
 
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Create a new trip");
     }
 
     @Override
@@ -55,30 +69,26 @@ public class CreateTripActivity extends BaseActivity {
         subscription.unsubscribe();
     }
 
-    public static Intent createIntent(Context context) {
-        Intent intent = new Intent(context, CreateTripActivity.class);
-        return intent;
-    }
-
     @OnClick(R.id.fab)
     public void onFabClicked() {
-        String title = editTitle.getText().toString();
+        String title = binding.createTripTitle.getText().toString();
         if (TextUtils.isEmpty(title)) {
             return;
         }
-        Trip trip = new Trip.Builder().title(title).build();
+        Trip trip = new Trip.Builder()
+                .title(title)
+                .content(binding.createTripContent.getText().toString())
+                .date(DateTime.now())
+                .updated(DateTime.now())
+                .id(UUID.randomUUID())
+                .build();
 
-        createTrip(trip);
+        storeTrip(trip);
     }
 
-    private void createTrip(Trip trip) {
-        subscription.add(api.createTrip(trip)
-                        .subscribeOn(Schedulers.computation())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                aVoid -> finish(),
-                                throwable -> LogUtil.logException(this, throwable)
-                        )
-        );
+    private void storeTrip(Trip trip) {
+        storage.storeTrip(trip);
+        startService(BackgroundSyncService.tripSyncIntent(this, trip.id));
+        finish();
     }
 }

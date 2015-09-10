@@ -44,6 +44,9 @@ public class DonethatCache {
         transaction(realm -> {
             realm.copyToRealmOrUpdate(TripMapper.toTripDto(trip));
 
+            if (trip.notes == null) {
+                return;
+            }
             for (Note note : trip.notes) {
                 realm.copyToRealmOrUpdate(NoteMapper.createNoteDto(trip.id, note));
             }
