@@ -75,6 +75,8 @@ android {
 
         buildConfigField("String", "donethat_twitter_api_key", "\"" + donethat_twitter_api_key + "\"")
         buildConfigField("String", "donethat_twitter_api_secret", "\"" + donethat_twitter_api_secret + "\"")
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -123,8 +125,8 @@ dependencies {
     // HTTP & Networking
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'eu.unicate.android:retroauth:1.0.0'
-    compile 'com.squareup.okhttp:okhttp:2.3.0'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.3.0'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.5.0'
 
     // Injection
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -143,4 +145,13 @@ dependencies {
 
     // DEMO
     compile 'net._01001111:jlorem:1.1'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.9.5"
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile 'com.squareup.okhttp:mockwebserver:2.5.0'
+    androidTestCompile 'com.android.support.test:runner:0.4'
+    androidTestCompile 'com.android.support.test:rules:0.4'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:+'
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:+'
 }
