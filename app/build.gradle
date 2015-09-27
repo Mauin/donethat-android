@@ -37,9 +37,9 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:1.3.1'
-        classpath 'me.tatarka:gradle-retrolambda:3.2.0'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
-        classpath 'com.android.databinding:dataBinder:1.0-rc1'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.android.databinding:dataBinder:1.0-rc2'
     }
 }
 
@@ -101,7 +101,7 @@ retrolambda {
     jvmArgs '-noverify'
 }
 
-ext.playServicesVersion = '7.8.0'
+ext.playServicesVersion = '8.1.0'
 ext.supportLibraryVersion = '23.0.1'
 
 dependencies {
