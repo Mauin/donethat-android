@@ -1,7 +1,7 @@
 package com.mtramin.donethat.api;
 
 import android.content.Context;
-import android.util.Pair;
+import android.support.annotation.NonNull;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.api.interfaces.DonethatApi;
@@ -31,11 +31,8 @@ public class SyncService {
     DonethatCache database;
     @Inject
     DonethatApi api;
-    private Context context;
 
     public SyncService(Context context) {
-        this.context = context;
-
         ((Application) context.getApplicationContext()).getComponent().inject(this);
     }
 
@@ -49,31 +46,16 @@ public class SyncService {
         return Observable.combineLatest(
                 api.getTrips(),
                 database.getTrips(),
-                (remote, local) -> {
-                    List<SyncTrip> combined = new ArrayList<>();
-                    for (Trip remoteTrip : remote) {
-                        combined.add(new SyncTrip(false, remoteTrip));
-                    }
-
-                    for (Trip localTrip : local) {
-                        if (!remote.contains(localTrip)) {
-                            combined.add(new SyncTrip(true, localTrip));
-                        }
-                    }
-                    return combined;
-                }
+                this::combineTripLists
         )
                 .flatMapIterable(trips -> trips)
-                .flatMap(syncTrip -> Observable.just(Pair.create(syncTrip.trip, calculateSyncActionForTrip(syncTrip))))
-                .flatMap(pair -> {
-                    Trip trip = pair.first;
-                    SyncAction syncAction = pair.second;
-
-                    switch (syncAction) {
-                        case UPLOAD_TRIP:
-                            return api.createTrip(trip);
-                        case SYNC_TRIP:
-                            return syncTrip(trip.id);
+                .flatMap(trip -> {
+                    switch (calculateSyncActionForTrip(trip)) {
+                        case UPLOAD:
+                            return api.createTrip(trip.trip);
+                        case SYNC:
+                        case DOWNLOAD:
+                            return syncTrip(trip.trip.id);
                         case NO_ACTION:
                             return Observable.just(null);
                         default:
@@ -84,29 +66,49 @@ public class SyncService {
                 .flatMap(o -> database.getTrips());
     }
 
+    @NonNull
+    private List<SyncTrip> combineTripLists(List<Trip> remote, List<Trip> local) {
+        List<SyncTrip> combined = new ArrayList<>();
+        for (Trip remoteTrip : remote) {
+            combined.add(new SyncTrip(TripSource.REMOTE, remoteTrip));
+        }
+
+        for (Trip localTrip : local) {
+            if (!remote.contains(localTrip)) {
+                combined.add(new SyncTrip(TripSource.LOCAL, localTrip));
+            }
+        }
+        return combined;
+    }
+
     public Observable<Void> syncTrip(UUID tripId) {
-        return api.getTrip(tripId)
-                .flatMap(remote -> {
-                    Trip local = database.getTripDetails(tripId);
-
-                    if (local == null) {
-                        database.storeTrip(remote);
-                        return Observable.just(null);
-                    }
-
-                    if (remote == null) {
-                        api.createTrip(local);
-                    }
-
+        return Observable.combineLatest(
+                api.getTrip(tripId),
+                Observable.just(database.getTripDetails(tripId)),
+                TripDetailSync::new
+        ).flatMap(tripDetailSync -> {
+            switch (tripDetailSync.action) {
+                case UPLOAD:
+                    return api.createTrip(tripDetailSync.local);
+                case SYNC:
+                    database.storeTrip(tripDetailSync.remote);
+                    return Observable.just(null);
+                case DOWNLOAD:
+                case NO_ACTION:
                     List<Note> localNotes = database.getNotesForTrip(tripId);
+                    return updateNotes(tripId, combineNotes(localNotes, tripDetailSync.remote.notes), localNotes, tripDetailSync.remote.notes);
+                default:
+                    return Observable.just(null);
+            }
+        });
+    }
 
-                    // Check all notes from local and remote
-                    Set<Note> notes = new HashSet<>();
-                    notes.addAll(localNotes);
-                    notes.addAll(remote.notes);
-
-                    return updateNotes(tripId, notes, localNotes, remote.notes);
-                });
+    private Set<Note> combineNotes(List<Note> localNotes, List<Note> remoteNotes) {
+        // Check all notes from local and remote
+        Set<Note> notes = new HashSet<>();
+        notes.addAll(localNotes);
+        notes.addAll(remoteNotes);
+        return notes;
     }
 
     private Observable<Void> updateNotes(UUID tripId, Set<Note> notes, List<Note> local, List<Note> remote) {
@@ -114,12 +116,10 @@ public class SyncService {
                 .flatMapIterable(set -> set)
                 .flatMap(note -> {
                     if (local.contains(note)) {
-
                         if (remote.contains(note)) {
                             // Note in both, update
                             return updateNote(tripId, note, remote, local);
                         }
-
                         // Note not in remote, upload note
                         return api.createNote(note.id, note);
                     }
@@ -155,33 +155,61 @@ public class SyncService {
     private SyncAction calculateSyncActionForTrip(SyncTrip syncTrip) {
         Trip stored = database.getTripDetails(syncTrip.trip.id);
 
-        if (syncTrip.isLocal) {
-            return SyncAction.UPLOAD_TRIP;
+        if (syncTrip.source.equals(TripSource.LOCAL)) {
+            return SyncAction.UPLOAD;
         }
 
         // Does not exist locally
         if (stored == null) {
-            return SyncAction.SYNC_TRIP;
+            return SyncAction.DOWNLOAD;
         }
 
         int compared = DateTimeComparator.getInstance().compare(stored.updated, syncTrip.trip.updated);
         if (compared == 0) {
             return SyncAction.NO_ACTION;
         } else {
-            return SyncAction.SYNC_TRIP;
+            return SyncAction.SYNC;
         }
     }
 
     private enum SyncAction {
-        UPLOAD_TRIP, SYNC_TRIP, NO_ACTION
+        UPLOAD, SYNC, DOWNLOAD, NO_ACTION
+    }
+
+    private enum TripSource {
+        LOCAL, REMOTE
+    }
+
+    private class TripDetailSync {
+        Trip local;
+        Trip remote;
+        SyncAction action;
+
+        public TripDetailSync(Trip remote, Trip local) {
+            this.remote = remote;
+            this.local = local;
+            this.action = determineSyncAction();
+        }
+
+        private SyncAction determineSyncAction() {
+            if (local == null) {
+                return SyncAction.DOWNLOAD;
+            }
+
+            if (remote == null) {
+                return SyncAction.UPLOAD;
+            }
+
+            return SyncAction.SYNC;
+        }
     }
 
     private class SyncTrip {
         Trip trip;
-        boolean isLocal;
+        TripSource source;
 
-        public SyncTrip(boolean isLocal, Trip trip) {
-            this.isLocal = isLocal;
+        public SyncTrip(TripSource source, Trip trip) {
+            this.source = source;
             this.trip = trip;
         }
     }
