@@ -32,6 +32,27 @@ public class RecyclerViewItemAnimator extends RecyclerView.ItemAnimator {
     }
 
     @Override
+    public boolean animateAppearance(RecyclerView.ViewHolder viewHolder, ItemHolderInfo preLayoutInfo, ItemHolderInfo postLayoutInfo) {
+        viewHolder.itemView.setAlpha(0.0f);
+        return pendingViewHolders.add(viewHolder);
+    }
+
+    @Override
+    public boolean animateDisappearance(RecyclerView.ViewHolder viewHolder, ItemHolderInfo preLayoutInfo, ItemHolderInfo postLayoutInfo) {
+        return false;
+    }
+
+    @Override
+    public boolean animatePersistence(RecyclerView.ViewHolder viewHolder, ItemHolderInfo preLayoutInfo, ItemHolderInfo postLayoutInfo) {
+        return false;
+    }
+
+    @Override
+    public boolean animateChange(RecyclerView.ViewHolder oldHolder, RecyclerView.ViewHolder newHolder, ItemHolderInfo preLayoutInfo, ItemHolderInfo postLayoutInfo) {
+        return false;
+    }
+
+    @Override
     public void runPendingAnimations() {
         for (RecyclerView.ViewHolder viewHolder : pendingViewHolders) {
             View target = viewHolder.itemView;
@@ -56,22 +77,6 @@ public class RecyclerViewItemAnimator extends RecyclerView.ItemAnimator {
     }
 
     @Override
-    public boolean animateRemove(RecyclerView.ViewHolder viewHolder) {
-        return false;
-    }
-
-    @Override
-    public boolean animateAdd(RecyclerView.ViewHolder viewHolder) {
-        viewHolder.itemView.setAlpha(0.0f);
-        return pendingViewHolders.add(viewHolder);
-    }
-
-    @Override
-    public boolean animateMove(RecyclerView.ViewHolder viewHolder, int i, int i2, int i3, int i4) {
-        return false;
-    }
-
-    @Override
     public void endAnimation(RecyclerView.ViewHolder viewHolder) {
     }
 
@@ -84,8 +89,4 @@ public class RecyclerViewItemAnimator extends RecyclerView.ItemAnimator {
         return !pendingViewHolders.isEmpty();
     }
 
-    @Override
-    public boolean animateChange(RecyclerView.ViewHolder oldHolder, RecyclerView.ViewHolder newHolder, int fromLeft, int fromTop, int toLeft, int toTop) {
-        return false;
-    }
 }

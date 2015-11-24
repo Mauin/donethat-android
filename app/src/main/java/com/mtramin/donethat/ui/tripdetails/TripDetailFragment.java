@@ -1,10 +1,8 @@
 package com.mtramin.donethat.ui.tripdetails;
 
-import android.Manifest;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,16 +27,17 @@ import com.mtramin.donethat.databinding.FragmentTripDetailBinding;
 import com.mtramin.donethat.ui.BaseFragment;
 import com.mtramin.donethat.ui.EditNoteActivity;
 import com.mtramin.donethat.ui.MainActivity;
+import com.mtramin.donethat.ui.MapActivity;
 import com.mtramin.donethat.ui.animator.RecyclerViewItemAnimator;
 import com.mtramin.donethat.ui.note.NoteActivity;
 import com.mtramin.donethat.util.LogUtil;
-import com.mtramin.donethat.util.PermissionUtil;
 
 import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscription;
 import rx.subjects.BehaviorSubject;
@@ -53,25 +52,19 @@ import static rx.Observable.combineLatest;
 public class TripDetailFragment extends BaseFragment implements OnMapReadyCallback {
 
     public static final String EXTRA_TRIP_ID = "EXTRA_TRIP_ID";
-
-    Trip trip;
-    List<Note> notes;
-
-    FragmentTripDetailBinding binding;
-
     @Inject
     public DonethatApiService api;
-
     @Inject
     public DonethatCache storage;
-
+    Trip trip;
+    List<Note> notes;
+    FragmentTripDetailBinding binding;
     private BehaviorSubject<GoogleMap> observableMap = BehaviorSubject.create();
     private PublishSubject<Boolean> observableMapLayoutStep = PublishSubject.create();
     private BehaviorSubject<Trip> observableTripDetails = BehaviorSubject.create();
     private CompositeSubscription subscription;
     private TripDetailAdapter adapter;
     private boolean showMap = false;
-    private Snackbar permissionSnackbar;
 
     public TripDetailFragment() {
         // Default constructor
@@ -114,6 +107,8 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
         View root = inflater.inflate(R.layout.fragment_trip_detail, container, false);
         binding = DataBindingUtil.bind(root);
 
+        ButterKnife.bind(this, root);
+
         ((MainActivity) getActivity()).setToolbar(binding.toolbar);
         getActivity().setTitle("");
 
@@ -122,44 +117,8 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
         binding.list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         binding.list.setItemAnimator(new RecyclerViewItemAnimator(getContext()));
 
-        if (PermissionUtil.shouldRequestPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            // We don't have the permission
-
-            if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                // Show description
-                this.permissionSnackbar = Snackbar.make(root, "We want to show you a map of your trip. We need this permission for that.", Snackbar.LENGTH_INDEFINITE);
-                this.permissionSnackbar.show();
-            }
-
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionUtil.REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
-            showMap(null, false);
-            return root;
-        }
-
         showMap(savedInstanceState, true);
         return root;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (this.permissionSnackbar != null) {
-            this.permissionSnackbar.dismiss();
-        }
-
-        if (permissions.length == 0) {
-            // No permissions granted/denied
-            return;
-        }
-
-        switch (requestCode) {
-            case PermissionUtil.REQUEST_CODE_WRITE_EXTERNAL_STORAGE: {
-                if (PermissionUtil.permissionGranted(grantResults)) {
-                    showMap(null, true);
-                }
-            }
-        }
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void showMap(Bundle savedInstanceState, boolean show) {
@@ -265,8 +224,8 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         googleMap.getUiSettings().setMapToolbarEnabled(false);
         googleMap.setOnMapClickListener(latLng -> {
-            // TODO launch map view with markers (or just Google Maps?)
-            // TODO check if GMaps accepts marker locations intent
+            // TODO pass marker locations
+            startActivity(MapActivity.createIntent(getActivity()));
         });
 
         observableMap.onNext(googleMap);
@@ -279,6 +238,7 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
                 (googleMap, o) -> googleMap
         )
                 .subscribe(map -> {
+                    int markerCount = 0;
                     LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
                     for (Note note : this.notes) {
                         LatLng location = note.location;
@@ -289,9 +249,13 @@ public class TripDetailFragment extends BaseFragment implements OnMapReadyCallba
                             marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_my_location));
                             marker.anchor(0.5f, 0.5f);
                             map.addMarker(marker);
+                            markerCount++;
                         }
                     }
 
+                    if (markerCount == 0) {
+                        return;
+                    }
                     map.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 25));
 
                 }, throwable -> LogUtil.logException(this, throwable));

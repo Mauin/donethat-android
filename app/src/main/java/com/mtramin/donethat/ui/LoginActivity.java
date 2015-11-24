@@ -49,6 +49,12 @@ public class LoginActivity extends AuthenticationActivity {
 
     CompositeSubscription subscription = new CompositeSubscription();
 
+    public static Intent createIntent(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, context.getString(R.string.auth_account_type));
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +101,9 @@ public class LoginActivity extends AuthenticationActivity {
         subscription.add(twitterAuthService.accessToken(verifier)
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(this::getUserData, throwable -> LogUtil.logException(this, throwable)
+                        .subscribe(
+                                this::getUserData,
+                                throwable -> LogUtil.logException(this, throwable)
                         )
         );
     }
@@ -123,12 +131,6 @@ public class LoginActivity extends AuthenticationActivity {
         finalizeAuthentication(twitterUser.screenName, getString(R.string.auth_token_type), token.getToken(), userData);
 
         startActivity(MainActivity.createIntent(this));
-    }
-
-    public static Intent createIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, context.getString(R.string.auth_account_type));
-        return intent;
     }
 
     private class TwitterWebViewClient extends WebViewClient {

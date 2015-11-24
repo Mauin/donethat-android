@@ -9,19 +9,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.R;
-import com.mtramin.donethat.auth.TwitterAuthenticationService;
 import com.mtramin.donethat.data.model.Trip;
 import com.mtramin.donethat.data.model.twitter.TwitterUser;
 import com.mtramin.donethat.databinding.ActivityMainBinding;
@@ -30,8 +25,6 @@ import com.mtramin.donethat.ui.tripdetails.TripDetailFragment;
 import com.mtramin.donethat.util.AccountUtil;
 
 import java.util.UUID;
-
-import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements FragmentCallbacks {
 
@@ -92,10 +85,18 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (fragmentManager.getBackStackEntryCount() > 0) {
+            Log.e("TEST", "onBackPressed have backstack");
+
             Fragment currentFragment = fragmentManager.findFragmentById(R.id.content);
 
             if (currentFragment instanceof TripDetailFragment) {
+                Log.e("TEST", "onBackPressed going from trip details to trips");
                 showFragment(TripsFragment.newInstance(), false);
+                return;
+            }
+
+            if (currentFragment instanceof  TripsFragment) {
+                finish();
                 return;
             }
         }
@@ -124,6 +125,19 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
 
     private void setupNavigationView(NavigationView view) {
         view.setNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.drawer_home:
+                    showFragment(new TripsFragment(), false);
+                    break;
+
+                case R.id.drawer_settings:
+                    // TODO
+                    break;
+
+                default:
+                    throw new IllegalArgumentException("Unknown ID in Drawer clicked.");
+            }
+
             binding.drawerLayout.closeDrawers();
             return true;
         });
@@ -147,6 +161,11 @@ public class MainActivity extends BaseActivity implements FragmentCallbacks {
     }
 
     private void showFragment(Fragment fragment, boolean addToBackstack) {
+        if (getSupportFragmentManager().findFragmentById(R.id.content) == fragment) {
+            // Don't replace fragment with the same, just do nothing
+            return;
+        }
+
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         if (addToBackstack) {

@@ -2,7 +2,6 @@ package com.mtramin.donethat.di.modules;
 
 import android.content.Context;
 
-import com.mtramin.donethat.api.DonethatApiService;
 import com.mtramin.donethat.api.SyncService;
 import com.mtramin.donethat.api.TwitterAuthService;
 import com.mtramin.donethat.data.persist.DonethatCache;
@@ -17,12 +16,6 @@ import dagger.Provides;
  */
 @Module
 public class ServiceModule {
-
-    @Provides
-    @Singleton
-    public DonethatApiService provideDonethatApiService(Context context) {
-        return new DonethatApiService(context);
-    }
 
     @Provides
     @Singleton

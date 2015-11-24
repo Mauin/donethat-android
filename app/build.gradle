@@ -36,15 +36,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.1'
+        classpath 'com.android.tools.build:gradle:1.5.0'
         classpath 'me.tatarka:gradle-retrolambda:3.2.3'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'com.android.databinding:dataBinder:1.0-rc2'
     }
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.android.databinding'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
@@ -55,7 +53,11 @@ repositories {
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '23.0.2'
+
+    dataBinding {
+        enabled = true
+    }
 
     signingConfigs {
         release {
@@ -68,7 +70,7 @@ android {
 
     defaultConfig {
         applicationId "com.mtramin.donethat"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -103,8 +105,15 @@ retrolambda {
     jvmArgs '-noverify'
 }
 
-ext.playServicesVersion = '8.1.0'
-ext.supportLibraryVersion = '23.0.1'
+ext.playServicesVersion = '8.3.0'
+ext.supportLibraryVersion = '23.1.1'
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    // Workaround needed, since Espresso has a bug
+    // see: https://stackoverflow.com/questions/28999124/resolved-versions-for-app-22-0-0-and-test-app-21-0-3-differ
+    resolutionStrategy.force "com.android.support:support-annotations:$supportLibraryVersion"
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -127,6 +136,9 @@ dependencies {
     compile 'eu.unicate.android:retroauth:1.0.0'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.5.0'
+    provided 'com.bluelinelabs:logansquare-compiler:1.3.3'
+    compile 'com.bluelinelabs:logansquare:1.3.3'
+    compile 'com.infstory:converter-logansquare-retrofit:1.0.0'
 
     // Injection
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -138,10 +150,7 @@ dependencies {
     compile 'net.danlew:android.joda:2.8.1'
     compile 'com.github.bumptech.glide:glide:3.6.0'
     compile 'org.scribe:scribe:1.3.7'
-    provided 'com.bluelinelabs:logansquare-compiler:1.1.0'
-    compile 'com.bluelinelabs:logansquare:1.1.0'
-    compile 'com.github.yongjhih:converter-logansquare-retrofit:1.0.0'
-    compile 'io.realm:realm-android:0.82.0'
+    compile 'io.realm:realm-android:0.85.0'
 
     // DEMO
     compile 'net._01001111:jlorem:1.1'

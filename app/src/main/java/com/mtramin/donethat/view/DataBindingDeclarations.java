@@ -1,10 +1,7 @@
 package com.mtramin.donethat.view;
 
 import android.databinding.BindingAdapter;
-import android.databinding.DataBindingUtil;
-import android.databinding.adapters.ListenerUtil;
 import android.net.Uri;
-import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,6 +46,10 @@ public class DataBindingDeclarations {
     @BindingAdapter("bind:locationText")
     public static void loactionText(TextView view, LatLng location) {
         // TODO geocoder
+        if (location == null) {
+            return;
+        }
+
         view.setText(location.toString());
     }
 

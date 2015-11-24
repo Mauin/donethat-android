@@ -5,12 +5,8 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.Toolbar;
 
 import com.mtramin.donethat.R;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by m.ramin on 7/5/15.

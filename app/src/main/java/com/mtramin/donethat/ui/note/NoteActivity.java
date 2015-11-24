@@ -1,33 +1,16 @@
 package com.mtramin.donethat.ui.note;
 
 import android.animation.Animator;
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.NavUtils;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
-import android.support.v7.internal.widget.ViewUtils;
-import android.support.v7.widget.Toolbar;
-import android.text.format.DateUtils;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -40,19 +23,10 @@ import com.mtramin.donethat.data.persist.DonethatCache;
 import com.mtramin.donethat.databinding.ActivityNoteBinding;
 import com.mtramin.donethat.ui.BaseActivity;
 import com.mtramin.donethat.ui.EditNoteActivity;
-import com.mtramin.donethat.ui.MainActivity;
-import com.mtramin.donethat.ui.tripdetails.TripDetailFragment;
-import com.mtramin.donethat.util.ViewUtil;
 
-import org.joda.time.DateTime;
-
-import java.text.DateFormat;
-import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
-
-import butterknife.Bind;
 
 /**
  * Created by m.ramin on 7/7/15.
@@ -62,15 +36,20 @@ public class NoteActivity extends BaseActivity {
     private static final String EXTRA_NOTE_ID = "EXTRA_NOTE_ID";
     private static final String EXTRA_TRIP_ID = "EXTRA_TRIP_ID";
     private static final String EXTRA_PALETTE = "EXTRA_PALETTE";
-
+    @Inject
+    DonethatCache storage;
     private ActivityNoteBinding binding;
-
     private UUID noteId;
     private Note note;
     private Trip trip;
 
-    @Inject
-    DonethatCache storage;
+    public static Intent createIntent(Context context, UUID noteId, UUID tripId) {
+        // TODO pass palette to this for even more color amazingness
+        Intent intent = new Intent(context, NoteActivity.class);
+        intent.putExtra(EXTRA_NOTE_ID, noteId);
+        intent.putExtra(EXTRA_TRIP_ID, tripId);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +104,7 @@ public class NoteActivity extends BaseActivity {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                         super.onResourceReady(resource, glideAnimation);
-                        Animator reveal = ViewAnimationUtils.createCircularReveal(binding.noteImage, binding.noteImage.getWidth()/2, binding.noteImage.getHeight()/2, 0, binding.noteImage.getWidth()/2);
+                        Animator reveal = ViewAnimationUtils.createCircularReveal(binding.noteImage, binding.noteImage.getWidth() / 2, binding.noteImage.getHeight() / 2, 0, binding.noteImage.getWidth() / 2);
                         reveal.setDuration(300);
                         reveal.setInterpolator(new DecelerateInterpolator());
                         reveal.start();
@@ -151,13 +130,5 @@ public class NoteActivity extends BaseActivity {
         this.noteId = (UUID) intent.getSerializableExtra(EXTRA_NOTE_ID);
         UUID tripId = (UUID) intent.getSerializableExtra(EXTRA_TRIP_ID);
         this.trip = storage.getTripDetails(tripId);
-    }
-
-    public static Intent createIntent(Context context, UUID noteId, UUID tripId) {
-        // TODO pass palette to this for even more color amazingness
-        Intent intent = new Intent(context, NoteActivity.class);
-        intent.putExtra(EXTRA_NOTE_ID, noteId);
-        intent.putExtra(EXTRA_TRIP_ID, tripId);
-        return intent;
     }
 }

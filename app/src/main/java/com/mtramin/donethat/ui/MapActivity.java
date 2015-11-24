@@ -2,16 +2,15 @@ package com.mtramin.donethat.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.mtramin.donethat.R;
+import com.mtramin.donethat.databinding.ActivityMapBinding;
 
-import butterknife.Bind;
 import butterknife.OnClick;
 import rx.Subscription;
 import rx.subjects.BehaviorSubject;
@@ -21,8 +20,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
     public static final String EXTRA_LATITUDE = "EXTRA_LATITUDE";
     public static final String EXTRA_LONGITUDE = "EXTRA_LONGITUDE";
 
-    @Bind(R.id.map)
-    MapView map;
+    private ActivityMapBinding binding;
 
     private BehaviorSubject<GoogleMap> observableMap = BehaviorSubject.create();
     private Subscription mapSubscription;
@@ -34,11 +32,11 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_map);
 
         // TODO zoom to location
-        map.getMapAsync(this);
-        map.onCreate(savedInstanceState);
+        binding.map.getMapAsync(this);
+        binding.map.onCreate(savedInstanceState);
 
     }
 
@@ -62,35 +60,37 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
     protected void onResume() {
         super.onResume();
 
-        map.onResume();
+        binding.map.onResume();
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
 
-        map.onLowMemory();
+        binding.map.onLowMemory();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        map.onPause();
+        binding.map.onPause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        mapSubscription.unsubscribe();
+        if (mapSubscription != null) {
+            mapSubscription.unsubscribe();
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        map.onDestroy();
+        binding.map.onDestroy();
     }
 
     @Override

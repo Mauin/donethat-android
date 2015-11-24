@@ -2,6 +2,7 @@ package com.mtramin.donethat.api;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.mtramin.donethat.Application;
 import com.mtramin.donethat.api.interfaces.DonethatApi;
@@ -48,9 +49,13 @@ public class SyncService {
                 database.getTrips(),
                 this::combineTripLists
         )
+                .doOnNext(syncTrips -> Log.e("TEST", "Items: " + syncTrips.size()))
                 .flatMapIterable(trips -> trips)
                 .flatMap(trip -> {
-                    switch (calculateSyncActionForTrip(trip)) {
+                    SyncAction syncAction = calculateSyncActionForTrip(trip);
+                    Log.e("TEST", "ALL " + syncAction.name() + " " + trip.trip.id);
+
+                    switch (syncAction) {
                         case UPLOAD:
                             return api.createTrip(trip.trip);
                         case SYNC:
@@ -63,7 +68,10 @@ public class SyncService {
                     }
                 })
                 .toList()
-                .flatMap(o -> database.getTrips());
+                .flatMap(o -> {
+                    Log.e("TEST", "DONE ");
+                    return database.getTrips();
+                });
     }
 
     @NonNull
@@ -82,25 +90,27 @@ public class SyncService {
     }
 
     public Observable<Void> syncTrip(UUID tripId) {
-        return Observable.combineLatest(
-                api.getTrip(tripId),
-                Observable.just(database.getTripDetails(tripId)),
-                TripDetailSync::new
-        ).flatMap(tripDetailSync -> {
-            switch (tripDetailSync.action) {
-                case UPLOAD:
-                    return api.createTrip(tripDetailSync.local);
-                case SYNC:
-                    database.storeTrip(tripDetailSync.remote);
-                    return Observable.just(null);
-                case DOWNLOAD:
-                case NO_ACTION:
-                    List<Note> localNotes = database.getNotesForTrip(tripId);
-                    return updateNotes(tripId, combineNotes(localNotes, tripDetailSync.remote.notes), localNotes, tripDetailSync.remote.notes);
-                default:
-                    return Observable.just(null);
-            }
-        });
+        return api.getTrip(tripId)
+                .map(remote -> {
+                    Trip local = database.getTripDetails(tripId);
+                    return new TripDetailSync(remote, local);
+                })
+                .flatMap(tripDetailSync -> {
+                    Log.e("TEST", "TRIP " + tripDetailSync.action.name() + " " + tripId);
+
+                    switch (tripDetailSync.action) {
+                        case UPLOAD:
+                            return api.createTrip(tripDetailSync.local);
+                        case SYNC:
+                            List<Note> localNotes = database.getNotesForTrip(tripId);
+                            return updateNotes(tripId, combineNotes(localNotes, tripDetailSync.remote.notes), localNotes, tripDetailSync.remote.notes);
+                        case DOWNLOAD:
+                            database.storeTrip(tripDetailSync.remote);
+                        case NO_ACTION:
+                        default:
+                            return Observable.just(null);
+                    }
+                });
     }
 
     private Set<Note> combineNotes(List<Note> localNotes, List<Note> remoteNotes) {
@@ -121,7 +131,7 @@ public class SyncService {
                             return updateNote(tripId, note, remote, local);
                         }
                         // Note not in remote, upload note
-                        return api.createNote(note.id, note);
+                        return api.createNote(tripId, note);
                     }
 
                     // Note not in local, store note
@@ -153,12 +163,11 @@ public class SyncService {
     }
 
     private SyncAction calculateSyncActionForTrip(SyncTrip syncTrip) {
-        Trip stored = database.getTripDetails(syncTrip.trip.id);
-
         if (syncTrip.source.equals(TripSource.LOCAL)) {
             return SyncAction.UPLOAD;
         }
 
+        Trip stored = database.getTripDetails(syncTrip.trip.id);
         // Does not exist locally
         if (stored == null) {
             return SyncAction.DOWNLOAD;
@@ -168,7 +177,13 @@ public class SyncService {
         if (compared == 0) {
             return SyncAction.NO_ACTION;
         } else {
+            if (compared < 0) {
+                Log.e("TEST", "remote is newer ");
+            } else {
+                Log.e("TEST", "local is newer ");
+            }
             return SyncAction.SYNC;
+
         }
     }
 

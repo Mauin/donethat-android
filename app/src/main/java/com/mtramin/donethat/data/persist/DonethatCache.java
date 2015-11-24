@@ -1,5 +1,7 @@
 package com.mtramin.donethat.data.persist;
 
+import android.util.Log;
+
 import com.mtramin.donethat.data.mapper.NoteMapper;
 import com.mtramin.donethat.data.mapper.TripMapper;
 import com.mtramin.donethat.data.model.Note;
@@ -13,7 +15,6 @@ import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,7 +56,17 @@ public class DonethatCache {
 
     public void storeNote(UUID tripId, Note note) {
         note.updated = DateTime.now();
-        transaction(realm -> realm.copyToRealmOrUpdate(NoteMapper.createNoteDto(tripId, note)));
+
+        Log.e("TEST", "storeNote before " + getTripDetails(tripId).updated);
+
+        Realm realm = Realm.getDefaultInstance();
+        TripDto trip = realm.where(TripDto.class).equalTo("id", tripId.toString()).findFirst();
+        realm.beginTransaction();
+        trip.setUpdated(DateTime.now().getMillis());
+        realm.commitTransaction();
+        realm.close();
+
+        Log.e("TEST", "storeNote after " + getTripDetails(tripId).updated);
     }
 
     public List<Note> getNotesForTrip(UUID id) {
